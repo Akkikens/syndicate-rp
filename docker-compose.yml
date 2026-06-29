@@ -1,0 +1,45 @@
+services:
+  fivem:
+    platform: linux/amd64
+    build: .
+    container_name: syndicate-rp
+    restart: unless-stopped
+    ulimits:
+      stack:
+        soft: -1
+        hard: -1
+    security_opt:
+      - seccomp=unconfined
+    ports:
+      - "30120:30120/tcp"
+      - "30120:30120/udp"
+      - "40120:40120"       # txAdmin web UI
+    volumes:
+      # Live-reload: changes to resources reflect without rebuild
+      - ./server-data/resources:/srv/syndicaterp/resources
+      # Secrets injected from local file (never in image)
+      - ./server-data/server.cfg.local:/srv/syndicaterp/server.cfg.local:ro
+      # Persistent cache + database
+      - fivem-cache:/srv/syndicaterp/cache
+    environment:
+      - TZ=America/New_York
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mariadb:
+    image: mariadb:10.11
+    container_name: syndicate-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass_local
+      MYSQL_DATABASE: syndicaterp
+      MYSQL_USER: syndicaterp
+      MYSQL_PASSWORD: "Syndicate@2026!"
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+volumes:
+  fivem-cache:
+  mariadb-data:
