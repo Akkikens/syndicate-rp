@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Syndicate Clubs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+
+  <!-- Tab bar -->
+  <div class="tabs">
+    <button class="tab active" data-tab="browse">Browse Clubs</button>
+    <button class="tab" data-tab="my-club">My Club</button>
+    <button class="tab" data-tab="create">Found a Club</button>
+    <button class="close-btn" id="closeBtn">✕</button>
+  </div>
+
+  <!-- Browse -->
+  <div class="panel active" id="tab-browse">
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="Search clubs…">
+    </div>
+    <div class="club-list" id="clubList"></div>
+  </div>
+
+  <!-- My Club -->
+  <div class="panel" id="tab-my-club">
+    <div id="noClub" class="empty-state">You are not in a club.</div>
+    <div id="myClubPanel" class="hidden">
+      <div class="club-header">
+        <div class="club-tag" id="myTag"></div>
+        <div class="club-info">
+          <div class="club-name" id="myName"></div>
+          <div class="club-role" id="myRole"></div>
+        </div>
+      </div>
+      <div class="member-list" id="memberList"></div>
+      <div class="danger-zone" id="dangerZone"></div>
+    </div>
+  </div>
+
+  <!-- Create -->
+  <div class="panel" id="tab-create">
+    <div class="form-group">
+      <label>Club Name</label>
+      <input type="text" id="clubName" maxlength="50" placeholder="e.g. Midnight Syndicate">
+    </div>
+    <div class="form-group">
+      <label>Tag (1–4 chars)</label>
+      <input type="text" id="clubTag" maxlength="4" placeholder="e.g. SYND">
+    </div>
+    <div class="cost-note">Cost: <strong>$25,000</strong> cash</div>
+    <button class="btn-primary" id="createBtn">Found Club</button>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+#app { width: 520px; }
+#app.hidden { display: none; }
+
+/* ── Panel ── */
+#meetView, #votingView {
+  background: #111115;
+  border: 1px solid #1C1C24;
+  color: #C4C4CC;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #1C1C24;
+  background: #0D0D10;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #F0F0F4;
+  flex: 1;
+}
+
+.panel-sub {
+  font-size: 12px;
+  color: #6B6B78;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #6B6B78;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.close-btn:hover { color: #FF3D57; }
+
+/* ── Attendees ── */
+.attendee-list {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.attendee-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #16161B;
+}
+
+.attendee-name { flex: 1; font-size: 13px; color: #C4C4CC; }
+.attendee-vehicle {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #00E676;
+  text-transform: uppercase;
+}
+
+/* ── Voting ── */
+.timer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.timer-label { font-size: 11px; color: #6B6B78; }
+.timer-val   { font-size: 18px; font-weight: 800; color: #E91E8C; font-variant-numeric: tabular-nums; }
+
+.categories {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-block { }
+.category-name {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B6B78;
+  margin-bottom: 8px;
+}
+
+.candidate-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  background: #16161B;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+.candidate-row:hover          { background: #1A1A20; border-left-color: #00E676; }
+.candidate-row.voted          { border-left-color: #00E676; background: rgba(0,230,118,0.05); pointer-events: none; }
+
+.candidate-name  { flex: 1; font-size: 13px; color: #C4C4CC; }
+.candidate-vehicle { font-size: 11px; color: #6B6B78; }
+.vote-check { color: #00E676; font-size: 14px; opacity: 0; }
+.voted .vote-check { opacity: 1; }
+
+.vote-status {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #6B6B78;
+  border-top: 1px solid #1C1C24;
+  text-align: center;
+}
+
+.hidden { display: none !important; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0D0D10; }
+::-webkit-scrollbar-thumb { background: #1C1C24; }

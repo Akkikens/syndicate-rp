@@ -1,0 +1,232 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+#app {
+  width: 580px;
+  background: #111115;
+  border: 1px solid #1C1C24;
+  color: #C4C4CC;
+  font-size: 14px;
+}
+
+#app.hidden { display: none; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #1C1C24;
+  background: #0D0D10;
+}
+
+.tab {
+  flex: 1;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #6B6B78;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover   { color: #C4C4CC; }
+.tab.active  { color: #00E676; border-bottom-color: #00E676; }
+
+.close-btn {
+  padding: 0 18px;
+  background: none;
+  border: none;
+  color: #6B6B78;
+  font-size: 16px;
+  cursor: pointer;
+}
+.close-btn:hover { color: #FF3D57; }
+
+/* ── Panels ── */
+.panel { display: none; padding: 20px; max-height: 480px; overflow-y: auto; }
+.panel.active { display: block; }
+
+/* ── Search ── */
+.search-row { margin-bottom: 16px; }
+.search-row input {
+  width: 100%;
+  background: #0D0D10;
+  border: 1px solid #1C1C24;
+  color: #F0F0F4;
+  padding: 10px 14px;
+  font-size: 13px;
+  outline: none;
+}
+.search-row input:focus { border-color: #00E676; }
+
+/* ── Club list ── */
+.club-list { display: flex; flex-direction: column; gap: 2px; }
+
+.club-card {
+  background: #16161B;
+  padding: 14px 16px;
+  border-left: 2px solid #1C1C24;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: default;
+}
+
+.club-tag-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #00E676;
+  background: rgba(0,230,118,0.1);
+  padding: 3px 8px;
+  flex-shrink: 0;
+  min-width: 48px;
+  text-align: center;
+}
+
+.club-card-info { flex: 1; }
+.club-card-name { font-size: 14px; font-weight: 600; color: #F0F0F4; }
+.club-card-meta { font-size: 11px; color: #6B6B78; margin-top: 2px; }
+
+.club-card-wins {
+  font-size: 12px;
+  color: #E91E8C;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── My Club ── */
+.empty-state {
+  text-align: center;
+  padding: 48px 0;
+  color: #6B6B78;
+  font-size: 13px;
+}
+
+.club-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1C1C24;
+  margin-bottom: 16px;
+}
+
+.club-tag {
+  font-size: 22px;
+  font-weight: 900;
+  color: #00E676;
+  letter-spacing: 0.05em;
+}
+
+.club-name { font-size: 18px; font-weight: 700; color: #F0F0F4; }
+.club-role { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B78; margin-top: 3px; }
+
+.member-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 16px; }
+
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #16161B;
+}
+
+.member-name { flex: 1; font-size: 13px; color: #C4C4CC; }
+.member-role {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+}
+.member-role.owner   { color: #FFB300; background: rgba(255,179,0,0.1); }
+.member-role.officer { color: #E91E8C; background: rgba(233,30,140,0.1); }
+.member-role.member  { color: #6B6B78; background: rgba(107,107,120,0.1); }
+
+.danger-zone {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── Forms ── */
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6B6B78;
+  margin-bottom: 6px;
+}
+.form-group input {
+  width: 100%;
+  background: #0D0D10;
+  border: 1px solid #1C1C24;
+  color: #F0F0F4;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+}
+.form-group input:focus { border-color: #00E676; }
+
+.cost-note { font-size: 13px; color: #6B6B78; margin-bottom: 16px; }
+.cost-note strong { color: #FFB300; }
+
+/* ── Buttons ── */
+.btn-primary {
+  background: #00E676;
+  color: #0A0A0C;
+  border: none;
+  padding: 11px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-danger {
+  background: rgba(255,61,87,0.12);
+  color: #FF3D57;
+  border: 1px solid rgba(255,61,87,0.2);
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-danger:hover { background: rgba(255,61,87,0.2); }
+
+.btn-warn {
+  background: rgba(255,179,0,0.1);
+  color: #FFB300;
+  border: 1px solid rgba(255,179,0,0.2);
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0D0D10; }
+::-webkit-scrollbar-thumb { background: #1C1C24; }

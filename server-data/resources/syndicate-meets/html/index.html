@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Syndicate Meets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+
+  <!-- Meet view -->
+  <div id="meetView" class="hidden">
+    <div class="panel-header">
+      <div class="panel-title" id="meetLabel">Car Meet</div>
+      <div class="panel-sub" id="meetAttendCount">0 cars checked in</div>
+      <button class="close-btn" id="closeBtn">✕</button>
+    </div>
+    <div class="attendee-list" id="attendeeList"></div>
+  </div>
+
+  <!-- Voting view -->
+  <div id="votingView" class="hidden">
+    <div class="panel-header">
+      <div class="panel-title">Vote — Car Meet</div>
+      <div class="timer-row">
+        <span class="timer-label">Voting closes in</span>
+        <span class="timer-val" id="timerVal">3:00</span>
+      </div>
+    </div>
+    <div class="categories" id="categories"></div>
+    <div class="vote-status" id="voteStatus"></div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
