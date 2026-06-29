@@ -7,12 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Minimap glow ring (Vice City aesthetic) -->
+  <div id="minimapGlow"></div>
+
   <div id="hud" class="hud">
 
-    <!-- Speed (vehicle only) -->
+    <!-- Speedometer (vehicle only) -->
     <div id="speedometer" class="speedometer hidden">
       <div class="speed-val" id="speedVal">0</div>
       <div class="speed-unit">MPH</div>
+      <div class="gear-display">
+        <span class="gear-label">GEAR</span>
+        <span class="gear-val" id="gearVal">1</span>
+      </div>
+      <div class="rpm-bar">
+        <div class="rpm-fill" id="rpmFill"></div>
+      </div>
     </div>
 
     <!-- Status bars -->
@@ -53,6 +64,7 @@
         <span class="money-label">BANK</span>
         <span class="money-val bank" id="bankVal">$0</span>
       </div>
+      <div class="divider"></div>
       <div class="job-row" id="jobRow">Unemployed</div>
     </div>
 

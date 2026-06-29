@@ -1,103 +1,214 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─────────────────────────────────────────────────────────
+   Syndicate RP — GTA VI Vice City HUD
+   Palette pulled from GTA VI official trailers:
+     Sunset coral  #FF6B35
+     Neon pink     #FF2D78
+     Ocean teal    #00D4C8
+     Palm gold     #FFB800
+     Night navy    #080C18
+   ───────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --coral:    #FF6B35;
+  --pink:     #FF2D78;
+  --teal:     #00D4C8;
+  --gold:     #FFB800;
+  --navy:     #080C18;
+  --panel-bg: rgba(8, 12, 24, 0.72);
+  --border:   rgba(255, 255, 255, 0.06);
+  --text:     rgba(255, 255, 255, 0.85);
+  --dim:      rgba(255, 255, 255, 0.35);
+}
 
 body {
   background: transparent;
   overflow: hidden;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   user-select: none;
 }
 
+/* ── Root HUD container ───────────────────────────────── */
 .hud {
   position: fixed;
-  bottom: 40px;
-  right: 32px;
+  bottom: 36px;
+  right: 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
-  transition: opacity 0.3s;
+  gap: 10px;
+  transition: opacity 0.4s ease;
 }
-
 .hud.hidden { opacity: 0; pointer-events: none; }
 
-/* ── Speedometer ── */
+/* ── Speedometer ─────────────────────────────────────── */
 .speedometer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(0,230,118,0.3);
-  padding: 12px 20px 8px;
-  min-width: 90px;
-  backdrop-filter: blur(8px);
+  padding: 14px 22px 10px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  /* Vice City diagonal slash accent top-left */
+  clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px);
+  min-width: 96px;
+}
+
+/* Coral diagonal accent line */
+.speedometer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 56px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--coral));
+  transform-origin: left;
 }
 
 .speedometer.hidden { display: none; }
 
 .speed-val {
-  font-size: 42px;
+  font-size: 52px;
   font-weight: 900;
-  color: #00E676;
+  color: #fff;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
 }
 
 .speed-unit {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.4);
-  margin-top: 2px;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--coral);
+  margin-top: 3px;
+  font-weight: 700;
 }
 
-/* ── Status Bars ── */
+/* Gear indicator */
+.gear-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  justify-content: center;
+}
+.gear-label { font-size: 9px; letter-spacing: 0.2em; color: var(--dim); }
+.gear-val   { font-size: 16px; font-weight: 900; color: var(--coral); font-variant-numeric: tabular-nums; }
+
+/* RPM bar */
+.rpm-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 6px;
+  overflow: hidden;
+}
+.rpm-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--coral), var(--pink));
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.rpm-fill.redline { background: var(--pink); }
+
+/* ── Status bars ─────────────────────────────────────── */
 .status-bars {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  background: rgba(0,0,0,0.5);
-  padding: 10px 14px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.06);
+  gap: 6px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  /* matching Vice City clip */
+  clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px);
 }
 
 .bar-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .bar-icon {
-  font-size: 11px;
-  width: 14px;
+  font-size: 10px;
+  width: 12px;
   text-align: center;
-  opacity: 0.7;
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 .bar-track {
-  width: 110px;
-  height: 4px;
-  background: rgba(255,255,255,0.1);
+  width: 116px;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
   overflow: hidden;
+  position: relative;
 }
 
 .bar-fill {
   height: 100%;
-  transition: width 0.4s ease;
+  transition: width 0.5s ease;
+  position: relative;
 }
 
-.bar-fill.health  { background: #F44336; }
-.bar-fill.armor   { background: #90A4AE; }
-.bar-fill.hunger  { background: #FF9800; }
-.bar-fill.thirst  { background: #29B6F6; }
+/* Vice City palette per bar */
+.bar-fill.health {
+  background: linear-gradient(90deg, #c0392b, var(--pink));
+}
+.bar-fill.health::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  width: 4px; height: 100%;
+  background: var(--pink);
+  box-shadow: 0 0 6px var(--pink);
+}
 
-/* ── Info Panel ── */
+.bar-fill.armor {
+  background: rgba(160, 180, 200, 0.7);
+}
+
+.bar-fill.hunger {
+  background: linear-gradient(90deg, #c0622b, var(--coral));
+}
+
+.bar-fill.thirst {
+  background: linear-gradient(90deg, #1a6b8a, var(--teal));
+}
+.bar-fill.thirst::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  width: 3px; height: 100%;
+  background: var(--teal);
+  box-shadow: 0 0 6px var(--teal);
+}
+
+/* ── Money / Job panel ───────────────────────────────── */
 .info-panel {
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 10px 14px;
-  backdrop-filter: blur(8px);
-  min-width: 150px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  min-width: 158px;
+  clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px);
+  position: relative;
+}
+
+/* Teal accent stripe top-right */
+.info-panel::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
 }
 
 .money-row {
@@ -109,27 +220,76 @@ body {
 }
 
 .money-label {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.35);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  font-weight: 700;
 }
 
 .money-val {
-  font-size: 14px;
-  font-weight: 700;
-  color: #00E676;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--teal);
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 12px rgba(0, 212, 200, 0.4);
 }
 
-.money-val.bank { color: #90CAF9; }
+.money-val.bank {
+  color: rgba(0, 212, 200, 0.65);
+  text-shadow: none;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
 
 .job-row {
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 9px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: var(--coral);
   text-align: right;
+  font-weight: 700;
+}
+
+/* ── Notification toast (Vice City style) ────────────── */
+.vc-toast {
+  position: fixed;
+  top: 28px;
+  right: 28px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  border-left: 3px solid var(--coral);
+  padding: 12px 18px;
+  color: var(--text);
+  font-size: 13px;
+  max-width: 320px;
+  clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%);
+  animation: toastIn 0.25s ease forwards;
+  pointer-events: none;
+}
+.vc-toast.teal  { border-left-color: var(--teal); }
+.vc-toast.gold  { border-left-color: var(--gold); }
+.vc-toast.pink  { border-left-color: var(--pink); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Minimap glow ring ───────────────────────────────── */
+/* Wraps the existing GTA minimap with a Vice City ring */
+#minimapGlow {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 107, 53, 0.35);
+  box-shadow: 0 0 16px rgba(255, 107, 53, 0.2), inset 0 0 16px rgba(0, 212, 200, 0.08);
+  pointer-events: none;
 }
