@@ -1,13 +1,23 @@
-# FiveM server artifacts
+# FiveM server artifacts (all auto-installed by scripts/install.sh — reproducible, not source)
+# NOTE: brackets are escaped — in gitignore, an unescaped [core] is a glob char-class,
+# not a literal folder name, so it would silently match nothing.
 server-data/cache/
-server-data/resources/[core]/
-server-data/resources/[standalone]/
-server-data/resources/[maps]/
+server-data/resources/\[core\]/
+server-data/resources/\[standalone\]/
+server-data/resources/\[maps\]/
+server-data/resources/\[system\]/
+server-data/resources/\[managers\]/
+server-data/resources/\[gamemodes\]/
+server-data/resources/\[cfx-default\]/
+server-data/resources/\[handling\]/
 server-data/cfx-server-data/
+
+# Downloaded tooling (e.g. jq.exe fetched on Windows)
+.tooling/
 
 # Keep custom resources tracked
 !server-data/resources/syndicate-*/
-!server-data/resources/[cars]/
+!server-data/resources/\[cars\]/
 
 # Secrets
 .env

@@ -16,7 +16,6 @@ files {
 
 client_scripts {
     'client/main.lua',
-    'client/ui.lua',
     'client/zone.lua',
 }
 

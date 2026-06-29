@@ -4,6 +4,11 @@ services:
     build: .
     container_name: syndicate-rp
     restart: unless-stopped
+    # FXServer reads its console from stdin. In a detached container with no TTY it
+    # gets an immediate EOF and quits with "Ctrl-C pressed in server console". Keeping
+    # stdin open + a pseudo-TTY (the `docker run -it` equivalent) prevents that.
+    stdin_open: true
+    tty: true
     ulimits:
       stack:
         soft: -1
@@ -17,6 +22,8 @@ services:
     volumes:
       # Live-reload: changes to resources reflect without rebuild
       - ./server-data/resources:/srv/syndicaterp/resources
+      # Main config mounted (not baked) — cfg/map edits need only `restart`, no rebuild
+      - ./server-data/server.cfg:/srv/syndicaterp/server.cfg:ro
       # Secrets injected from local file (never in image)
       - ./server-data/server.cfg.local:/srv/syndicaterp/server.cfg.local:ro
       # Persistent cache + database
@@ -25,6 +32,11 @@ services:
       - TZ=America/New_York
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    # Wait for the DB to be accepting connections before starting FiveM,
+    # otherwise oxmysql races MariaDB's first-boot init and hits ECONNREFUSED.
+    depends_on:
+      mariadb:
+        condition: service_healthy
 
   mariadb:
     image: mariadb:10.11
@@ -39,6 +51,12 @@ services:
       - "3307:3306"
     volumes:
       - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
 volumes:
   fivem-cache:
