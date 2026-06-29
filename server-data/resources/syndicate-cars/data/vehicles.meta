@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Syndicate RP — vehicles.meta
+  Add one <Item> block per custom car you add to the stream/ folder.
+  modelName must match the .yft filename (without extension).
+  Copy-paste the template below for each new vehicle.
+
+  Template:
+  <Item>
+    <modelName>YOUR_MODEL_NAME</modelName>
+    <txdName>YOUR_MODEL_NAME</txdName>
+    <handlingId>YOUR_MODEL_NAME</handlingId>
+    <gameName>VEHICLE_DISPLAY_NAME</gameName>
+    <vehicleMakeName>MAKE_NAME</vehicleMakeName>
+    <expressionDictName>null</expressionDictName>
+    <expressionName>null</expressionName>
+    <animConvRoofDictName>null</animConvRoofDictName>
+    <animConvRoofName>null</animConvRoofName>
+    <animConvRoofWindowsAffected />
+    <vehicleClass>VC_SPORT</vehicleClass>
+    <flags>FLAG_IS_ELECTRIC FLAG_NO_RESPRAY</flags>
+    <type>VEHICLE_TYPE_CAR</type>
+    <plateType>VPT_FRONT_AND_BACK_PLATES</plateType>
+    <dashboardType>VDT_SULTAN</dashboardType>
+    <vehicleFlags1>VF1_IS_DRIVEABLE VF1_HAS_WHEELS</vehicleFlags1>
+    <vehicleFlags2 />
+    <vehicleFlags3 />
+    <vehicleFlags4 />
+    <pOverrideRagdollThreshold value="-1.000000" />
+    <layout>LAYOUT_STD_SPORT</layout>
+    <coverBoundOffsets>DEFAULT</coverBoundOffsets>
+    <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
+    <scenarioLayout />
+    <cameraName>DEFAULT_FOLLOW_VEHICLE_CAMERA</cameraName>
+    <unk_0x5F8C995A>DEFAULT_FOLLOW_VEHICLE_CAMERA</unk_0x5F8C995A>
+    <firstPersonDriveByIdle>NULL</firstPersonDriveByIdle>
+    <firstPersonDriveByLeftTag>NULL</firstPersonDriveByLeftTag>
+    <firstPersonDriveByRightTag>NULL</firstPersonDriveByRightTag>
+    <firstPersonDriveByRightTagAlternate>NULL</firstPersonDriveByRightTagAlternate>
+    <FirstPersonOnFootFollowCamOffsetFront value="0.000000" />
+    <FirstPersonOnFootFollowCamOffsetUp value="0.000000" />
+    <attackableByPedGroups />
+    <chaseVehicleVariationGroup />
+    <liveryChance value="0.000000" />
+    <liveryChanceRedAndBlue value="0.000000" />
+    <maxNum value="10" />
+    <lowLodDist value="30.0" />
+    <medLodDist value="60.0" />
+    <hiLodDist value="80.0" />
+    <poiDist value="130.0" />
+  </Item>
+-->
+<CVehicleModelInfo__InitDataList>
+  <residentTxd>vehshare</residentTxd>
+  <residentAnims />
+  <InitDatas>
+    <!-- Cars are added here as you stream them -->
+    <!-- See fxmanifest.lua stream{} block and docs/cars.md -->
+  </InitDatas>
+  <txdRelationships>
+    <Item>
+      <parent>vehshare</parent>
+      <child>vehshare</child>
+    </Item>
+  </txdRelationships>
+</CVehicleModelInfo__InitDataList>
