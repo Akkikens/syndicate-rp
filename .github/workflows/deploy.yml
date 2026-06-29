@@ -1,0 +1,46 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Syndicate RP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate server.cfg syntax
+        run: |
+          # Check for unfilled placeholders
+          if grep -r "REPLACE_" server-data/server.cfg; then
+            echo "ERROR: server.cfg contains unfilled REPLACE_ placeholders"
+            exit 1
+          fi
+          echo "server.cfg OK"
+
+      - name: Lint Lua files
+        uses: lunarmodules/luacheck@v1
+        with:
+          args: server-data/resources/syndicate-*/
+        continue-on-error: true
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /srv/syndicaterp
+            git pull origin main
+            # Restart via txAdmin API
+            curl -s -X POST "http://localhost:40120/api/txadmin/server/restart" \
+              -H "Authorization: Bearer ${{ secrets.TXADMIN_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d '{"reason":"GitHub deploy - '"$(git log -1 --format='%s')"'"}'
+            echo "Deploy complete."

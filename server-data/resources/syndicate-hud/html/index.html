@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syndicate HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="hud" class="hud">
+
+    <!-- Speed (vehicle only) -->
+    <div id="speedometer" class="speedometer hidden">
+      <div class="speed-val" id="speedVal">0</div>
+      <div class="speed-unit">MPH</div>
+    </div>
+
+    <!-- Status bars -->
+    <div class="status-bars">
+      <div class="bar-item">
+        <div class="bar-icon">♥</div>
+        <div class="bar-track">
+          <div class="bar-fill health" id="healthBar" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-icon">⬡</div>
+        <div class="bar-track">
+          <div class="bar-fill armor" id="armorBar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-icon">🍖</div>
+        <div class="bar-track">
+          <div class="bar-fill hunger" id="hungerBar" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-icon">💧</div>
+        <div class="bar-track">
+          <div class="bar-fill thirst" id="thirstBar" style="width:100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Money + Job -->
+    <div class="info-panel">
+      <div class="money-row">
+        <span class="money-label">CASH</span>
+        <span class="money-val" id="cashVal">$0</span>
+      </div>
+      <div class="money-row">
+        <span class="money-label">BANK</span>
+        <span class="money-val bank" id="bankVal">$0</span>
+      </div>
+      <div class="job-row" id="jobRow">Unemployed</div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

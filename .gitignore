@@ -1,0 +1,21 @@
+# FiveM server artifacts
+server-data/cache/
+server-data/resources/[core]/
+server-data/resources/[standalone]/
+server-data/resources/[maps]/
+server-data/cfx-server-data/
+
+# Keep custom resources tracked
+!server-data/resources/syndicate-*/
+!server-data/resources/[cars]/
+
+# Secrets
+.env
+server-data/server.cfg.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for any tooling)
+node_modules/
