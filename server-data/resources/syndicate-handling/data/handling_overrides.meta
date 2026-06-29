@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Syndicate RP — Handling Overrides
+  Philosophy: Drive V cinematic weight + Taira realistic specs
+
+  Full packs to install separately via scripts/install.sh:
+    - TairaRealisticHandling (300+ vehicles, free)
+    - Drive-V-Fivem-port (cinematic weight/deformation)
+
+  This file holds Syndicate-specific tweaks on top of those packs.
+  Vehicles listed here override any value from the above packs.
+
+  Key changes from vanilla GTA V:
+    - Reduced fInitialDriveForce (less instant wheel-spin)
+    - Increased fDriveBiasFront tuned per vehicle class
+    - Reduced fTractionCurveMax (more progressive grip loss)
+    - fSuspensionRaise tweaked for realistic body roll
+    - fDeformationDamageMult increased (more cinematic damage)
+-->
+<CHandlingDataMgr>
+  <HandlingData>
+
+    <!-- ── Sportscars ─────────────────────────────────── -->
+    <!-- Zentorno (hero supercar) — heavier, more cinematic -->
+    <Item type="CHandlingData">
+      <handlingName>ZENTORNO</handlingName>
+      <fMass value="1500.000000" />
+      <fInitialDriveForce value="0.380000" />
+      <fDriveBiasFront value="0.100000" />
+      <fTractionCurveMax value="2.450000" />
+      <fTractionCurveMin value="1.700000" />
+      <fSuspensionForce value="3.200000" />
+      <fSuspensionCompDamp value="1.800000" />
+      <fSuspensionReboundDamp value="2.400000" />
+      <fSuspensionUpperLimit value="0.080000" />
+      <fSuspensionLowerLimit value="-0.140000" />
+      <fDeformationDamageMult value="1.400000" />
+      <fCollisionDamageMult value="1.200000" />
+    </Item>
+
+    <!-- Krieger (modern hypercar) -->
+    <Item type="CHandlingData">
+      <handlingName>KRIEGER</handlingName>
+      <fMass value="1450.000000" />
+      <fInitialDriveForce value="0.420000" />
+      <fDriveBiasFront value="0.150000" />
+      <fTractionCurveMax value="2.600000" />
+      <fTractionCurveMin value="1.800000" />
+      <fSuspensionForce value="3.400000" />
+      <fDeformationDamageMult value="1.500000" />
+      <fCollisionDamageMult value="1.300000" />
+    </Item>
+
+    <!-- ── Muscle Cars ─────────────────────────────────── -->
+    <!-- Gauntlet Hellfire — heavy American muscle feel -->
+    <Item type="CHandlingData">
+      <handlingName>GAUNTLET4</handlingName>
+      <fMass value="1900.000000" />
+      <fInitialDriveForce value="0.340000" />
+      <fDriveBiasFront value="0.000000" />
+      <fTractionCurveMax value="1.950000" />
+      <fTractionCurveMin value="1.300000" />
+      <fSuspensionForce value="2.600000" />
+      <fSuspensionCompDamp value="1.400000" />
+      <fSuspensionReboundDamp value="2.000000" />
+      <fDeformationDamageMult value="1.600000" />
+      <fCollisionDamageMult value="1.400000" />
+    </Item>
+
+    <!-- ── SUVs ───────────────────────────────────────── -->
+    <!-- Baller (premium SUV) — planted, controlled weight transfer -->
+    <Item type="CHandlingData">
+      <handlingName>BALLER2</handlingName>
+      <fMass value="2300.000000" />
+      <fInitialDriveForce value="0.260000" />
+      <fDriveBiasFront value="0.400000" />
+      <fTractionCurveMax value="2.000000" />
+      <fTractionCurveMin value="1.500000" />
+      <fSuspensionForce value="2.200000" />
+      <fSuspensionCompDamp value="1.200000" />
+      <fRollCentreHeightFront value="0.350000" />
+      <fRollCentreHeightRear value="0.320000" />
+      <fDeformationDamageMult value="1.200000" />
+    </Item>
+
+  </HandlingData>
+</CHandlingDataMgr>

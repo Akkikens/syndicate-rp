@@ -93,10 +93,31 @@ install_resource "Qbox-project/qbx_shops"    "qbx_shops"    "$CORE_DIR"
 log "Installing voice..."
 install_resource "AvarianKnight/mumble-voip" "mumble-voip" "$STANDALONE_DIR"
 
+# ── Handling packs (GTA VI cinematic physics) ─────────────
+log "Installing handling packs..."
+HANDLING_DIR="$RESOURCES_DIR/[handling]"
+mkdir -p "$HANDLING_DIR"
+install_resource "Caballero87/TairaRealisticHandling"  "TairaRealisticHandling" "$HANDLING_DIR"
+install_resource "Weilher420/Drive-V-Fivem-port"       "Drive-V"                "$HANDLING_DIR"
+
+# ── Vice City Map ─────────────────────────────────────────
+log "Installing Vice Cry: Remastered (server-side)..."
+MAPS_DIR="$RESOURCES_DIR/[maps]"
+mkdir -p "$MAPS_DIR"
+# Community server-side release — free, credit Vice Cry team in server description
+if [ ! -d "$MAPS_DIR/VICECRY_FM_W" ]; then
+    warn "Vice Cry: Remastered must be downloaded manually."
+    warn "Get the server-side release from: forum.cfx.re (search 'Vice City server side')"
+    warn "Extract into: $MAPS_DIR/VICECRY_FM_W"
+    warn "Then add 'ensure VICECRY_FM_W' to server.cfg"
+fi
+
 echo ""
 log "All resources installed."
 echo ""
 echo "  Next steps:"
 echo "  1. Edit server-data/server.cfg — fill in license key, DB string, owner license"
-echo "  2. Run: bash scripts/start.sh"
+echo "  2. Download Vice Cry: Remastered manually (see warning above)"
+echo "  3. Share docs/visual-setup.md with your players (NVE/QuantV install guide)"
+echo "  4. Run: bash scripts/start.sh"
 echo ""
