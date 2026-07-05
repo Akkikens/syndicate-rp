@@ -35,6 +35,11 @@ const features = [
       "Jobs, businesses, and a balanced economy on the Qbox framework — grind up from a beater to a garage full of builds.",
   },
   {
+    name: "Custom locations",
+    detail:
+      "Hand-picked map mods you won't find on vanilla servers — a fully walkable Burger Shot interior, the Highfield mansion, and Villa Jayway for meets and shoots.",
+  },
+  {
     name: `${site.server.slots} player slots`,
     detail:
       "OneSync Infinity means big-server energy: full lobbies, busy meets, and rivals who remember you.",
