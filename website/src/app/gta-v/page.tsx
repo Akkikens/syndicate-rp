@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CopyConnect from "@/components/CopyConnect";
+import CarGarage from "@/components/CarGarage";
 import { site } from "@/config/site";
 import {
   stats,
@@ -7,7 +8,7 @@ import {
   meets,
   clubs,
   carCatalog,
-  exclusiveCars,
+  featuredImports,
   vipTiers,
   customMaps,
   economy,
@@ -201,46 +202,32 @@ export default function GtaVPage() {
         </h2>
         <p className="mt-4 max-w-2xl text-muted">
           A hand-tuned catalogue of GTA IV legends and customs, running
-          GTA VI-inspired handling physics. A taste of what&apos;s on the lot:
+          GTA VI-inspired handling physics — plus three Syndicate originals
+          you can&apos;t buy with cash. Click any car for the details.
         </p>
-        <div className="mt-8 overflow-x-auto">
-          <table className="w-full min-w-[28rem] text-left text-sm">
-            <thead>
-              <tr className="border-b border-line">
-                <th className="eyebrow pb-3 font-normal">Car</th>
-                <th className="eyebrow pb-3 font-normal">Class</th>
-                <th className="eyebrow pb-3 text-right font-normal">Price</th>
-                <th className="eyebrow pb-3 text-right font-normal">Access</th>
-              </tr>
-            </thead>
-            <tbody>
-              {carCatalog.map((car) => (
-                <tr key={car.name} className="border-b border-line/50">
-                  <td className="display py-3 text-base">{car.name}</td>
-                  <td className="py-3 text-muted">{car.category}</td>
-                  <td className="py-3 text-right font-mono text-teal">
-                    {car.price}
-                  </td>
-                  <td className="py-3 text-right font-mono text-xs text-muted">
-                    {car.tier ? `${car.tier}+` : "Everyone"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-8">
+          <CarGarage cars={carCatalog} />
         </div>
-        <p className="mt-4 text-sm text-muted">
-          Plus three Syndicate originals you can&apos;t buy with cash:{" "}
-          {exclusiveCars.map((c, i) => (
-            <span key={c.name}>
-              <span className="text-cream">{c.name}</span>
-              <span className="font-mono text-xs"> ({c.tier})</span>
-              {i < exclusiveCars.length - 1 ? " · " : ""}
-            </span>
-          ))}
-        </p>
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
           {economy.points.join(" ")}
+        </p>
+      </section>
+
+      {/* ── Featured imports ── */}
+      <section className="mt-20">
+        <p className="eyebrow">Coming to the dealership</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          Featured <span className="text-teal">imports</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          Four real-world builds from the CFX Luxury Pack, headed for the
+          dealership on the next update.
+        </p>
+        <div className="mt-8">
+          <CarGarage cars={featuredImports} />
+        </div>
+        <p className="mt-4 font-mono text-xs text-muted">
+          Vehicle photography via gta5-mods.com creators.
         </p>
       </section>
 

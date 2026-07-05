@@ -48,29 +48,155 @@ export const clubs = {
   ],
 };
 
+export type CarCategory = "Sports" | "Super" | "Classic" | "Luxury";
+
 export type CatalogCar = {
+  slug: string;
   name: string;
-  category: string;
-  price: string;
-  tier?: string; // minimum VIP tier, if gated
+  category: CarCategory;
+  price: string | null; // null = not for sale (exclusive drop)
+  tier?: string; // minimum VIP tier required to buy or own
+  exclusive?: boolean; // true = Syndicate original, can't be bought with cash
+  blurb: string;
+  /** Real in-game screenshot, self-hosted in /public/cars. Cars without one render as vector art. */
+  image?: string;
 };
 
 export const carCatalog: CatalogCar[] = [
-  { name: "Sultan Classic", category: "Sports", price: "$45,000" },
-  { name: "Jester Classic", category: "Sports", price: "$85,000" },
-  { name: "Banshee", category: "Sports", price: "$90,000" },
-  { name: "Comet", category: "Sports", price: "$75,000" },
-  { name: "Infernus Classic", category: "Super", price: "$180,000" },
-  { name: "Turismo Classic", category: "Super", price: "$165,000" },
-  { name: "Coquette Classic", category: "Classic", price: "$120,000", tier: "Crew" },
-  { name: "Bullet GT", category: "Super", price: "$155,000", tier: "Crew" },
-  { name: "Cheetah Classic", category: "Super", price: "$195,000", tier: "VIP" },
+  {
+    slug: "sultan-classic",
+    name: "Sultan Classic",
+    category: "Sports",
+    price: "$45,000",
+    blurb: "The tuner icon. Cheap to buy, expensive to keep up with.",
+  },
+  {
+    slug: "jester-classic",
+    name: "Jester Classic",
+    category: "Sports",
+    price: "$85,000",
+    blurb: "Lightweight and twitchy — always first off the line.",
+  },
+  {
+    slug: "banshee",
+    name: "Banshee",
+    category: "Sports",
+    price: "$90,000",
+    blurb: "American muscle wearing a European jacket.",
+  },
+  {
+    slug: "comet",
+    name: "Comet",
+    category: "Sports",
+    price: "$75,000",
+    blurb: "A back-road specialist — small, light, and eager to rotate.",
+  },
+  {
+    slug: "infernus-classic",
+    name: "Infernus Classic",
+    category: "Super",
+    price: "$180,000",
+    blurb: "The supercar every Vice City kid draws in class.",
+  },
+  {
+    slug: "turismo-classic",
+    name: "Turismo Classic",
+    category: "Super",
+    price: "$165,000",
+    blurb: "Understated looks, unreasonable pace.",
+  },
+  {
+    slug: "coquette-classic",
+    name: "Coquette Classic",
+    category: "Classic",
+    price: "$120,000",
+    tier: "Crew",
+    blurb: "Old-money curves, new-money price tag. Crew tier and up.",
+  },
+  {
+    slug: "bullet-gt",
+    name: "Bullet GT",
+    category: "Super",
+    price: "$155,000",
+    tier: "Crew",
+    blurb: "All motor, no mercy. Crew tier and up.",
+  },
+  {
+    slug: "cheetah-classic",
+    name: "Cheetah Classic",
+    category: "Super",
+    price: "$195,000",
+    tier: "VIP",
+    blurb: "The one the leaderboard fears. VIP tier and up.",
+  },
+  {
+    slug: "syndicate-gt",
+    name: "Syndicate GT",
+    category: "Super",
+    price: null,
+    tier: "VIP",
+    exclusive: true,
+    blurb: "VIP-only. You won't see two of these at the same meet.",
+  },
+  {
+    slug: "syndicate-rm",
+    name: "Syndicate RM",
+    category: "Classic",
+    price: null,
+    tier: "Elite",
+    exclusive: true,
+    blurb: "Elite-tier muscle, straight from the crew.",
+  },
+  {
+    slug: "syndicate-fs",
+    name: "Syndicate FS",
+    category: "Super",
+    price: null,
+    tier: "Founder",
+    exclusive: true,
+    blurb: "Founder-only. If you own one, everyone already knows.",
+  },
 ];
 
-export const exclusiveCars = [
-  { name: "Syndicate GT", tier: "VIP" },
-  { name: "Syndicate RM", tier: "Elite" },
-  { name: "Syndicate FS", tier: "Founder" },
+// Real cars from the CFX Luxury Pack — screenshotted, not yet wired into
+// cars.lua for purchase. Follow docs/cars.md to register them server-side.
+export const featuredImports: CatalogCar[] = [
+  {
+    slug: "nissan-gtr",
+    name: "Nissan GT-R Nismo",
+    category: "Luxury",
+    price: null,
+    tier: "Elite",
+    blurb: "Japan's benchmark. Landing in the dealership for Elite and up.",
+    image: "/cars/nissan-gtr.jpg",
+  },
+  {
+    slug: "bmw-m5-touring",
+    name: "BMW M5 Touring",
+    category: "Luxury",
+    price: null,
+    tier: "VIP",
+    blurb: "A wagon that outruns most supercars. Coming soon.",
+    image: "/cars/bmw-m5-touring.jpg",
+  },
+  {
+    slug: "porsche-cayenne",
+    name: "Porsche Cayenne Turbo S",
+    category: "Luxury",
+    price: null,
+    tier: "VIP",
+    blurb: "The SUV that made luxury SUVs a thing. Coming soon.",
+    image: "/cars/porsche-cayenne.jpg",
+  },
+  {
+    slug: "audi-a4",
+    name: "Audi A4 Quattro",
+    category: "Luxury",
+    price: null,
+    tier: "Crew",
+    blurb: "Blacked-out, widebody, ABT-kitted. Coming soon.",
+    image: "/cars/audi-a4.jpg",
+  },
 ];
 
 export type VipTier = {
