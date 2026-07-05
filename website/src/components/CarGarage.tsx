@@ -24,9 +24,7 @@ function CarThumb({ car, className = "" }: { car: CatalogCar; className?: string
     );
   }
   return (
-    <div className="flex h-full items-center justify-center p-6">
-      <CarGlyph category={car.category} exclusive={car.exclusive} className="h-full w-full" />
-    </div>
+    <CarGlyph category={car.category} exclusive={car.exclusive} className={className} />
   );
 }
 
