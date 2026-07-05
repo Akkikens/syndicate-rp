@@ -22,9 +22,9 @@ export const site = {
     shortPitch:
       "Car culture, drag racing, custom builds, and elite roleplay on GTA V.",
     // cfx.re join link from your Keymaster (e.g. https://cfx.re/join/abc123)
-    connectUrl: "https://cfx.re/join/YOUR_CODE",
+    connectUrl: "https://cfx.re/join/dg3mgrq",
     // Direct connect string players can paste into F8 console
-    connectCommand: "connect cfx.re/join/YOUR_CODE",
+    connectCommand: "connect cfx.re/join/dg3mgrq",
     slots: 128,
     // Tebex store for VIP subscriptions
     store: "https://syndicaterp.tebex.io",
