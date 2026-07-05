@@ -315,20 +315,25 @@ export default function GtaVPage() {
 
       {/* ── Discord CTA ── */}
       <section className="mt-20 rounded-md border border-teal/30 bg-panel p-8 text-center sm:p-12">
-        <h2 className="display text-3xl">Ready to pull up?</h2>
+        <h2 className="display text-3xl">
+          {site.server.live ? "Ready to pull up?" : "Be there at launch"}
+        </h2>
         <p className="mx-auto mt-3 max-w-md text-muted">
-          Join the Discord for whitelisting and the next car meet, then connect
-          in-game.
+          {site.server.live
+            ? "Join the Discord for whitelisting and the next car meet, then connect in-game."
+            : "The server goes live soon. Join the Discord now to get the go-live alert, grab a whitelist spot, and be in the first lobby."}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href={site.server.connectUrl} className="btn btn-teal">
-            Connect via FiveM
-          </a>
+          {site.server.live && (
+            <a href={site.server.connectUrl} className="btn btn-teal">
+              Connect via FiveM
+            </a>
+          )}
           <a
             href={site.discord}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost"
+            className={site.server.live ? "btn btn-ghost" : "btn btn-vice"}
           >
             Join Discord
           </a>

@@ -21,6 +21,9 @@ export const site = {
     name: "Syndicate RP",
     shortPitch:
       "Car culture, drag racing, custom builds, and elite roleplay on GTA V.",
+    // Flip to true once the server is deployed and live on a host — this turns
+    // the "launching soon" state into a working Connect button + copy command.
+    live: false,
     // cfx.re join link from your Keymaster (e.g. https://cfx.re/join/abc123)
     connectUrl: "https://cfx.re/join/dg3mgrq",
     // Direct connect string players can paste into F8 console
