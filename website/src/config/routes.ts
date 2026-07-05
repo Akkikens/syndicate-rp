@@ -14,8 +14,9 @@ export const routes: Route[] = [
   { href: "/trailers", label: "Trailers", nav: true },
   { href: "/characters", label: "Characters", nav: true },
   { href: "/map", label: "Map", nav: true },
+  { href: "/mods", label: "Mods", nav: true },
   { href: "/game", label: "The Game" },
-  { href: "/faq", label: "FAQ", nav: true },
+  { href: "/faq", label: "FAQ" },
   { href: "/premium", label: "Premium", nav: true, accent: true },
   { href: "/gta-v", label: "GTA V", nav: true, accent: true },
 ];
