@@ -1,49 +1,31 @@
 import type { Metadata } from "next";
 import CopyConnect from "@/components/CopyConnect";
 import { site } from "@/config/site";
+import {
+  stats,
+  racing,
+  meets,
+  clubs,
+  carCatalog,
+  exclusiveCars,
+  vipTiers,
+  customMaps,
+  economy,
+} from "@/data/server";
 
 export const metadata: Metadata = {
   title: `GTA V — ${site.server.name} FiveM Server`,
-  description: `${site.server.shortPitch} Join ${site.server.name}, our GTA V FiveM roleplay server — drag racing, car clubs, custom builds, and up to ${site.server.slots} players.`,
+  description: `${site.server.shortPitch} Drag racing with $50k pots, Saturday car meets with $25k Best in Show, car clubs, custom maps, and up to ${site.server.slots} players.`,
   alternates: { canonical: "/gta-v" },
 };
 
-const features = [
-  {
-    name: "Drag racing",
-    detail:
-      "Challenge anyone, put money on it, and climb the server leaderboard. Purpose-built drag strips with proper staging.",
-  },
-  {
-    name: "Car culture first",
-    detail:
-      "Custom builds, tuning, and scheduled car meets with events. This server is built around the cars, not tacked on.",
-  },
-  {
-    name: "Custom HUD",
-    detail:
-      "Our own clean interface — speed, health, armor, hunger, thirst, and cash without the clutter.",
-  },
-  {
-    name: "Car clubs",
-    detail:
-      "Create or join a crew, rep your territory, and roll to meets together. Club wars are on the roadmap.",
-  },
-  {
-    name: "Serious RP economy",
-    detail:
-      "Jobs, businesses, and a balanced economy on the Qbox framework — grind up from a beater to a garage full of builds.",
-  },
-  {
-    name: "Custom locations",
-    detail:
-      "Hand-picked map mods you won't find on vanilla servers — a fully walkable Burger Shot interior, the Highfield mansion, and Villa Jayway for meets and shoots.",
-  },
-  {
-    name: `${site.server.slots} player slots`,
-    detail:
-      "OneSync Infinity means big-server energy: full lobbies, busy meets, and rivals who remember you.",
-  },
+const sections = [
+  { id: "racing", label: "Racing" },
+  { id: "meets", label: "Car Meets" },
+  { id: "clubs", label: "Clubs" },
+  { id: "garage", label: "The Garage" },
+  { id: "vip", label: "VIP" },
+  { id: "join", label: "How to Join" },
 ];
 
 const steps = [
@@ -53,11 +35,13 @@ const steps = [
   },
   {
     step: "Install FiveM",
-    detail: "Free mod client from fivem.net — it doesn't touch your GTA Online install.",
+    detail:
+      "Free mod client from fivem.net — it doesn't touch your GTA Online install.",
   },
   {
     step: "Join the server",
-    detail: "Click connect below, or paste the command into the FiveM F8 console.",
+    detail:
+      "Click connect below, or paste the command into the FiveM F8 console.",
   },
   {
     step: "Hop in Discord",
@@ -69,6 +53,7 @@ export default function GtaVPage() {
   const [lead, ...rest] = site.server.name.split(" ");
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      {/* ── Hero ── */}
       <p className="eyebrow">GTA V · FiveM</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
         {lead}
@@ -88,32 +73,250 @@ export default function GtaVPage() {
         <CopyConnect />
       </div>
 
-      {/* Features */}
+      {/* Stats strip */}
+      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {stats.map((s) => (
+          <div key={s.label} className="neon-card rounded-md p-4 text-center">
+            <div className="display sunset-text text-3xl">{s.value}</div>
+            <div className="eyebrow mt-1">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Section nav */}
+      <nav
+        aria-label="Page sections"
+        className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-y border-line py-4"
+      >
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className="font-mono text-xs uppercase tracking-[0.18em] text-muted hover:text-teal"
+          >
+            {s.label}
+          </a>
+        ))}
+      </nav>
+
+      {/* ── Racing ── */}
+      <section id="racing" className="mt-20 scroll-mt-24">
+        <p className="eyebrow">Drag racing</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          Put your money where your <span className="sunset-text">mouth is</span>
+        </h2>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_16rem]">
+          <ul className="flex flex-col gap-4">
+            {racing.points.map((p) => (
+              <li key={p} className="flex gap-3 text-muted">
+                <span className="text-vice" aria-hidden="true">
+                  ◆
+                </span>
+                <span className="leading-relaxed">{p}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="neon-card h-fit rounded-md p-6">
+            <p className="eyebrow">The strips</p>
+            <ul className="mt-3 flex flex-col gap-2">
+              {racing.strips.map((strip) => (
+                <li key={strip} className="display text-lg">
+                  {strip}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 font-mono text-xs text-muted">
+              Bets {racing.betMin}–{racing.betMax} · winner takes{" "}
+              {racing.winnerCut}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Meets ── */}
+      <section id="meets" className="mt-20 scroll-mt-24">
+        <p className="eyebrow">Car meets · {meets.schedule}</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          Saturday night is <span className="text-teal">show night</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          Roll up, check in, and the crowd votes: {meets.categories.join(", ")}.
+          Getting paid just for pulling up is the warm-up.
+        </p>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="neon-card rounded-md p-6">
+            <p className="eyebrow">Payouts</p>
+            <ul className="mt-4 flex flex-col gap-3">
+              {meets.payouts.map((p) => (
+                <li
+                  key={p.label}
+                  className="flex items-baseline justify-between gap-4"
+                >
+                  <span className="text-sm text-muted">{p.label}</span>
+                  <span className="display text-lg text-teal">{p.amount}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="neon-card rounded-md p-6">
+            <p className="eyebrow">Locations</p>
+            <ul className="mt-4 flex flex-col gap-3">
+              {meets.locations.map((l) => (
+                <li
+                  key={l.name}
+                  className="flex items-baseline justify-between gap-4"
+                >
+                  <span className="display text-lg">{l.name}</span>
+                  <span className="font-mono text-xs text-muted">
+                    {l.capacity} cars
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Clubs ── */}
+      <section id="clubs" className="mt-20 scroll-mt-24">
+        <p className="eyebrow">Car clubs</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          Ride with a <span className="sunset-text">crew</span>
+        </h2>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+          {clubs.points.map((p) => (
+            <li key={p} className="neon-card rounded-md p-5 text-sm leading-relaxed text-muted">
+              {p}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ── Garage ── */}
+      <section id="garage" className="mt-20 scroll-mt-24">
+        <p className="eyebrow">The garage</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          From a {carCatalog[0].price} starter to{" "}
+          <span className="sunset-text">supercar money</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          A hand-tuned catalogue of GTA IV legends and customs, running
+          GTA VI-inspired handling physics. A taste of what&apos;s on the lot:
+        </p>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[28rem] text-left text-sm">
+            <thead>
+              <tr className="border-b border-line">
+                <th className="eyebrow pb-3 font-normal">Car</th>
+                <th className="eyebrow pb-3 font-normal">Class</th>
+                <th className="eyebrow pb-3 text-right font-normal">Price</th>
+                <th className="eyebrow pb-3 text-right font-normal">Access</th>
+              </tr>
+            </thead>
+            <tbody>
+              {carCatalog.map((car) => (
+                <tr key={car.name} className="border-b border-line/50">
+                  <td className="display py-3 text-base">{car.name}</td>
+                  <td className="py-3 text-muted">{car.category}</td>
+                  <td className="py-3 text-right font-mono text-teal">
+                    {car.price}
+                  </td>
+                  <td className="py-3 text-right font-mono text-xs text-muted">
+                    {car.tier ? `${car.tier}+` : "Everyone"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-sm text-muted">
+          Plus three Syndicate originals you can&apos;t buy with cash:{" "}
+          {exclusiveCars.map((c, i) => (
+            <span key={c.name}>
+              <span className="text-cream">{c.name}</span>
+              <span className="font-mono text-xs"> ({c.tier})</span>
+              {i < exclusiveCars.length - 1 ? " · " : ""}
+            </span>
+          ))}
+        </p>
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
+          {economy.points.join(" ")}
+        </p>
+      </section>
+
+      {/* ── Custom maps ── */}
       <section className="mt-20">
-        <p className="eyebrow">What&apos;s on the server</p>
-        <h2 className="display mt-3 text-3xl">Built for car people</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <div key={f.name} className="neon-card rounded-md p-6">
-              <h3 className="display text-lg text-teal">{f.name}</h3>
+        <p className="eyebrow">Custom locations</p>
+        <h2 className="display mt-3 text-3xl">
+          Places vanilla servers don&apos;t have
+        </h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          {customMaps.map((m) => (
+            <div key={m.name} className="neon-card rounded-md p-6">
+              <h3 className="display text-lg text-teal">{m.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                {f.detail}
+                {m.detail}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* How to join */}
-      <section className="mt-20">
+      {/* ── VIP ── */}
+      <section id="vip" className="mt-20 scroll-mt-24">
+        <p className="eyebrow">Support the server</p>
+        <h2 className="display mt-3 text-3xl sm:text-4xl">
+          VIP <span className="sunset-text">tiers</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          The server runs on subscriptions — perks are garage space, queue
+          priority, plates, and exclusive rides. Never pay-to-win.
+        </p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {vipTiers.map((tier) => (
+            <div
+              key={tier.name}
+              className={`neon-card rounded-md p-6 ${
+                tier.highlight ? "border-vice/50" : ""
+              }`}
+            >
+              <div className="flex items-baseline justify-between">
+                <h3 className="display text-xl">{tier.name}</h3>
+                <span className="font-mono text-sm text-vice">
+                  {tier.price}
+                </span>
+              </div>
+              <ul className="mt-4 flex flex-col gap-2">
+                {tier.perks.map((perk) => (
+                  <li key={perk} className="flex gap-2 text-sm text-muted">
+                    <span className="text-teal" aria-hidden="true">
+                      ✓
+                    </span>
+                    {perk}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <a
+          href={site.server.store}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-vice mt-8"
+        >
+          Browse the store
+        </a>
+      </section>
+
+      {/* ── How to join ── */}
+      <section id="join" className="mt-20 scroll-mt-24">
         <p className="eyebrow">How to join</p>
         <h2 className="display mt-3 text-3xl">On the server in 10 minutes</h2>
         <ol className="mt-8 grid gap-6 sm:grid-cols-2">
           {steps.map((s, i) => (
             <li key={s.step} className="neon-card rounded-md p-6">
-              <span className="font-mono text-xs text-vice">
-                Step {i + 1}
-              </span>
+              <span className="font-mono text-xs text-vice">Step {i + 1}</span>
               <h3 className="display mt-2 text-lg">{s.step}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 {s.detail}
@@ -123,7 +326,7 @@ export default function GtaVPage() {
         </ol>
       </section>
 
-      {/* Discord CTA */}
+      {/* ── Discord CTA ── */}
       <section className="mt-20 rounded-md border border-teal/30 bg-panel p-8 text-center sm:p-12">
         <h2 className="display text-3xl">Ready to pull up?</h2>
         <p className="mx-auto mt-3 max-w-md text-muted">
@@ -131,10 +334,7 @@ export default function GtaVPage() {
           in-game.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href={site.server.connectUrl}
-            className="btn btn-teal"
-          >
+          <a href={site.server.connectUrl} className="btn btn-teal">
             Connect via FiveM
           </a>
           <a

@@ -26,6 +26,8 @@ export const site = {
     // Direct connect string players can paste into F8 console
     connectCommand: "connect cfx.re/join/YOUR_CODE",
     slots: 128,
+    // Tebex store for VIP subscriptions
+    store: "https://syndicaterp.tebex.io",
   },
 
 } as const;
