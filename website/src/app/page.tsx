@@ -184,6 +184,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Premium hook ── */}
+      <section className="border-t border-line bg-dusk/40">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:flex lg:items-center lg:justify-between lg:gap-12">
+          <div>
+            <p className="eyebrow">Premium</p>
+            <h2 className="display mt-3 max-w-xl text-3xl sm:text-4xl">
+              The launch only happens <span className="sunset-text">once</span>
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed text-muted">
+              Early videos, Trailer 3 alerts, a private Discord wing, and a
+              seat in the launch-week war room. Founders pricing ends the day
+              GTA VI ships.
+            </p>
+          </div>
+          <Link
+            href="/premium"
+            className="btn btn-vice mt-8 inline-block shrink-0 lg:mt-0"
+          >
+            See what&apos;s inside
+          </Link>
+        </div>
+      </section>
+
       {/* ── YouTube CTA ── */}
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">

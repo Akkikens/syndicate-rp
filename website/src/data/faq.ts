@@ -46,4 +46,8 @@ export const faqs: Faq[] = [
     q: "Can I play GTA with you before GTA 6 comes out?",
     a: "Yes — we run Syndicate RP, a GTA V FiveM roleplay server focused on car culture and drag racing. Check the GTA V page for how to join.",
   },
+  {
+    q: "What does GTA 6 Network Premium include?",
+    a: "Early access to our videos, instant Trailer 3 and pre-order alerts, a private Discord wing, launch-week live events, and queue priority on our GTA V server. Everything public on this site stays free. See the Premium page for tiers.",
+  },
 ];

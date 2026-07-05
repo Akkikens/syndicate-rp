@@ -30,6 +30,13 @@ export const site = {
     store: "https://syndicaterp.tebex.io",
   },
 
+  // Membership payments — create two subscription Payment Links in your
+  // Stripe dashboard (Products → Payment Links) and paste them here.
+  // Until then the site shows a waitlist CTA instead of buy buttons.
+  premium: {
+    insiderLink: "https://buy.stripe.com/YOUR_INSIDER_LINK",
+    founderLink: "https://buy.stripe.com/YOUR_FOUNDER_LINK",
+  },
 } as const;
 
 // True once a URL has been filled in (placeholders contain "YOUR_").
