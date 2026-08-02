@@ -69,6 +69,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Sports",
     price: "$45,000",
     blurb: "The tuner icon. Cheap to buy, expensive to keep up with.",
+    image: "/cars/sultan-classic.jpg",
   },
   {
     slug: "jester-classic",
@@ -76,6 +77,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Sports",
     price: "$85,000",
     blurb: "Lightweight and twitchy — always first off the line.",
+    image: "/cars/jester-classic.jpg",
   },
   {
     slug: "banshee",
@@ -83,6 +85,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Sports",
     price: "$90,000",
     blurb: "American muscle wearing a European jacket.",
+    image: "/cars/banshee.jpg",
   },
   {
     slug: "comet",
@@ -90,6 +93,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Sports",
     price: "$75,000",
     blurb: "A back-road specialist — small, light, and eager to rotate.",
+    image: "/cars/comet.jpg",
   },
   {
     slug: "infernus-classic",
@@ -97,6 +101,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Super",
     price: "$180,000",
     blurb: "The supercar every Vice City kid draws in class.",
+    image: "/cars/infernus-classic.jpg",
   },
   {
     slug: "turismo-classic",
@@ -104,6 +109,7 @@ export const carCatalog: CatalogCar[] = [
     category: "Super",
     price: "$165,000",
     blurb: "Understated looks, unreasonable pace.",
+    image: "/cars/turismo-classic.jpg",
   },
   {
     slug: "coquette-classic",
@@ -112,6 +118,7 @@ export const carCatalog: CatalogCar[] = [
     price: "$120,000",
     tier: "Crew",
     blurb: "Old-money curves, new-money price tag. Crew tier and up.",
+    image: "/cars/coquette-classic.jpg",
   },
   {
     slug: "bullet-gt",
@@ -120,6 +127,7 @@ export const carCatalog: CatalogCar[] = [
     price: "$155,000",
     tier: "Crew",
     blurb: "All motor, no mercy. Crew tier and up.",
+    image: "/cars/bullet-gt.jpg",
   },
   {
     slug: "cheetah-classic",
@@ -128,6 +136,7 @@ export const carCatalog: CatalogCar[] = [
     price: "$195,000",
     tier: "VIP",
     blurb: "The one the leaderboard fears. VIP tier and up.",
+    image: "/cars/cheetah-classic.jpg",
   },
   {
     slug: "syndicate-gt",
