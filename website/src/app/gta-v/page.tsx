@@ -208,10 +208,6 @@ export default function GtaVPage() {
         <div className="mt-8">
           <CarGarage cars={carCatalog} />
         </div>
-        <p className="mt-4 font-mono text-xs text-muted">
-          Vehicle renders © Rockstar Games. Syndicate originals are custom
-          builds.
-        </p>
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
           {economy.points.join(" ")}
         </p>
