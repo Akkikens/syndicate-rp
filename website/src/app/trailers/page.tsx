@@ -1,26 +1,33 @@
-import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
 import TrailerEmbed from "@/components/TrailerEmbed";
 import { site } from "@/config/site";
 import { trailers } from "@/data/trailers";
+import { videoObjectSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "GTA VI Trailers",
+export const metadata = pageMetadata({
+  title: "GTA 6 Trailers: Extended Look, Trailer 2 & Trailer 1",
   description:
-    "Watch every official Grand Theft Auto VI trailer — Trailer 1 (Vice City reveal) and Trailer 2 (Jason & Lucia). Trailer 3 the moment it drops.",
-  alternates: { canonical: "/trailers" },
-};
+    "Watch every official GTA 6 video: the 27-minute Extended Look (Aug 2026), Trailer 2 (Jason & Lucia), and Trailer 1 (Vice City reveal). Plus: is there a Trailer 3?",
+  path: "/trailers",
+});
 
 export default function TrailersPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-      <p className="eyebrow">Trailers</p>
+      {trailers.map((t) => (
+        <JsonLd key={t.id} data={videoObjectSchema(t)} />
+      ))}
+      <Breadcrumbs items={[{ href: "/trailers", label: "Trailers" }]} />
+      <p className="eyebrow">GTA 6 Trailers</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
-        Watch them <span className="sunset-text">again</span>
+        Every GTA 6 <span className="sunset-text">trailer</span>
       </h1>
       <p className="mt-4 max-w-2xl text-muted">
-        Every official Rockstar trailer, in order. Trailer 3 is expected
-        alongside pre-orders — it&apos;ll be here (and on the channel) the
-        moment it drops.
+        Every official Rockstar video, newest first — including the 27-minute
+        Extended Look that premiered on Netflix. The launch trailer will be
+        here (and on the channel) the moment it drops.
       </p>
 
       <div className="mt-12 flex flex-col gap-14">
@@ -41,10 +48,11 @@ export default function TrailersPage() {
         ))}
 
         <section className="neon-card rounded-md p-8 text-center">
-          <h2 className="display text-2xl">Trailer 3</h2>
+          <h2 className="display text-2xl">Is there a GTA 6 Trailer 3?</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-muted">
-            Not out yet. Expected with the pre-order push. Subscribe on YouTube
-            for the breakdown the day it lands.
+            Not by that name. Rockstar released the Extended Look instead of a
+            numbered Trailer 3. A launch trailer close to November 19 is
+            likely — subscribe for the breakdown the day it lands.
           </p>
           <a
             href={site.youtube}

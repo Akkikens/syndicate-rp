@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import { site, isConfigured } from "@/config/site";
 import { premiumTiers, freeTier, premiumFaq } from "@/data/premium";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Premium — Join the GTA 6 Network",
+export const metadata = pageMetadata({
+  title: "Premium Membership",
   description:
-    "Membership for people counting down like we are: early videos, Trailer 3 alerts, launch-week war room, private Discord, and Syndicate RP queue priority.",
-  alternates: { canonical: "/premium" },
-};
+    "Membership for people counting down like we are: early videos, launch-trailer alerts, launch-week war room, private Discord, and Syndicate RP queue priority.",
+  path: "/premium",
+});
 
 function TierCta({ paymentLink, name }: { paymentLink: string; name: string }) {
   if (isConfigured(paymentLink)) {

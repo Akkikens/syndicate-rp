@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { NewsItem } from "@/data/news";
 
 const tagColor: Record<NewsItem["tag"], string> = {
@@ -21,19 +22,17 @@ export default function NewsCard({ item }: { item: NewsItem }) {
         </time>
       </div>
       <h3 className="display mt-4 text-xl leading-tight sm:text-2xl">
-        {item.title}
+        <Link href={`/news/${item.slug}`} className="hover:text-vice">
+          {item.title}
+        </Link>
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-muted">{item.summary}</p>
-      {item.source && (
-        <a
-          href={item.source.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream"
-        >
-          Source: {item.source.label} ↗
-        </a>
-      )}
+      <Link
+        href={`/news/${item.slug}`}
+        className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream"
+      >
+        Read the story →
+      </Link>
     </article>
   );
 }

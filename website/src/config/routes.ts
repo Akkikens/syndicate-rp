@@ -15,6 +15,8 @@ export const routes: Route[] = [
   { href: "/characters", label: "Characters", nav: true },
   { href: "/map", label: "Map", nav: true },
   { href: "/mods", label: "Mods", nav: true },
+  { href: "/release-date", label: "Release Date" },
+  { href: "/pre-order", label: "Price & Editions" },
   { href: "/game", label: "The Game" },
   { href: "/faq", label: "FAQ" },
   { href: "/premium", label: "Premium", nav: true, accent: true },

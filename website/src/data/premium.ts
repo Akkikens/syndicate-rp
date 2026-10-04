@@ -21,7 +21,7 @@ export const premiumTiers: PremiumTier[] = [
     perks: [
       "Insider role + private channels in Discord",
       "Every video early, before it goes public",
-      "Trailer 3 & pre-order alerts the second they drop",
+      "Launch-trailer & preload alerts the second they drop",
       "Vote on what we cover next",
       "Name on the site's Supporters Wall",
     ],

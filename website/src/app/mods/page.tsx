@@ -1,27 +1,33 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { site } from "@/config/site";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { site, isConfigured } from "@/config/site";
 import { modCategories, modStats } from "@/data/mods";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "GTA 6 Mods — The Database Launching With the Game",
+export const metadata = pageMetadata({
+  title: "GTA 6 Mods: Will GTA 6 Have Mods? Directory",
   description:
-    "The GTA 6 mods hub: vehicles, maps, scripts, graphics, and more — a curated directory going live the day Grand Theft Auto VI launches. Get notified and list your mod.",
-  alternates: { canonical: "/mods" },
-};
+    "Will GTA 6 support mods? It launches on consoles only, so PC mods wait for a PC release. Our curated directory of vehicles, maps, scripts, and graphics opens when they arrive.",
+  path: "/mods",
+});
+
+// Discord invite isn't set yet — fall back to YouTube so CTAs never 404.
+const communityLink = isConfigured(site.discord) ? site.discord : site.youtube;
 
 export default function ModsPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <Breadcrumbs items={[{ href: "/mods", label: "Mods" }]} />
       <p className="eyebrow">GTA 6 Mods</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
         Every GTA VI mod, <span className="sunset-text">day one</span>
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
-        The mod database goes live the moment Grand Theft Auto VI ships. We
-        curate the best vehicles, maps, scripts, and graphics packs and send you
-        straight to the creators — no clutter, no fake mirrors, just the good
-        stuff, ranked.
+        GTA VI launches November 19 on PS5 and Xbox only, so traditional PC
+        mods arrive once a PC version does. When they land, we curate the best
+        vehicles, maps, scripts, and graphics packs and send you straight to
+        the creators — no clutter, no fake mirrors, just the good stuff,
+        ranked.
       </p>
 
       {/* Stats */}
@@ -75,12 +81,12 @@ export default function ModsPage() {
             the community the day it&apos;s live.
           </p>
           <a
-            href={site.discord}
+            href={communityLink}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-vice mt-6"
           >
-            Join the Discord
+            {isConfigured(site.discord) ? "Join the Discord" : "Get notified"}
           </a>
         </div>
         <div className="neon-card rounded-md p-8">
@@ -90,7 +96,7 @@ export default function ModsPage() {
             one. Reach out and we&apos;ll set you up.
           </p>
           <a
-            href={site.discord}
+            href={communityLink}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost mt-6"

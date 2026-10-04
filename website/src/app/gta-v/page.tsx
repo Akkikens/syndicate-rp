@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import CopyConnect from "@/components/CopyConnect";
 import CarGarage from "@/components/CarGarage";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/seo";
 import {
   stats,
   racing,
@@ -14,11 +14,11 @@ import {
   economy,
 } from "@/data/server";
 
-export const metadata: Metadata = {
-  title: `GTA V — ${site.server.name} FiveM Server`,
+export const metadata = pageMetadata({
+  title: `${site.server.name}: GTA V FiveM Car Culture RP Server`,
   description: `${site.server.shortPitch} Drag racing with $50k pots, Saturday car meets with $25k Best in Show, car clubs, custom maps, and up to ${site.server.slots} players.`,
-  alternates: { canonical: "/gta-v" },
-};
+  path: "/gta-v",
+});
 
 const sections = [
   { id: "racing", label: "Racing" },

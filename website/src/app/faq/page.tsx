@@ -5,7 +5,7 @@ import { faqs } from "@/data/faq";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "GTA 6 FAQ — Release Date, Price, Disc, 60fps & More",
+  title: "GTA 6 FAQ: Release Date, Price, Disc, 60fps & More",
   description:
     "Quick answers to the biggest GTA 6 questions: release date (November 19, 2026), price ($79.99), pre-orders, disc vs digital, 30fps, PC version, GTA Online, map size, and trailers.",
   path: "/faq",
@@ -18,7 +18,7 @@ export default function FaqPage() {
       <Breadcrumbs items={[{ href: "/faq", label: "FAQ" }]} />
       <p className="eyebrow">FAQ</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
-        Quick <span className="sunset-text">answers</span>
+        GTA 6 FAQ: quick <span className="sunset-text">answers</span>
       </h1>
       <p className="mt-4 text-muted">
         The questions everyone asks, answered straight — updated whenever the

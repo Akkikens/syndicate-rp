@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Anton, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -31,22 +31,13 @@ export const metadata: Metadata = {
     template: "%s — GTA 6 Network",
   },
   description:
-    "Countdown, news, trailers, and everything we know about Grand Theft Auto VI — plus our GTA V roleplay server. GTA VI launches November 19, 2026.",
-  keywords: [
-    "GTA 6",
-    "GTA VI",
-    "Grand Theft Auto VI",
-    "GTA 6 release date",
-    "GTA 6 countdown",
-    "GTA 6 news",
-    "GTA 6 trailers",
-    "GTA 6 map",
-    "GTA 6 characters",
-    "GTA 6 Leonida",
-    "GTA 6 Vice City",
-    "FiveM server",
-  ],
-  alternates: { canonical: "/" },
+    "GTA 6 countdown to November 19, 2026, plus sourced news, every trailer, price and editions, the map, and characters. Everything Grand Theft Auto VI in one place.",
+  applicationName: site.name,
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/news/rss.xml" },
+  },
+  category: "games",
   robots: {
     index: true,
     follow: true,
@@ -61,17 +52,23 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GTA 6 Network — Everything Grand Theft Auto VI",
     description:
-      "Countdown, news, trailers, and everything we know about GTA VI. Launching November 19, 2026.",
-    url: site.domain,
+      "GTA 6 countdown, news, trailers, price, and everything we know. Launching November 19, 2026.",
+    url: "/",
     siteName: site.name,
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "GTA 6 Network — Everything Grand Theft Auto VI",
     description:
-      "Countdown, news, trailers, and everything we know about GTA VI.",
+      "GTA 6 countdown, news, trailers, price, and everything we know.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0612",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

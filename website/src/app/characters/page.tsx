@@ -3,7 +3,7 @@ import { characters } from "@/data/characters";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "GTA 6 Characters — Jason, Lucia & the Full Cast",
+  title: "GTA 6 Characters: Jason, Lucia & the Full Cast",
   description:
     "Every officially confirmed GTA 6 character: protagonists Jason Duval and Lucia Caminos, plus Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista, and Brian Heder (Stephen Root).",
   path: "/characters",

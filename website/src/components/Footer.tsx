@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { routes } from "@/config/routes";
-import { site } from "@/config/site";
+import { site, isConfigured } from "@/config/site";
 
 export default function Footer() {
   return (
@@ -36,13 +36,18 @@ export default function Footer() {
           >
             YouTube ↗
           </a>
-          <a
-            href={site.discord}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted hover:text-cream"
-          >
-            Discord ↗
+          {isConfigured(site.discord) && (
+            <a
+              href={site.discord}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-cream"
+            >
+              Discord ↗
+            </a>
+          )}
+          <a href="/news/rss.xml" className="text-muted hover:text-cream">
+            RSS
           </a>
         </nav>
 

@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { regions, mapFacts } from "@/data/locations";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "GTA 6 Map — Leonida, Vice City & Every Confirmed Region",
+export const metadata = pageMetadata({
+  title: "GTA 6 Map: Leonida, Vice City & Every Region",
   description:
     "The GTA 6 map explained: all six confirmed regions of Leonida — Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga National Park — plus size estimates.",
-  alternates: { canonical: "/map" },
-};
+  path: "/map",
+});
 
 export default function MapPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-      <p className="eyebrow">The map</p>
+      <Breadcrumbs items={[{ href: "/map", label: "Map" }]} />
+      <p className="eyebrow">GTA 6 Map</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
         The state of <span className="sunset-text">Leonida</span>
       </h1>

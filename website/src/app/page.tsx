@@ -9,11 +9,11 @@ import { latestTrailer } from "@/data/trailers";
 
 const tickerItems = [
   "November 19, 2026",
-  "Vice City returns",
+  "Preload November 12",
+  "Pre-orders open · $79.99",
   "Jason & Lucia",
   "State of Leonida",
   "PS5 · Xbox Series X|S",
-  "Trailer 3 watch is on",
 ];
 
 export default function Home() {
@@ -22,9 +22,9 @@ export default function Home() {
       {/* ── Hero: the countdown is the thesis ── */}
       <section className="horizon relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-20 text-center sm:px-6 sm:pt-28">
-          <p className="eyebrow">Grand Theft Auto VI · {site.releaseDateLabel}</p>
+          <p className="eyebrow">GTA 6 countdown · Release date {site.releaseDateLabel}</p>
           <h1 className="display mx-auto mt-6 max-w-4xl text-4xl sm:text-6xl md:text-7xl">
-            Vice City is <span className="sunset-text">almost here</span>
+            GTA 6 is <span className="sunset-text">almost here</span>
           </h1>
           <div className="mt-12 sm:mt-16">
             <Countdown />
@@ -34,13 +34,13 @@ export default function Home() {
               href="/trailers"
               className="btn btn-vice"
             >
-              Watch the trailers
+              Watch the Extended Look
             </Link>
             <Link
-              href="/game"
+              href="/release-date"
               className="btn btn-ghost"
             >
-              Everything we know
+              Release date & preload
             </Link>
           </div>
         </div>
@@ -97,9 +97,10 @@ export default function Home() {
               Jason & Lucia against <span className="sunset-text">Leonida</span>
             </h2>
             <p className="mt-4 max-w-md leading-relaxed text-muted">
-              An easy score goes wrong, and the two of them end up on the
-              darkest side of the sunniest place in America. 475 million views
-              in 24 hours — the biggest video launch ever.
+              27 minutes of in-game footage, captured on PS5: Jason and
+              Lucia&apos;s rise through Leonida&apos;s underworld. It premiered
+              on Netflix, hit No. 1, and pulled 31.1 million views in four
+              days.
             </p>
             <Link
               href="/trailers"
@@ -121,7 +122,7 @@ export default function Home() {
         <h2 className="display mt-3 text-3xl sm:text-4xl">
           Everything GTA VI, in one place
         </h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               href: "/characters",
@@ -139,9 +140,14 @@ export default function Home() {
               blurb: "Everything Rockstar has confirmed — no clickbait.",
             },
             {
+              href: "/pre-order",
+              title: "Price & Editions",
+              blurb: "$79.99 or $99.99, the pre-order bonus, and why there's no disc.",
+            },
+            {
               href: "/faq",
               title: "FAQ",
-              blurb: "Release date, price, PC version, pre-orders. Answered.",
+              blurb: "60fps, PC version, GTA Online, map size. Answered.",
             },
           ].map((card) => (
             <Link
@@ -193,7 +199,7 @@ export default function Home() {
               The launch only happens <span className="sunset-text">once</span>
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              Early videos, Trailer 3 alerts, a private Discord wing, and a
+              Early videos, launch-trailer alerts, a private Discord wing, and a
               seat in the launch-week war room. Founders pricing ends the day
               GTA VI ships.
             </p>
@@ -215,8 +221,8 @@ export default function Home() {
             Every drop, breakdown, and theory — on YouTube first
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted">
-            Subscribe so you don&apos;t miss Trailer 3, pre-order alerts, and
-            our launch-week coverage.
+            Subscribe so you don&apos;t miss the launch trailer, preload
+            alerts, and our launch-week coverage.
           </p>
           <a
             href={site.youtube}

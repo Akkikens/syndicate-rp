@@ -36,7 +36,7 @@ export const modCategories: ModCategory[] = [
 ];
 
 export const modStats = [
-  { value: "Nov 2026", label: "database opens" },
+  { value: "PC", label: "mods arrive with" },
   { value: "6", label: "categories" },
-  { value: "Day 1", label: "ready at launch" },
+  { value: "Day 1", label: "of the PC release" },
 ];

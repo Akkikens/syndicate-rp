@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Countdown from "@/components/Countdown";
 import JsonLd from "@/components/JsonLd";
 import { videoGameSchema } from "@/lib/schema";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Everything We Know About GTA VI",
+export const metadata = pageMetadata({
+  title: "Everything We Know About GTA 6 (October 2026)",
   description:
-    "GTA VI facts only: release date, platforms, protagonists Jason & Lucia, the state of Leonida, Vice City, and what's still unconfirmed.",
-  alternates: { canonical: "/game" },
-};
+    "GTA 6 facts only: November 19 release, $79.99 price, no disc, 30fps, single-player at launch, Jason & Lucia, Leonida and Vice City — and what's still unconfirmed.",
+  path: "/game",
+});
 
 const facts = [
   {
     q: "When does GTA VI come out?",
-    a: `${site.releaseDateLabel}, on PlayStation 5 and Xbox Series X|S. Take-Two has reaffirmed the date repeatedly — most recently on its May 2026 earnings call — and has $8B+ in revenue guidance riding on it. A PC version has not been announced at launch, consistent with Rockstar's usual console-first releases.`,
+    a: `${site.releaseDateLabel}, on PlayStation 5 and Xbox Series X|S. Take-Two has reaffirmed the date repeatedly — most recently on its August 2026 earnings call — and has $8.0–8.2B in revenue guidance riding on it. Preloading starts ${site.preloadDateLabel}.`,
   },
   {
     q: "Who are the protagonists?",
@@ -30,12 +31,16 @@ const facts = [
     a: "Unconfirmed. Rockstar has only announced PS5 and Xbox Series X|S. Based on GTA V and RDR2, a PC release typically follows one to two years after consoles — but treat any PC date you see as a rumor.",
   },
   {
-    q: "When do pre-orders open?",
-    a: "Not open yet as of early July 2026. Industry reporting expects pre-orders alongside Trailer 3 as the marketing campaign ramps toward November. We'll post the moment it happens.",
+    q: "How much does it cost, and is there a disc?",
+    a: "Pre-orders opened June 25, 2026: $79.99 for Standard, $99.99 for Ultimate. Pre-orders include the Vintage Vice City Pack and a month of GTA+. There's no disc — boxed copies contain a download code.",
   },
   {
-    q: "What about GTA Online 2?",
-    a: "Rockstar hasn't detailed GTA VI's online mode yet. Given GTA Online's scale, a new online component is all but certain — but nothing official has been shown.",
+    q: "How does it run?",
+    a: "Rockstar says the game is targeting 30fps on all consoles, including PS5 Pro. A 60fps option at launch or later hasn't been ruled out, but hasn't been promised either. The 27-minute Extended Look was captured on a base PS5.",
+  },
+  {
+    q: "What about GTA Online?",
+    a: "GTA VI launches as a single-player experience, per Take-Two CEO Strauss Zelnick in September 2026, with no microtransactions at launch. A new online mode hasn't been detailed; the existing GTA Online keeps running.",
   },
 ];
 
@@ -43,7 +48,8 @@ export default function GamePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
       <JsonLd data={videoGameSchema} />
-      <p className="eyebrow">The game</p>
+      <Breadcrumbs items={[{ href: "/game", label: "The Game" }]} />
+      <p className="eyebrow">The game · Updated {site.lastUpdatedLabel}</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
         Everything we <span className="sunset-text">actually</span> know
       </h1>
