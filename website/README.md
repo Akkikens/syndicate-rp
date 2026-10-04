@@ -30,7 +30,9 @@ Replace these placeholders:
 
 Other content:
 
-- **News**: add items to the top of [`src/data/news.ts`](src/data/news.ts) — they appear on the home page and `/news` automatically.
+- **News**: add items to the top of [`src/data/news.ts`](src/data/news.ts) — each gets its own `/news/<slug>` page, share image, RSS entry, and sitemap entry automatically. Never rename a published slug.
+- **Freshness**: when you re-check the facts pages, bump `lastUpdated` in [`src/config/site.ts`](src/config/site.ts) — it drives the "Updated" stamps and sitemap dates.
+- **After each deploy**: run `npm run indexnow` to push every URL to Bing/Yandex for fast re-crawling.
 - **Trailer 3**: when it drops, add it to the top of [`src/data/trailers.ts`](src/data/trailers.ts) — the trailers page, home-page embed, and structured data all update from that one file.
 - **New pages**: register the route in [`src/config/routes.ts`](src/config/routes.ts) — header nav, footer, and sitemap all derive from it.
 - **Facts page**: `src/app/game/page.tsx` · **FAQ**: `src/data/faq.ts` · **Characters**: `src/data/characters.ts` · **Map**: `src/data/locations.ts` · **Server page**: `src/app/gta-v/page.tsx`.
@@ -53,6 +55,10 @@ Every `git push` to `main` redeploys the site automatically.
 |---|---|
 | `/` | Hero countdown to Nov 19, 2026, latest news, Trailer 2, explore grid, server promo |
 | `/news` | Full sourced GTA VI news timeline |
+| `/news/<slug>` | One page per story (NewsArticle schema, share image) · feed at `/news/rss.xml` |
+| `/release-date` | Release date, preload, countdown, delay history |
+| `/pre-order` | Price, editions, pre-order bonus, no-disc explainer |
+| `/pc` | PC status and Rockstar's port history |
 | `/trailers` | All official trailers (click-to-play) + Trailer 3 watch |
 | `/characters` | Jason, Lucia & the full confirmed cast |
 | `/map` | All six confirmed Leonida regions + size facts |

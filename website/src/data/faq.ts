@@ -8,7 +8,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "What platforms is GTA 6 on? Is it coming to PC?",
-    a: "At launch: PlayStation 5 and Xbox Series X|S only. A PC version has not been announced. Based on GTA V and Red Dead Redemption 2, a PC release typically follows 1–2 years after consoles — treat any PC date you see as speculation.",
+    a: "At launch: PlayStation 5 and Xbox Series X|S only. A PC version has not been announced. GTA V reached PC about 19 months after consoles and Red Dead Redemption 2 about a year after — treat any GTA 6 PC date you see as speculation.",
   },
   {
     q: "How much will GTA 6 cost?",

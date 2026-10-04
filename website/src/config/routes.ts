@@ -17,6 +17,7 @@ export const routes: Route[] = [
   { href: "/mods", label: "Mods", nav: true },
   { href: "/release-date", label: "Release Date" },
   { href: "/pre-order", label: "Price & Editions" },
+  { href: "/pc", label: "GTA 6 on PC" },
   { href: "/game", label: "The Game" },
   { href: "/faq", label: "FAQ" },
   { href: "/premium", label: "Premium", nav: true, accent: true },
