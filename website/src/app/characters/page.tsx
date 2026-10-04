@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { characters } from "@/data/characters";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "GTA 6 Characters — Jason, Lucia & the Full Cast",
   description:
-    "Every officially confirmed GTA 6 character: protagonists Jason Duval and Lucia Caminos, plus Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista, and Brian Heder.",
-  alternates: { canonical: "/characters" },
-};
+    "Every officially confirmed GTA 6 character: protagonists Jason Duval and Lucia Caminos, plus Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista, and Brian Heder (Stephen Root).",
+  path: "/characters",
+});
 
 export default function CharactersPage() {
   const protagonists = characters.filter((c) => c.protagonist);
@@ -14,6 +15,7 @@ export default function CharactersPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <Breadcrumbs items={[{ href: "/characters", label: "Characters" }]} />
       <p className="eyebrow">Characters</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
         Meet the cast of <span className="sunset-text">Leonida</span>
@@ -47,6 +49,11 @@ export default function CharactersPage() {
             </p>
             <h3 className="display mt-2 text-xl">{c.name}</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted">{c.bio}</p>
+            {c.voicedBy && (
+              <p className="mt-3 font-mono text-xs text-muted">
+                Voiced by <span className="text-cream">{c.voicedBy}</span>
+              </p>
+            )}
           </article>
         ))}
       </div>

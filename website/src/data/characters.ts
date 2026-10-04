@@ -3,9 +3,11 @@ export type Character = {
   role: string;
   bio: string;
   protagonist?: boolean;
+  voicedBy?: string; // only when the actor has publicly confirmed it
 };
 
-// Officially revealed by Rockstar (May 2025 site update). Add new ones as they're announced.
+// Officially revealed by Rockstar (May 2025 site update, Aug 2026 Extended Look).
+// Add new ones as they're announced.
 export const characters: Character[] = [
   {
     name: "Lucia Caminos",
@@ -47,6 +49,7 @@ export const characters: Character[] = [
   {
     name: "Brian Heder",
     role: "The landlord",
+    voicedBy: "Stephen Root",
     bio: "A classic Keys drug runner from the golden era of smuggling. Jason lives rent-free on one of Brian's properties — in exchange for the occasional odd job.",
   },
 ];

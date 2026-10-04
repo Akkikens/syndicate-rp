@@ -10,6 +10,12 @@ export const site = {
   // GTA VI release date (Rockstar-confirmed: November 19, 2026, ET)
   releaseDateISO: "2026-11-19T00:00:00-05:00",
   releaseDateLabel: "November 19, 2026",
+  preloadDateLabel: "November 12, 2026",
+
+  // Bump whenever the facts pages are re-checked — shown on-page and used as
+  // dateModified / sitemap lastModified so search engines see fresh content.
+  lastUpdated: "2026-10-03",
+  lastUpdatedLabel: "October 3, 2026",
 
   // Your channels — replace with your real URLs
   youtube: "https://www.youtube.com/@Mindwiredd",

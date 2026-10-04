@@ -1,19 +1,21 @@
-import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { faqs } from "@/data/faq";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "GTA 6 FAQ — Release Date, Price, Platforms & More",
+export const metadata = pageMetadata({
+  title: "GTA 6 FAQ — Release Date, Price, Disc, 60fps & More",
   description:
-    "Quick answers to the biggest GTA 6 questions: release date (November 19, 2026), platforms, PC version, price, pre-orders, map size, characters, and trailers.",
-  alternates: { canonical: "/faq" },
-};
+    "Quick answers to the biggest GTA 6 questions: release date (November 19, 2026), price ($79.99), pre-orders, disc vs digital, 30fps, PC version, GTA Online, map size, and trailers.",
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <JsonLd data={faqSchema} />
+      <JsonLd data={faqSchema()} />
+      <Breadcrumbs items={[{ href: "/faq", label: "FAQ" }]} />
       <p className="eyebrow">FAQ</p>
       <h1 className="display mt-3 text-4xl sm:text-5xl">
         Quick <span className="sunset-text">answers</span>
