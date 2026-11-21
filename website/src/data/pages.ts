@@ -25,6 +25,7 @@ export const pageSummaries: Record<string, string> = {
   "/gta-plus": "What GTA+ includes for GTA 6 and how the free month works.",
   "/guides": "Sourced how-tos: saving, storage, editions, GTA+ and Xbox One cloud.",
   "/crew": "The forming PS5 and Xbox crew for GTA Online today and GTA VI later.",
+  "/newsletter": "Occasional, sourced GTA VI news by email. Unsubscribe any time.",
   "/about": "What this site is, who it is not affiliated with, and Syndicate RP.",
   "/editorial-policy": "How stories are sourced, how rumors and corrections are handled.",
   "/contact": "How to reach the site through its official channels.",

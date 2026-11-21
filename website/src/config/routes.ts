@@ -40,6 +40,7 @@ export const routes: Route[] = [
   { href: "/system-requirements", label: "PC Requirements", group: "Platforms" },
   { href: "/gta-plus", label: "GTA+ in GTA 6", group: "Game" },
   { href: "/crew", label: "Console Crew", group: "Community" },
+  { href: "/newsletter", label: "Newsletter", group: "Community" },
   { href: "/premium", label: "Premium", nav: true, accent: true, group: "Community" },
   { href: "/gta-v", label: "GTA V", nav: true, accent: true, group: "Community" },
   { href: "/about", label: "About", group: "About" },

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterBlock from "@/components/NewsletterBlock";
 import { groupOf, routeGroups, routes } from "@/config/routes";
 import { site, isConfigured } from "@/config/site";
 
@@ -82,6 +83,8 @@ export default function Footer() {
             </div>
           ))}
         </nav>
+
+        <NewsletterBlock variant="footer" />
 
         <p className="mt-12 max-w-3xl text-xs leading-relaxed text-muted">
           Independent fan site. Not affiliated with, endorsed by or sponsored by

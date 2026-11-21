@@ -7,22 +7,32 @@ import { pageMetadata } from "@/lib/seo";
 
 const title = "Privacy: What GTA 6 Network Collects and Doesn't";
 const description =
-  "What gta6network.org does with your data: no accounts or cookies, cookieless page-view and speed analytics, and search that runs in your browser.";
+  "What gta6network.org does with your data: an optional newsletter email stored with Resend, no cookies, cookieless analytics, and in-browser search.";
 
 export const metadata = pageMetadata({ title, description, path: "/privacy" });
 
 // OWNER REVIEW NEEDED: this page describes what the site's code does as of
 // this change (Vercel Web Analytics + Speed Insights in the root layout,
-// click-to-play YouTube facade, client-side search, plain share links). It is
+// click-to-play YouTube facade, client-side search, plain share links, and the
+// Resend-backed newsletter signup at /api/newsletter). It is
 // not legal advice. Re-check it whenever scripts, forms, cookies or embeds are
 // added, and before relying on it for GDPR/CCPA purposes.
 const sections = [
   {
     heading: "What we don't do",
     items: [
-      "There are no accounts, sign-ups, comments or forms on this site, so we don't ask you for a name, email address or any other personal details.",
+      "There are no accounts or comments on this site. The only form is the newsletter signup (see below), which asks for an email address and nothing else.",
       "The site's own code doesn't set cookies and doesn't use your browser's local storage.",
       "We don't run advertising or ad trackers.",
+    ],
+  },
+  {
+    heading: "Newsletter",
+    items: [
+      "If you sign up for the newsletter, the email address you submit is stored with Resend, our email provider, so we can send you the newsletter. Nothing else is collected with it: no name, and no profile of what you read.",
+      "Your address is used only to send the newsletter. Every email will carry an unsubscribe link; using it stops all further emails to you.",
+      "Your IP address is used briefly by the site's server to limit repeated sign-up attempts, and is not stored with your subscription.",
+      "Resend's own privacy policy applies to the data it holds.",
     ],
   },
   {
