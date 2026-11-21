@@ -19,6 +19,10 @@ export const faqs: Faq[] = [
     a: "The Vintage Vice City Pack. The PlayStation Store now sells it as a separate add-on ($4.99 US, £4.49 UK). Whether any pre-order bonus can still be claimed is unconfirmed, so check the store listing.",
   },
   {
+    q: "Does GTA+ work in GTA 6?",
+    a: "Yes, in single-player, per ComputerBase (November 21): GTA+ costs EUR 7.99 a month and adds a car, a garage from Chapter 3 and discounts, on PS5 and Xbox Series X|S. Digital buyers before November 20 can redeem one free month. We haven't confirmed the terms on a Rockstar page, so check the in-game and store terms.",
+  },
+  {
     q: "Is there a GTA 6 disc version?",
     a: "No. Rockstar confirmed in June 2026 that physical copies contain a download code, not a disc. A disc release later is unconfirmed.",
   },

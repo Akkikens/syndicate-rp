@@ -19,7 +19,7 @@ const qa = [
   },
   {
     q: "What was the GTA 6 pre-order bonus?",
-    a: "The Vintage Vice City Pack, a digital add-on. The PlayStation Store now lists it as a separate purchase at $4.99 (US) and £4.49 (UK). Whether the pre-order bonuses, including the GTA+ offer on the store listing, can still be claimed is unconfirmed — check the store listing before you buy.",
+    a: "The Vintage Vice City Pack, a digital add-on. The PlayStation Store now lists it as a separate purchase at $4.99 (US) and £4.49 (UK). Whether the pre-order bonuses can still be claimed is unconfirmed — check the store listing before you buy. ComputerBase reports (November 21) that digital Standard or Ultimate buyers who purchased before November 20 can redeem one free month of GTA+, whose GTA VI single-player perks cost EUR 7.99 a month; on PS5 the redeem-by date it gives is March 31, 2027.",
   },
   {
     q: "Does GTA 6 come on a disc?",
