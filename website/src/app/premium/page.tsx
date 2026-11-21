@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Premium Membership",
   description:
-    "Membership for people counting down like we are: early videos, launch-trailer alerts, launch-week war room, private Discord, and Syndicate RP queue priority.",
+    "Membership waitlist: early videos, a private Discord wing, and Syndicate RP queue priority.",
   path: "/premium",
 });
 
@@ -36,13 +36,12 @@ export default function PremiumPage() {
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
       <p className="eyebrow">Premium</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
-        Ride with us to <span className="sunset-text">launch day</span>
+        Get inside the <span className="sunset-text">network</span>
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
-        The final stretch of trailers, pre-orders, and hype — then the biggest
-        game launch in history. Membership puts you inside the network for all
-        of it: early videos, instant alerts, a private wing of the Discord, and
-        a seat in the launch-week war room.
+        GTA VI is out. Membership puts you inside the network for what comes
+        next: early videos and a private wing of the Discord.
+        Memberships open soon — join the waitlist.
       </p>
 
       {/* Tiers */}
@@ -73,11 +72,6 @@ export default function PremiumPage() {
               tier.highlight ? "border-vice/60" : ""
             }`}
           >
-            {tier.highlight && (
-              <span className="absolute -top-3 left-6 rounded-full bg-vice px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-night">
-                Closes at launch
-              </span>
-            )}
             <h2 className="display text-2xl">{tier.name}</h2>
             <p className="mt-1 font-mono text-sm">
               <span className="text-vice">{tier.price}</span>

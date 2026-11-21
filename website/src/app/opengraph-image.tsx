@@ -62,7 +62,7 @@ export default function OgImage() {
             letterSpacing: 6,
           }}
         >
-          COUNTDOWN · NEWS · TRAILERS · MAP · 11.19.2026
+          OUT NOW · NEWS · TRAILERS · PS5 · 11.19.2026
         </div>
       </div>
     ),

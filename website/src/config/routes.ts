@@ -11,6 +11,7 @@ export type Route = {
 export const routes: Route[] = [
   { href: "/", label: "GTA VI", nav: true },
   { href: "/news", label: "News", nav: true, changeFrequency: "daily" },
+  { href: "/ps5", label: "PS5", nav: true },
   { href: "/trailers", label: "Trailers", nav: true },
   { href: "/characters", label: "Characters", nav: true },
   { href: "/map", label: "Map", nav: true },

@@ -1,5 +1,5 @@
-// The GTA 6 mod hub. GTA VI launches 2026-11-19, so no mods exist yet —
-// this page captures demand now and becomes a live directory at launch.
+// The GTA 6 mod hub. GTA VI released 2026-11-19 on consoles only, which have
+// no PC-style mods — the directory opens with PC once a PC version exists.
 // Model: we curate and link out to creators' pages. We never re-host their
 // files. That keeps it legal and keeps creators on our side.
 

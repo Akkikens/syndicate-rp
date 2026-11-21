@@ -26,8 +26,8 @@ export default function TrailersPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-muted">
         Every official Rockstar video, newest first — including the 27-minute
-        Extended Look that premiered on Netflix. The launch trailer will be
-        here (and on the channel) the moment it drops.
+        Extended Look that premiered on Netflix. New official videos get added
+        here as Rockstar releases them.
       </p>
 
       <div className="mt-12 flex flex-col gap-14">
@@ -51,8 +51,8 @@ export default function TrailersPage() {
           <h2 className="display text-2xl">Is there a GTA 6 Trailer 3?</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-muted">
             Not by that name. Rockstar released the Extended Look instead of a
-            numbered Trailer 3. A launch trailer close to November 19 is
-            likely — subscribe for the breakdown the day it lands.
+            numbered Trailer 3. Subscribe for the breakdown whenever a new
+            official video lands.
           </p>
           <a
             href={site.youtube}

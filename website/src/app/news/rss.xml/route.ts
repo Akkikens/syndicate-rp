@@ -32,7 +32,7 @@ export function GET() {
     <title>${esc(site.name)} — GTA VI News</title>
     <link>${site.domain}/news</link>
     <atom:link href="${site.domain}/news/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Sourced Grand Theft Auto VI news: release date, trailers, pre-orders, and more.</description>
+    <description>Sourced Grand Theft Auto VI news: the launch, trailers, price, PC status, and more.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date(`${news[0].date}T12:00:00Z`).toUTCString()}</lastBuildDate>
 ${items}

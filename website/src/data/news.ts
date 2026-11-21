@@ -15,6 +15,73 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-launches-first-day-sales",
+    date: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    title: "GTA VI is out: Take-Two reports about $3.79 billion in day-one retail sales",
+    summary:
+      "Grand Theft Auto VI launched November 19 on PS5 and Xbox Series X|S. Take-Two says it made about $3.79 billion in retail sales on day one — a company estimate of what shoppers spent, not revenue.",
+    body: [
+      "Grand Theft Auto VI launched on Thursday, November 19, 2026. Rockstar's launch announcement says the game is available worldwide for PlayStation 5 and Xbox Series X|S, from the PlayStation Store, Microsoft Store, Rockstar Games Store, and retailers.",
+      "On November 20, Take-Two said GTA VI made about $3.79 billion in retail sales on its first day, calling it a record for an entertainment launch. Motley Fool notes it is a company estimate of what shoppers spent at retail through the end of November 19, not Take-Two's revenue, since retailers and console makers take a cut.",
+      "Take-Two also said the game sold 32.5 million units before release. CNBC reports the company didn't say whether the day-one figure includes pre-orders, and independent estimates from Sensor Tower, which is not a company figure, differ from Take-Two's numbers.",
+      "Still unannounced: a PC version and any GTA VI online mode. Investors are waiting on both, per CNBC.",
+    ],
+    tag: "Business",
+    source: {
+      label: "ABC News (Take-Two press release)",
+      url: "https://abcnews.com/GMA/Culture/grand-theft-auto-vi-breaks-1st-day-sales-record/story?id=138328412",
+    },
+    related: [
+      { href: "/release-date", label: "GTA 6 release date" },
+      { href: "/ps5", label: "GTA 6 on PS5" },
+      { href: "/pre-order", label: "Price & editions" },
+    ],
+  },
+  {
+    slug: "gta-6-pc-status-after-launch",
+    date: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    title: "GTA 6 on PC after launch: no announcement, and an unconfirmed Q1 2027 report",
+    summary:
+      "Take-Two's CEO said PC news \"always comes from our labels\"; a GamesBeat report citing four anonymous sources points to Q1 2027. Rockstar and Take-Two haven't confirmed a PC version.",
+    body: [
+      "GTA VI launched on consoles only, and as of November 20, 2026 no PC version has been announced. Take-Two's November 9 earnings materials listed only PS5 and Xbox Series X|S.",
+      "Asked about PC, Take-Two CEO Strauss Zelnick told Variety that \"information always comes from our labels\" — meaning Rockstar. He did not confirm or date a PC release.",
+      "Rumor watch: GamesBeat reported on October 13 (updated November 18) that Rockstar is targeting the first quarter of 2027 for a PC version, citing four anonymous sources. Rockstar and Take-Two have not confirmed it, so treat it as unconfirmed.",
+      "For context, GTA V reached PC about 19 months after its console launch.",
+    ],
+    tag: "Rumor Watch",
+    source: {
+      label: "IBTimes UK",
+      url: "https://www.ibtimes.co.uk/gta-vi-pc-release-early-2027-report-1833680",
+    },
+    related: [
+      { href: "/pc", label: "GTA 6 on PC" },
+      { href: "/gta-v", label: "Play GTA V roleplay on PC now" },
+    ],
+  },
+  {
+    slug: "gta-6-launch-fivem-roleplay-status",
+    date: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    title: "What GTA VI's launch means for FiveM and roleplay: nothing announced yet",
+    summary:
+      "FiveM is still a PC modification for GTA V, with no console version. We found no announcement of FiveM or multiplayer-mod support for GTA VI.",
+    body: [
+      "GTA VI launched on PS5 and Xbox Series X|S, so there is no PC version to mod yet. FiveM's own site describes it as multiplayer modification frameworks for Grand Theft Auto V, for Windows PC, and says offering FiveM on any game consoles is not feasible.",
+      "Cfx.re, the team behind FiveM and RedM, joined Rockstar in August 2023, according to PC Gamer. We found no announcement, as of November 20, 2026, that FiveM or any multiplayer-mod platform will support GTA VI.",
+      "For Syndicate RP, that means the server stays on GTA V for PC. We plan to move to GTA VI when a PC version and an official multiplayer platform both exist. On PS5 and want to play with us? See the PS5 guide.",
+    ],
+    tag: "Business",
+    source: { label: "FiveM", url: "https://fivem.net/" },
+    related: [
+      { href: "/gta-v", label: "Syndicate RP on GTA V" },
+      { href: "/ps5", label: "GTA 6 on PS5" },
+      { href: "/pc", label: "GTA 6 on PC" },
+    ],
+  },
+  {
     slug: "vice-city-sign-kaseya-center-miami",
     date: "2026-09-22",
     dateLabel: "September 22, 2026",

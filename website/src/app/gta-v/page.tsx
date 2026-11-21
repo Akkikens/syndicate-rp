@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CopyConnect from "@/components/CopyConnect";
 import CarGarage from "@/components/CarGarage";
 import { site } from "@/config/site";
@@ -66,8 +67,14 @@ export default function GtaVPage() {
         )}
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
-        {site.server.shortPitch} GTA VI is coming — until then, this is where
-        we play.
+        {site.server.shortPitch} GTA VI is single-player on console — this is
+        where we play together.
+      </p>
+      <p className="mt-4 rounded-md border border-teal/30 bg-panel px-4 py-3 text-sm text-muted">
+        FiveM is PC-only.{" "}
+        <Link href="/ps5" className="text-teal hover:text-cream">
+          On PS5? →
+        </Link>
       </p>
 
       <div className="mt-8">

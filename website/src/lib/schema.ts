@@ -16,7 +16,7 @@ export const websiteSchema = {
   inLanguage: "en-US",
   publisher: organizationRef,
   description:
-    "GTA 6 countdown, news, trailers, characters, map, and FAQ — everything Grand Theft Auto VI in one place.",
+    "GTA 6 news, PS5 guide, trailers, characters, map, and FAQ — everything Grand Theft Auto VI in one place.",
 };
 
 export const organizationSchema = {
@@ -77,8 +77,7 @@ export const videoGameSchema = {
       name: "Standard Edition",
       price: "79.99",
       priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder",
-      availabilityStarts: "2026-11-19",
+      availability: "https://schema.org/InStock",
       url: "https://www.rockstargames.com/VI",
     },
     {
@@ -86,8 +85,7 @@ export const videoGameSchema = {
       name: "Ultimate Edition",
       price: "99.99",
       priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder",
-      availabilityStarts: "2026-11-19",
+      availability: "https://schema.org/InStock",
       url: "https://www.rockstargames.com/VI",
     },
   ],

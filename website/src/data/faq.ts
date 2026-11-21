@@ -3,28 +3,28 @@ export type Faq = { q: string; a: string };
 // Also rendered as FAQPage JSON-LD — keep answers self-contained plain text.
 export const faqs: Faq[] = [
   {
-    q: "When does GTA 6 come out?",
-    a: "GTA 6 releases on Thursday, November 19, 2026 for PlayStation 5 and Xbox Series X|S. Preloading starts November 12. Take-Two has reaffirmed the date on every earnings call, most recently in August 2026.",
+    q: "When did GTA 6 come out?",
+    a: "GTA 6 launched on Thursday, November 19, 2026 for PlayStation 5 and Xbox Series X|S. Take-Two said it made about $3.79 billion in day-one retail sales, a company estimate of retail spend that is not revenue.",
   },
   {
     q: "What platforms is GTA 6 on? Is it coming to PC?",
-    a: "At launch: PlayStation 5 and Xbox Series X|S only. A PC version has not been announced. GTA V reached PC about 19 months after consoles and Red Dead Redemption 2 about a year after — treat any GTA 6 PC date you see as speculation.",
+    a: "PlayStation 5 (including PS5 Pro) and Xbox Series X|S only. It is not on PS4. A PC version has not been announced. A GamesBeat report citing anonymous sources points to Q1 2027, but Rockstar and Take-Two haven't confirmed it.",
   },
   {
-    q: "How much will GTA 6 cost?",
-    a: "The Standard Edition is $79.99 (£69.99 / €79.99) and the Ultimate Edition is $99.99 (£89.99 / €99.99). Ultimate adds extra clothing, vehicles, weapons, locations, and side missions.",
+    q: "How much does GTA 6 cost?",
+    a: "On the PlayStation Store, the Standard Edition is $79.99 in the US (£69.99 in the UK) and the Ultimate Edition is $99.99 (£89.99 in the UK). Ultimate adds extra vehicles, weapons, outfits, hairstyles, tattoos, special commissions, and some Ultimate-only services.",
   },
   {
-    q: "Can I pre-order GTA 6?",
-    a: "Yes. Pre-orders opened June 25, 2026 on PlayStation Store, Xbox Store, Rockstar's site, and retailers. Pre-ordering either edition (or buying before November 20, 2026) includes the Vintage Vice City Pack and one month of GTA+.",
+    q: "What was the GTA 6 pre-order bonus?",
+    a: "The Vintage Vice City Pack. The PlayStation Store now sells it as a separate add-on ($4.99 US, £4.49 UK). Whether any pre-order bonus can still be claimed is unconfirmed, so check the store listing.",
   },
   {
     q: "Is there a GTA 6 disc version?",
-    a: "No. Rockstar confirmed that physical copies contain a download code, not a disc. Boxed copies go on sale November 12, 2026 so you can preload before launch.",
+    a: "No. Rockstar confirmed in June 2026 that physical copies contain a download code, not a disc. A disc release later is unconfirmed.",
   },
   {
-    q: "Will GTA 6 run at 60fps?",
-    a: "Not at launch, as far as we know. Rockstar's Rob Nelson said in August 2026 that the game is targeting 30fps on all consoles, including PS5 Pro. He didn't rule out a 60fps option later.",
+    q: "Does GTA 6 run at 60fps?",
+    a: "No 60fps mode has been announced. Rockstar is targeting 30fps on current consoles. PS5 Pro adds PSSR and ray-traced shadows, per the PlayStation Store listing.",
   },
   {
     q: "Who are the GTA 6 protagonists?",
@@ -40,22 +40,26 @@ export const faqs: Faq[] = [
   },
   {
     q: "How many GTA 6 trailers are out? Is there a Trailer 3?",
-    a: "Two trailers plus a long showcase: Trailer 1 (December 4, 2023), Trailer 2 (May 6, 2025, 475M+ views in 24 hours), and An Extended Look (August 27, 2026), a 27-minute in-game presentation that premiered on Netflix. Rockstar hasn't released anything called Trailer 3. A launch trailer close to release day is likely.",
+    a: "Two trailers plus a long showcase: Trailer 1 (December 4, 2023), Trailer 2 (May 6, 2025, 475M+ views in 24 hours), and An Extended Look (August 27, 2026), a 27-minute in-game presentation that premiered on Netflix. Rockstar hasn't released anything called Trailer 3.",
   },
   {
-    q: "Will there be a new GTA Online?",
-    a: "Rockstar hasn't detailed GTA 6's online mode. Take-Two CEO Strauss Zelnick said in September 2026 that GTA 6 launches as a single-player experience, so there's no new GTA Online on day one. A pre-order includes a month of GTA+ for the existing GTA Online.",
+    q: "Is there a new GTA Online?",
+    a: "Rockstar hasn't detailed a GTA 6 online mode. GTA 6 is a single-player experience — the PlayStation Store listing says so, and Take-Two CEO Strauss Zelnick said the same in September 2026. GTA Online on GTA V is still the multiplayer option.",
   },
   {
     q: "Was GTA 6 delayed?",
-    a: "Twice. Originally targeted for Fall 2025, it moved to May 26, 2026, then on November 6, 2025 Take-Two moved it to November 19, 2026. The current date is backed by $8.0–8.2B in revenue guidance, reaffirmed in August 2026 — another delay is very unlikely.",
+    a: "Twice. Originally targeted for Fall 2025, it moved to May 26, 2026, then on November 6, 2025 Take-Two moved it to November 19, 2026. It then launched on that date.",
   },
   {
-    q: "Can I play GTA with you before GTA 6 comes out?",
-    a: "Yes — we run Syndicate RP, a GTA V FiveM roleplay server focused on car culture and drag racing. Check the GTA V page for how to join.",
+    q: "Can I play GTA RP on PS5?",
+    a: "Not on a FiveM server. FiveM is PC-only, and its own FAQ says offering it on consoles is not feasible. On PS5 you can play GTA Online (GTA V), which needs PlayStation Plus, and GTA 6 itself is single-player. See our PS5 page for what console players can do.",
+  },
+  {
+    q: "Can I play GTA with you?",
+    a: "Yes, on PC — we run Syndicate RP, a GTA V FiveM roleplay server focused on car culture and drag racing. Check the GTA V page for how to join.",
   },
   {
     q: "What does GTA 6 Network Premium include?",
-    a: "Early access to our videos, instant launch-trailer and news alerts, a private Discord wing, launch-week live events, and queue priority on our GTA V server. Everything public on this site stays free. See the Premium page for tiers.",
+    a: "Early access to our videos, a private Discord wing, and queue priority on our GTA V server. Memberships are a waitlist for now. Everything public on this site stays free. See the Premium page for tiers.",
   },
 ];

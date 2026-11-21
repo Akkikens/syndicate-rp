@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Countdown from "@/components/Countdown";
+import LaunchStatus from "@/components/LaunchStatus";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/config/site";
 import { faqSchema, webPageSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
-const title = "GTA 6 Release Date: November 19, 2026 + Countdown";
+const title = "GTA 6 Release Date: Out Now (November 19, 2026)";
 const description =
-  "GTA 6 releases Thursday, November 19, 2026 on PS5 and Xbox Series X|S. Preload starts November 12. Live countdown, unlock time, PC status, and the full delay history.";
+  "GTA 6 launched Thursday, November 19, 2026 on PS5 and Xbox Series X|S. Platforms, first-day sales, PC status, online mode, and the full delay history.";
 
 export const metadata = pageMetadata({ title, description, path: "/release-date" });
 
@@ -16,32 +16,32 @@ const timeline = [
   { date: "Dec 4, 2023", event: "Trailer 1 reveals GTA VI with a 2025 window" },
   { date: "May 2, 2025", event: "First delay: Fall 2025 → May 26, 2026" },
   { date: "Nov 6, 2025", event: "Second delay: May 26 → November 19, 2026" },
-  { date: "Jun 25, 2026", event: "Pre-orders open ($79.99 / $99.99)" },
-  { date: "Aug 7, 2026", event: "Take-Two reaffirms Nov 19 on earnings call" },
-  { date: "Nov 12, 2026", event: "Preload begins; boxed copies on shelves" },
-  { date: "Nov 19, 2026", event: "Launch on PS5 and Xbox Series X|S" },
+  { date: "Jun 25, 2026", event: "Pre-orders opened ($79.99 / $99.99)" },
+  { date: "Aug 7, 2026", event: "Take-Two reaffirmed Nov 19 on its earnings call" },
+  { date: "Nov 19, 2026", event: "GTA VI launched on PS5 and Xbox Series X|S", done: true },
+  { date: "Nov 20, 2026", event: "Take-Two reported about $3.79B in day-one retail sales", done: true },
 ];
 
 const qa = [
   {
-    q: "What is the GTA 6 release date?",
-    a: "Thursday, November 19, 2026, on PlayStation 5 and Xbox Series X|S. Take-Two confirmed the date in November 2025 and has reaffirmed it on every earnings call since, most recently on August 7, 2026.",
+    q: "Is GTA 6 out?",
+    a: "Yes. GTA VI launched on Thursday, November 19, 2026. Rockstar's launch announcement says it is available worldwide for PlayStation 5 and Xbox Series X|S. Take-Two had confirmed the date in November 2025 and reaffirmed it on its August 7, 2026 earnings call.",
   },
   {
-    q: "What time does GTA 6 unlock?",
-    a: "Rockstar hasn't published exact unlock times. Console digital launches usually unlock at midnight local time on release day, and our countdown targets midnight Eastern Time on November 19. We'll update this the moment Rockstar confirms.",
+    q: "Which platforms is GTA 6 on?",
+    a: "PS5 (including PS5 Pro) and Xbox Series X|S. The PlayStation Store listing says it is not available on PS4. No PC version has been announced.",
   },
   {
-    q: "When can I preload GTA 6?",
-    a: "Preloading starts November 12, 2026 — one week before launch. Boxed copies, which contain a download code rather than a disc, go on sale the same day.",
-  },
-  {
-    q: "Will GTA 6 be delayed again?",
-    a: "Very unlikely. Take-Two's fiscal 2027 guidance of $8.0–8.2 billion in net bookings depends on a November launch, pre-orders are open, and boxed copies ship November 12.",
+    q: "How did the GTA 6 launch go?",
+    a: "Take-Two said GTA VI made about $3.79 billion in day-one retail sales, a company estimate of what shoppers spent through the end of November 19 — retail spend, not Take-Two's revenue. It did not say whether that figure includes pre-orders. It also said 32.5 million units sold before release.",
   },
   {
     q: "When does GTA 6 come out on PC?",
-    a: "No PC version has been announced. GTA V reached PC about 19 months after consoles and Red Dead Redemption 2 about a year after. Treat any GTA 6 PC date you see as speculation.",
+    a: "No PC version has been announced; Take-Two's November 9 earnings materials listed only PS5 and Xbox Series X|S. A GamesBeat report from October 13 (updated November 18) cites four anonymous sources for a Q1 2027 PC release — unconfirmed by Rockstar and Take-Two. For context, GTA V reached PC about 19 months after consoles.",
+  },
+  {
+    q: "Is there an online mode yet?",
+    a: "Not in GTA VI. The PlayStation Store listing calls it a single-player experience, and Take-Two CEO Strauss Zelnick said in September 2026 that it would launch single-player. No GTA VI online mode has been detailed; GTA Online on GTA V is still the multiplayer option.",
   },
 ];
 
@@ -57,16 +57,15 @@ export default function ReleaseDatePage() {
         <span className="sunset-text">{site.releaseDateLabel}</span>
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-        Grand Theft Auto VI launches on <strong className="text-cream">Thursday,
+        Grand Theft Auto VI launched on <strong className="text-cream">Thursday,
         November 19, 2026</strong> for PlayStation 5 and Xbox Series X|S.
-        Preloading opens <strong className="text-cream">November 12</strong>.
-        There&apos;s no PC version at launch.
+        There&apos;s no PC version announced.
       </p>
 
       <div className="neon-card mt-10 rounded-md p-8 text-center">
-        <p className="eyebrow">Time until launch</p>
+        <p className="eyebrow">Launch status</p>
         <div className="mt-6">
-          <Countdown compact />
+          <LaunchStatus compact />
         </div>
       </div>
 
@@ -81,7 +80,7 @@ export default function ReleaseDatePage() {
               <time className="w-28 shrink-0 font-mono text-xs uppercase tracking-[0.14em] text-teal">
                 {t.date}
               </time>
-              <span className="text-muted">{t.event}</span>
+              <span className={t.done ? "text-cream" : "text-muted"}>{t.event}</span>
             </li>
           ))}
         </ol>
@@ -97,6 +96,9 @@ export default function ReleaseDatePage() {
       </section>
 
       <div className="mt-12 flex flex-wrap gap-6">
+        <Link href="/ps5" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          GTA 6 on PS5 →
+        </Link>
         <Link href="/pre-order" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
           Price & editions →
         </Link>

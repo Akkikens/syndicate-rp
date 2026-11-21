@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Countdown from "@/components/Countdown";
+import LaunchStatus from "@/components/LaunchStatus";
 import PalmHorizon from "@/components/PalmHorizon";
 import TrailerEmbed from "@/components/TrailerEmbed";
 import NewsCard from "@/components/NewsCard";
@@ -8,39 +8,34 @@ import { news } from "@/data/news";
 import { latestTrailer } from "@/data/trailers";
 
 const tickerItems = [
-  "November 19, 2026",
-  "Preload November 12",
-  "Pre-orders open · $79.99",
+  "Out now",
+  "Released November 19, 2026",
+  site.platforms,
+  "$79.99 Standard · $99.99 Ultimate",
+  "PC: not announced",
   "Jason & Lucia",
   "State of Leonida",
-  "PS5 · Xbox Series X|S",
 ];
 
 export default function Home() {
   return (
     <>
-      {/* ── Hero: the countdown is the thesis ── */}
+      {/* ── Hero: launch status ── */}
       <section className="horizon relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-20 text-center sm:px-6 sm:pt-28">
-          <p className="eyebrow">GTA 6 countdown · Release date {site.releaseDateLabel}</p>
+          <p className="eyebrow">Released {site.releaseDateLabel} · {site.platforms}</p>
           <h1 className="display mx-auto mt-6 max-w-4xl text-4xl sm:text-6xl md:text-7xl">
-            GTA 6 is <span className="sunset-text">almost here</span>
+            GTA 6: welcome to <span className="sunset-text">Leonida</span>
           </h1>
           <div className="mt-12 sm:mt-16">
-            <Countdown />
+            <LaunchStatus />
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/trailers"
-              className="btn btn-vice"
-            >
-              Watch the Extended Look
+            <Link href="/ps5" className="btn btn-vice">
+              GTA 6 on PS5
             </Link>
-            <Link
-              href="/release-date"
-              className="btn btn-ghost"
-            >
-              Release date & preload
+            <Link href="/pre-order" className="btn btn-ghost">
+              Price & editions
             </Link>
           </div>
         </div>
@@ -125,6 +120,11 @@ export default function Home() {
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
+              href: "/ps5",
+              title: "GTA 6 on PS5",
+              blurb: "Price, 30fps, PS5 Pro, 212GB of storage, and what PS5 players can do for multiplayer.",
+            },
+            {
               href: "/characters",
               title: "Characters",
               blurb: "Jason, Lucia, and the full confirmed cast of Leonida.",
@@ -142,12 +142,12 @@ export default function Home() {
             {
               href: "/pre-order",
               title: "Price & Editions",
-              blurb: "$79.99 or $99.99, the pre-order bonus, and why there's no disc.",
+              blurb: "$79.99 or $99.99, what Ultimate adds, and why there's no disc.",
             },
             {
               href: "/faq",
               title: "FAQ",
-              blurb: "60fps, PC version, GTA Online, map size. Answered.",
+              blurb: "60fps, PC version, GTA Online, PS5 roleplay, map size. Answered.",
             },
           ].map((card) => (
             <Link
@@ -170,13 +170,15 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="neon-card rounded-md p-8 sm:p-12 lg:flex lg:items-center lg:justify-between lg:gap-12">
           <div>
-            <p className="eyebrow">While we wait · GTA V</p>
+            <p className="eyebrow">Multiplayer · GTA V on PC</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">
               Play with us on{" "}
               <span className="text-teal">{site.server.name}</span>
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              {site.server.shortPitch} Our own FiveM server with a custom HUD,
+              GTA VI is single-player on PS5 and Xbox. Our multiplayer RP
+              server runs on GTA V for PC. {site.server.shortPitch} Our own
+              FiveM server with a custom HUD,
               drag racing with bets and leaderboards, car clubs, and scheduled
               meets — up to {site.server.slots} players.
             </p>
@@ -196,12 +198,11 @@ export default function Home() {
           <div>
             <p className="eyebrow">Premium</p>
             <h2 className="display mt-3 max-w-xl text-3xl sm:text-4xl">
-              The launch only happens <span className="sunset-text">once</span>
+              Get inside the <span className="sunset-text">network</span>
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              Early videos, launch-trailer alerts, a private Discord wing, and a
-              seat in the launch-week war room. Founders pricing ends the day
-              GTA VI ships.
+              Early videos, a private Discord wing, and queue priority on our
+              GTA V server. Memberships are a waitlist for now.
             </p>
           </div>
           <Link
@@ -221,8 +222,8 @@ export default function Home() {
             Every drop, breakdown, and theory — on YouTube first
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted">
-            Subscribe so you don&apos;t miss the launch trailer, preload
-            alerts, and our launch-week coverage.
+            Subscribe for our GTA VI breakdowns, theories, and coverage as the
+            news develops.
           </p>
           <a
             href={site.youtube}
