@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const title = "GTA 6 PC Release Date: Is GTA 6 Coming to PC?";
 const description =
-  "GTA 6 launched November 19, 2026 on PS5 and Xbox Series X|S only. No PC version is announced. What Take-Two has said, an unconfirmed Q1 2027 report, and Rockstar's port history.";
+  "GTA 6 launched November 19, 2026 on PS5 and Xbox Series X|S only. No PC version is announced. What Take-Two said and an unconfirmed Q1 2027 report.";
 
 export const metadata = pageMetadata({ title, description, path: "/pc" });
 
@@ -155,6 +155,12 @@ export default function PcPage() {
         </Link>
         <Link href="/mods" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
           GTA 6 mods →
+        </Link>
+        <Link href="/system-requirements" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          PC requirements →
+        </Link>
+        <Link href="/roleplay" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          GTA 6 roleplay →
         </Link>
       </div>
     </div>

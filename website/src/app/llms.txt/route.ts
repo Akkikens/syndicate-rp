@@ -1,5 +1,6 @@
 import { routes } from "@/config/routes";
 import { site } from "@/config/site";
+import { guides } from "@/data/guides";
 import { news } from "@/data/news";
 import { faqs } from "@/data/faq";
 import { absoluteUrl } from "@/lib/seo";
@@ -21,6 +22,9 @@ ${faqs
 
 ## Pages
 ${routes.map((r) => `- [${r.label}](${absoluteUrl(r.href)})`).join("\n")}
+
+## Guides
+${guides.map((g) => `- [${g.title}](${absoluteUrl(g.path)}): ${g.tagline}`).join("\n")}
 
 ## Latest news
 ${news

@@ -17,7 +17,7 @@ import {
 
 export const metadata = pageMetadata({
   title: `${site.server.name}: GTA V FiveM Car Culture RP Server`,
-  description: `${site.server.shortPitch} Drag racing with $50k pots, Saturday car meets with $25k Best in Show, car clubs, custom maps, and up to ${site.server.slots} players.`,
+  description: `${site.server.shortPitch} Drag racing, Saturday car meets, car clubs, custom maps, and up to ${site.server.slots} players.`,
   path: "/gta-v",
 });
 
@@ -350,6 +350,16 @@ export default function GtaVPage() {
           </a>
         </div>
       </section>
+
+      <p className="mt-10 text-center text-muted">
+        On console, or wondering about GTA 6?{" "}
+        <Link href="/roleplay" className="text-teal hover:text-cream">
+          GTA 6 roleplay status →
+        </Link>{" "}
+        <Link href="/crew" className="text-teal hover:text-cream">
+          Console crew →
+        </Link>
+      </p>
     </div>
   );
 }

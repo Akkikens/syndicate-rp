@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 FAQ: Release Date, Price, Disc, 60fps & More",
   description:
-    "Quick answers to the biggest GTA 6 questions: release date (launched November 19, 2026), price ($79.99), disc vs digital, 30fps, PS5, PC version, GTA Online, map size, and trailers.",
+    "Quick answers to the biggest GTA 6 questions: release date, price ($79.99), disc vs digital, 30fps, PS5, PC version, GTA Online, map size and trailers.",
   path: "/faq",
 });
 

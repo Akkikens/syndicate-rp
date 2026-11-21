@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const title = "GTA 6 on PS5: Price, 30fps, PS5 Pro, Storage & Online";
 const description =
-  "Everything PS5 players need for GTA 6: price and editions, the 30fps target, PS5 Pro features, the 212GB install, and what's (not) available for online and roleplay.";
+  "Everything PS5 players need for GTA 6: price, editions, the 30fps target, PS5 Pro features, the 212GB install, and what's available online.";
 
 export const metadata = pageMetadata({ title, description, path: "/ps5" });
 
@@ -203,6 +203,12 @@ export default function Ps5Page() {
       <div className="mt-12 flex flex-wrap gap-6">
         <Link href="/release-date" className={linkClass}>
           Release date →
+        </Link>
+        <Link href="/xbox" className={linkClass}>
+          GTA 6 on Xbox →
+        </Link>
+        <Link href="/60fps" className={linkClass}>
+          GTA 6 60fps →
         </Link>
         <Link href="/pc" className={linkClass}>
           GTA 6 on PC →

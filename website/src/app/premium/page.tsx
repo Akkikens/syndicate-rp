@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Premium Membership",
   description:
-    "Membership waitlist: early videos, a private Discord wing, and Syndicate RP queue priority.",
+    "Join the Premium membership waitlist: early videos, a private Discord wing, and Syndicate RP queue priority. Get notified when memberships open.",
   path: "/premium",
 });
 

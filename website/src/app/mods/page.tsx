@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Mods: Will GTA 6 Have Mods? Directory",
   description:
-    "Will GTA 6 have mods? It launched on consoles only, and console versions have no PC-style mods. Our curated directory of vehicles, maps, scripts, and graphics opens with PC once a PC version exists.",
+    "Will GTA 6 have mods? It launched on consoles only, which have no PC-style mods. Our curated mod directory opens with PC once a PC version exists.",
   path: "/mods",
 });
 
@@ -113,6 +113,15 @@ export default function ModsPage() {
           Modding GTA V right now?{" "}
           <Link href="/gta-v" className="text-teal hover:text-cream">
             See the custom cars &amp; maps on our server →
+          </Link>
+        </p>
+        <p className="mt-3 text-muted">
+          Wondering where GTA 6 mods and RP stand?{" "}
+          <Link href="/roleplay" className="text-teal hover:text-cream">
+            GTA 6 roleplay and FiveM →
+          </Link>{" "}
+          <Link href="/system-requirements" className="text-teal hover:text-cream">
+            PC requirements →
           </Link>
         </p>
       </section>
