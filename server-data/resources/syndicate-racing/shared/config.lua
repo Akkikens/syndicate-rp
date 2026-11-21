@@ -1,6 +1,8 @@
 RacingConfig = {}
 
 -- Drag strip locations (vector4: x, y, z, heading)
+-- NOTE: these coordinates are placeholders that have NOT been checked in-game.
+-- Stand on each start line and use a coords tool to confirm them before launch.
 RacingConfig.Strips = {
     {
         label   = "LS International Strip",
@@ -23,13 +25,16 @@ RacingConfig.BetLimits = {
     max = 50000,
 }
 
-RacingConfig.Countdown = 3       -- seconds before race start
-RacingConfig.MaxLaunchTime = 10  -- seconds to make launch before forfeit
-RacingConfig.ReactionWindowMs = 500  -- perfect launch window in ms
+RacingConfig.Countdown = 3             -- seconds before race start
+RacingConfig.StartRadius = 25.0        -- both racers must be this close to a strip's start line
+RacingConfig.FinishRadius = 30.0       -- server accepts a finish only this close to the finish line
+RacingConfig.ChallengeTimeoutSecs = 30 -- pending challenge expires
+RacingConfig.RaceTimeoutSecs = 120     -- race with no finisher is cancelled and bets refunded
 
 RacingConfig.Rewards = {
     winnerPercent = 90,  -- winner gets 90% of pot (10% house cut)
 }
 
--- Leaderboard: top N per category
+-- Leaderboard: top N rows kept in the query; the in-game menu shows LeaderboardShown
 RacingConfig.LeaderboardSize = 100
+RacingConfig.LeaderboardShown = 15

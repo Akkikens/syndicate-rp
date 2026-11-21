@@ -37,7 +37,8 @@ MeetConfig.Locations = {
 }
 
 -- ── Scheduled Weekly Meet ────────────────────────────────
--- Automatically opens every Saturday at the featured location
+-- Automatically opens every Saturday at the featured location.
+-- Uses the server's local time (the Docker image sets TZ via tzdata).
 MeetConfig.WeeklyMeet = {
     enabled      = true,
     dayOfWeek    = 6,      -- 0=Sun, 6=Sat
@@ -50,7 +51,7 @@ MeetConfig.WeeklyMeet = {
 -- ── Voting ────────────────────────────────────────────────
 MeetConfig.Voting = {
     enabled         = true,
-    categoryes      = { 'Best Build', 'Cleanest Color', 'Most Unique', 'Best Sound' },
+    categories       = { 'Best Build', 'Cleanest Color', 'Most Unique', 'Best Sound' },
     voteDurationSecs = 180,   -- voting open for 3 minutes
     cooldownMins    = 30,     -- player can't vote again for 30 mins
 }
@@ -69,3 +70,8 @@ MeetConfig.Rewards = {
 -- ── Announcements ─────────────────────────────────────────
 MeetConfig.AnnounceRadius = 500.0    -- blips appear within this distance
 MeetConfig.ChatPrefix     = "^2[Car Meet]^7"
+
+-- ── Check-in / category safety ────────────────────────────
+-- Check-in is validated on the server: the player must be within the location's
+-- `radius` of its `coords`, and the meet must be open.
+MeetConfig.CheckInSlack = 10.0   -- extra metres of tolerance for server-side position lag

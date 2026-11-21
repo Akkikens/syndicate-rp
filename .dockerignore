@@ -1,0 +1,9 @@
+.git
+website
+docs
+node_modules
+# Never bake secrets or downloaded resources into the image
+.env
+server-data/server.cfg.local
+server-data/resources
+server-data/cache

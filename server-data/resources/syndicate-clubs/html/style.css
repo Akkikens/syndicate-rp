@@ -230,3 +230,13 @@ body {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0D0D10; }
 ::-webkit-scrollbar-thumb { background: #1C1C24; }
+
+/* ── Member actions / invite ── */
+.member-actions { display: flex; gap: 6px; }
+.member-actions button {
+  background: #1C1C24; color: #C4C4CC; border: 1px solid #2A2A35;
+  font-size: 11px; padding: 3px 8px; cursor: pointer;
+}
+.member-actions button:hover { border-color: #E91E8C; }
+#inviteRow { margin-bottom: 16px; }
+#inviteRow .btn-primary { margin-top: 8px; }

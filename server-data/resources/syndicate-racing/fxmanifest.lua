@@ -4,11 +4,10 @@ lua54 'yes'
 
 name 'syndicate-racing'
 description 'Syndicate RP — Drag Racing System'
-version '1.0.0'
+version '1.1.0'
 
 client_scripts {
     'client/main.lua',
-    'client/ui.lua',
     'client/race.lua',
 }
 
@@ -23,17 +22,8 @@ shared_scripts {
     'shared/config.lua',
 }
 
-ui_page 'html/index.html'
-
-files {
-    'html/index.html',
-    'html/style.css',
-    'html/app.js',
-}
-
 dependencies {
     'ox_lib',
     'oxmysql',
     'qbx_core',
-    'syndicate-config',
 }

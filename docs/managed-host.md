@@ -1,4 +1,6 @@
-# Syndicate RP — Going Live on a Managed FiveM Host
+# Syndicate RP — Going Live on a Managed FiveM Host (bare-metal style flow)
+
+No Docker here: the database host is whatever your host's control panel gives you (often `localhost`), **not** `mariadb`.
 
 The fast path to a public server, no Linux/Docker knowledge needed. A managed
 host runs FXServer for you on real x86 hardware (your M5 Mac can't — FiveM is
@@ -33,12 +35,13 @@ actually expect to fill — you can scale later.
 
 Most hosts give you **txAdmin** + an **SFTP** login or web file manager.
 
-1. Upload the entire contents of `server-data/resources/` to the host's
-   `resources/` folder. **Include the `[core]` folder** — it holds ox_lib,
-   oxmysql, ox_inventory, and Qbox, which were installed locally by
-   `scripts/install.sh` and are git-ignored (so a git clone alone won't have
-   them). SFTP the whole folder up.
-2. Upload `server-data/server.cfg`.
+1. On a Linux machine (or WSL) run `bash scripts/install.sh` first
+   (needs `sudo apt install -y git curl jq unzip`). It fills the git-ignored folders
+   `[core]`, `[managers]`, `[system]` and `[handling]`, and creates `server-data/sql/`.
+   It stops until `server-data/server.cfg.local` exists: copy `server.cfg.local.example`.
+2. Upload the entire contents of `server-data/resources/` to the host's
+   `resources/` folder, **including** `[core]`, `[managers]`, `[system]` and `[handling]`.
+3. Upload `server-data/server.cfg`.
 
 ---
 
@@ -47,15 +50,19 @@ Most hosts give you **txAdmin** + an **SFTP** login or web file manager.
 Create `server.cfg.local` on the host (never commit it) with:
 
 ```cfg
-# Your Cfx.re license key (from keymaster.fivem.net) — the SAME key you use
+# Your Cfx.re license key (portal.cfx.re) — the SAME key you use
 # in your local server.cfg.local. Reusing it keeps cfx.re/join/dg3mgrq here.
-sv_licenseKey "cfxk_YOUR_KEY"
+sv_licenseKey "YOUR_LICENSE_KEY"
 
-# Use the MySQL credentials your host gives you (NOT the docker 'mariadb' host)
-set mysql_connection_string "mysql://DB_USER:DB_PASS@DB_HOST/DB_NAME?charset=utf8mb4"
+# Use the MySQL credentials your host gives you (NOT the docker 'mariadb' host).
+# The password must not contain ; = @ : / ? #
+set mysql_connection_string "server=DB_HOST;uid=DB_USER;password=DB_PASS;database=DB_NAME"
+
+# Your admin identifier
+add_principal identifier.license:YOUR_ROCKSTAR_LICENSE group.superadmin
 ```
 
-> ⚠️ Your local `server.cfg.local` points the DB at `mariadb` (the Docker
+> ⚠️ A Docker-flow `server.cfg.local` points the DB at `mariadb` (the Docker
 > service name). On a managed host you must swap it for the MySQL host/user/pass
 > from your host's control panel.
 
@@ -63,11 +70,15 @@ set mysql_connection_string "mysql://DB_USER:DB_PASS@DB_HOST/DB_NAME?charset=utf
 
 ## 4. Import the database
 
-Qbox needs its tables. In the host's phpMyAdmin (or Adminer):
+Qbox needs its tables, and **both** SQL files below are required: without them nobody can create a character.
+In the host's phpMyAdmin (or Adminer):
 1. Create/select the database the host gave you.
-2. Import the Qbox schema — `resources/[core]/qbx_core/qbx_core.sql` (and any
-   `.sql` shipped by ox_inventory / other resources). Most Qbox resources
-   auto-create their tables on first start via oxmysql, so this may be minimal.
+2. Import, in this order, the files in `server-data/sql/` (created by `install.sh`):
+   1. `01-qbx_core.sql` (players, bans, player_groups)
+   2. `02-qbx_vehicles.sql` (player_vehicles; depends on `players`)
+   3. `03-ox_doorlock.sql`
+
+The syndicate-* resources create their own tables on first start.
 
 ---
 
@@ -75,10 +86,9 @@ Qbox needs its tables. In the host's phpMyAdmin (or Adminer):
 
 In txAdmin: create a server, point it at your uploaded `server.cfg`, and hit
 **Start**. Watch the live console:
-- Resources should load without "couldn't find resource" errors (the 3 custom
-  maps in `[maps]` are still empty — either upload the map files or comment out
-  `ensure burgershot / highfield_mansion / villa_jayway` in `server.cfg`; a
-  missing map only logs a warning, it won't stop the boot).
+- Resources should load without "couldn't find resource" errors. The three
+  manual map resources (`burgershot`, `highfield_mansion`, `villa_jayway`) are
+  commented out in `server.cfg`; upload them to `[maps]` and uncomment to enable.
 - Look for the server registering with Cfx.re. Within a minute,
   `https://cfx.re/join/dg3mgrq` should resolve and your site's Connect button
   works.
@@ -98,8 +108,8 @@ In txAdmin: create a server, point it at your uploaded `server.cfg`, and hit
 - **Custom cars**: the `syndicate-cars/stream/` folders are empty. Follow
   [cars.md](cars.md) to add vehicle packs, or the dealership will only have
   base-game cars.
-- **Custom maps**: `[maps]` is empty. Download burgershot / highfield_mansion /
-  villa_jayway from gta5-mods and SFTP them in, or leave those `ensure` lines
-  commented.
+- **Custom maps**: `[maps]` is empty and the three `ensure` lines are commented
+  out. Download burgershot / highfield_mansion / villa_jayway from gta5-mods, SFTP
+  them in, then uncomment the lines.
 - **Keep the same license key** across any host move — that's what keeps your
   `dg3mgrq` join code (and the website button) stable.

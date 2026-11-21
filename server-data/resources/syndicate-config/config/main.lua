@@ -49,29 +49,7 @@ Config.VIPTiers = {
     },
 }
 
--- ── Racing ────────────────────────────────────────
-Config.Racing = {
-    betMin       = 500,
-    betMax       = 50000,
-    stripLocations = {
-        -- Add drag strip coords here
-        vector4(-100.0, -1600.0, 30.0, 0.0),
-    },
-}
-
--- ── Car Clubs ─────────────────────────────────────
-Config.CarClubs = {
-    maxMembers   = 20,
-    creationCost = 25000,
-    maxPerServer = 30,
-}
-
--- ── Car Meets ─────────────────────────────────────
-Config.CarMeets = {
-    locations = {
-        { label = "LS Car Meet", coords = vector3(928.0, -2032.0, 30.0) },
-        { label = "Vinewood Hills", coords = vector3(-435.0, 140.0, 65.0) },
-        { label = "East LS Strip", coords = vector3(580.0, -1600.0, 28.0) },
-    },
-    weeklyEventDay = "saturday",
-}
+-- Racing, car clubs and car meets are configured inside their own resources
+-- (syndicate-racing/shared/config.lua, syndicate-clubs/shared/config.lua,
+-- syndicate-meets/shared/config.lua). They are deliberately NOT duplicated here so
+-- there is a single source of truth.

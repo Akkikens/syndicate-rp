@@ -1,0 +1,16 @@
+# Copy this file to server-data/server.cfg.local and fill it in.
+# server.cfg.local is gitignored - never commit it.
+
+# Cfx.re license key (https://portal.cfx.re/servers/registration-keys)
+sv_licenseKey "PASTE_YOUR_LICENSE_KEY_HERE"
+
+# Database connection (oxmysql). Use the SAME password as MARIADB_PASSWORD in .env.
+# Passwords must not contain ; = @ : / ? #   (generate with: openssl rand -hex 24)
+#
+# Docker flow      -> server=mariadb
+# Bare-metal flow  -> server=localhost   (scripts/setup-db.sh writes this for you)
+set mysql_connection_string "server=mariadb;uid=syndicaterp;password=CHANGE_ME;database=syndicaterp"
+
+# Make yourself superadmin: join once, run `status` in the server console to see
+# your identifiers, then uncomment and edit:
+# add_principal identifier.license:YOUR_ROCKSTAR_LICENSE group.superadmin

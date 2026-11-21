@@ -9,20 +9,20 @@ This guide turns GTA V into the GTA VI Vice City experience.
 
 | Layer | What it does | Who installs |
 |---|---|---|
-| Vice Cry: Remastered | Adds the full Vice City map | Server (already streamed) |
+| Vice Cry: Remastered | Adds the full Vice City map | Server (**not installed yet**: manual download) |
 | NaturalVision Evolved | Reworks lighting, weather, water | Each player |
 | QuantV | Lighter visual overhaul (low-end PCs) | Each player (alternative) |
-| Syndicate Handling | Cinematic vehicle physics | Automatic (server-side) |
+| DriveV handling | Cinematic vehicle physics | Automatic (server-side); `syndicate-handling` overrides are disabled until tested |
 | Syndicate HUD | GTA VI Vice City UI | Automatic (server-side) |
 
-The map and handling are automatic — just join and they work.
+Once the server owner has installed the map, the map and handling are automatic: just join and they work.
 The visual overhaul (NVE or QuantV) is your choice based on your PC.
 
 ---
 
 ## Step 1 — Vice City Map
 
-Nothing to install. When you join Syndicate RP, Vice Cry: Remastered streams automatically. You'll see the full Vice City map added to the world: Ocean Beach, Downtown Vice City, Little Havana, Starfish Island, and more.
+Nothing to install on your side, but **the server does not stream Vice Cry yet**. The server owner must download it manually (forum.cfx.re, search "Vice City server side"), extract it to `server-data/resources/[maps]/VICECRY_FM_W` and uncomment `ensure VICECRY_FM_W` in `server.cfg`. Until then the Vice City map will not appear. Once installed it streams automatically and adds Ocean Beach, Downtown Vice City, Little Havana, Starfish Island, and more.
 
 ---
 
@@ -74,7 +74,7 @@ Once in-game with NVE:
 - In NVE settings, disable Volumetric Clouds and Extra Vegetation
 
 **Vice City map not appearing:**
-- Make sure you're connected to Syndicate RP (it's server-streamed, not local)
+- Make sure the server owner has installed and ensured `VICECRY_FM_W` (see Step 1), and that you're connected to Syndicate RP (it's server-streamed, not local)
 - Check that your FiveM cache is up to date: Settings → Clear cache
 
 ---

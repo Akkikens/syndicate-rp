@@ -18,18 +18,19 @@ services:
     ports:
       - "30120:30120/tcp"
       - "30120:30120/udp"
-      - "40120:40120"       # txAdmin web UI
     volumes:
       # Live-reload: changes to resources reflect without rebuild
       - ./server-data/resources:/srv/syndicaterp/resources
-      # Main config mounted (not baked) — cfg/map edits need only `restart`, no rebuild
+      # Main config mounted (not baked) - cfg/map edits need only `restart`, no rebuild
       - ./server-data/server.cfg:/srv/syndicaterp/server.cfg:ro
-      # Secrets injected from local file (never in image)
+      # Secrets injected from local file (never in image). The file must exist
+      # before `docker compose up`, otherwise Docker creates a directory in its
+      # place. Copy server-data/server.cfg.local.example and fill it in.
       - ./server-data/server.cfg.local:/srv/syndicaterp/server.cfg.local:ro
-      # Persistent cache + database
+      # Persistent cache
       - fivem-cache:/srv/syndicaterp/cache
     environment:
-      - TZ=America/New_York
+      - TZ=${TZ:-America/New_York}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     # Wait for the DB to be accepting connections before starting FiveM,
@@ -43,14 +44,18 @@ services:
     container_name: syndicate-db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass_local
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?set MARIADB_ROOT_PASSWORD in .env}
       MYSQL_DATABASE: syndicaterp
       MYSQL_USER: syndicaterp
-      MYSQL_PASSWORD: "Syndicate@2026!"
-    ports:
-      - "3307:3306"
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD:?set MARIADB_PASSWORD in .env}
+    # No `ports:` on purpose. The database is only reachable from the fivem
+    # container over the compose network (host name `mariadb`). Docker-published
+    # ports bypass ufw, so never publish 3306.
     volumes:
       - mariadb-data:/var/lib/mysql
+      # Schema import. MariaDB runs these ONLY on an empty data volume (first boot).
+      # scripts/install.sh fills server-data/sql/ - run it before the first `up`.
+      - ./server-data/sql:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s
