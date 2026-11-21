@@ -29,6 +29,9 @@ server-data/server.cfg.local
 .DS_Store
 Thumbs.db
 
+# Claude Code agent worktrees
+.claude/worktrees/
+
 # Node (for any tooling)
 node_modules/
 package-lock.json

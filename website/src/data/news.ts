@@ -2,6 +2,13 @@ export type NewsItem = {
   slug: string; // becomes /news/<slug> — never change once published
   date: string; // ISO date
   dateLabel: string;
+  // ISO date of the last substantive edit. Set it when a story is corrected or
+  // extended: it drives dateModified, og:modified_time and the "Updated" line.
+  updated?: string;
+  // Optional <title> / meta description when the headline or summary don't fit
+  // search snippets (title <= 60 chars, description 120-155).
+  seoTitle?: string;
+  seoDescription?: string;
   title: string;
   summary: string;
   // Full article paragraphs for the /news/<slug> page. Plain text.
@@ -16,6 +23,8 @@ export type NewsItem = {
 export const news: NewsItem[] = [
   {
     slug: "gta-6-day-3-confirmed-vs-unconfirmed",
+    seoTitle: "GTA 6 day 3: what's confirmed and what isn't",
+    seoDescription: "Players report lost progress, but Rockstar hasn't confirmed a save-wipe bug or fix as of Saturday. A viral Nov 25 update claim has no Rockstar statement.",
     date: "2026-11-21",
     dateLabel: "November 21, 2026",
     title: "GTA 6 day 3: what's confirmed and what isn't (save bug, Nov 25 update, sales)",
@@ -41,6 +50,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-plus-single-player-benefits-gta-6",
+    seoTitle: "GTA+ adds GTA VI single-player perks, ComputerBase says",
+    seoDescription: "Per ComputerBase, GTA+ adds a car, a garage and discounts to GTA VI's story mode for EUR 7.99 a month. Digital buyers before Nov 20 get a free month.",
     date: "2026-11-21",
     dateLabel: "November 21, 2026",
     title: "GTA+ now has GTA VI single-player perks, ComputerBase reports",
@@ -64,6 +75,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-6-launches-first-day-sales",
+    seoTitle: "GTA VI launches: Take-Two reports ~$3.79B day-one sales",
+    seoDescription: "GTA VI launched November 19 on PS5 and Xbox Series X|S. Take-Two says about $3.79 billion in day-one retail sales, a company estimate, not revenue.",
     date: "2026-11-20",
     dateLabel: "November 20, 2026",
     title: "GTA VI is out: Take-Two reports about $3.79 billion in day-one retail sales",
@@ -88,6 +101,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-6-pc-status-after-launch",
+    seoTitle: "GTA 6 on PC: not announced, Q1 2027 report unconfirmed",
+    seoDescription: "Take-Two's CEO said PC news comes from its labels; a GamesBeat report citing four anonymous sources points to Q1 2027. No PC version is confirmed.",
     date: "2026-11-20",
     dateLabel: "November 20, 2026",
     title: "GTA 6 on PC after launch: no announcement, and an unconfirmed Q1 2027 report",
@@ -111,6 +126,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-6-launch-fivem-roleplay-status",
+    seoTitle: "GTA VI launch and FiveM roleplay: nothing announced yet",
     date: "2026-11-20",
     dateLabel: "November 20, 2026",
     title: "What GTA VI's launch means for FiveM and roleplay: nothing announced yet",
@@ -131,6 +147,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "vice-city-sign-kaseya-center-miami",
+    seoTitle: "Vice City sign now sits on the Miami Heat's arena",
+    seoDescription: "Rockstar helicoptered a pink-and-white Welcome to Vice City sign onto the roof of Miami's Kaseya Center, the first piece of a citywide GTA VI campaign.",
     date: "2026-09-22",
     dateLabel: "September 22, 2026",
     title: "A giant \"Welcome to Vice City\" sign now sits on the Miami Heat's arena",
@@ -153,6 +171,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-6-single-player-at-launch-no-online",
+    seoTitle: "GTA VI launches single-player only, no new GTA Online",
+    seoDescription: "Take-Two's Strauss Zelnick said GTA VI arrives November 19 as a single-player experience with no recurrent consumer spending anticipated at launch.",
     date: "2026-09-17",
     dateLabel: "September 17, 2026",
     title: "GTA VI launches single-player only — no new GTA Online on day one",
@@ -175,6 +195,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "stephen-root-voices-brian-heder",
+    seoDescription: "The King of the Hill and Office Space actor is the first GTA VI cast member to confirm a role: Brian Heder, the Keys drug runner who is Jason's landlord.",
     date: "2026-09-14",
     dateLabel: "September 14, 2026",
     title: "Stephen Root confirms he voices Brian Heder",
@@ -194,6 +215,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "gta-6-30fps-on-consoles",
+    seoDescription: "Rockstar co-director Rob Nelson says GTA VI is currently targeting 30fps on all consoles. A 60fps option at launch or later is neither ruled in nor out.",
     date: "2026-08-28",
     dateLabel: "August 28, 2026",
     title: "GTA VI targets 30fps on every console — including PS5 Pro",
@@ -216,6 +238,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "extended-look-netflix-youtube",
+    seoTitle: "An Extended Look: 27 minutes of GTA VI on Netflix",
+    seoDescription: "Rockstar skipped a traditional Trailer 3 and premiered a 27-minute in-game showcase on Netflix, then YouTube six hours later. It hit No. 1 on Netflix.",
     date: "2026-08-27",
     dateLabel: "August 27, 2026",
     title: "\"An Extended Look\": 27 minutes of GTA VI premieres on Netflix",
@@ -238,6 +262,8 @@ export const news: NewsItem[] = [
   },
   {
     slug: "take-two-q1-fy27-preorders-unprecedented",
+    seoTitle: "Take-Two: GTA VI pre-orders unprecedented, Nov 19 holds",
+    seoDescription: "Take-Two again listed GTA VI for November 19, 2026 and repeated $8.0-8.2B FY2027 net bookings. Zelnick called pre-orders unprecedented but gave no number.",
     date: "2026-08-07",
     dateLabel: "August 7, 2026",
     title: "Take-Two: GTA VI pre-orders are \"unprecedented\" — November 19 holds",
@@ -260,6 +286,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "preorders-open-price-editions",
+    seoDescription: "Rockstar opened pre-orders with two editions; boxed copies hold a download code, not a disc. Preloading starts November 12 with the Vintage Vice City Pack.",
     date: "2026-06-25",
     dateLabel: "June 25, 2026",
     title: "GTA VI pre-orders open: $79.99 Standard, $99.99 Ultimate",
@@ -283,6 +310,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "take-two-reaffirms-date-q4-earnings",
+    seoDescription: "On its Q4 FY2026 call, Take-Two CEO Strauss Zelnick reconfirmed the November 19, 2026 release, with $8B+ in FY2027 revenue guidance tied to the launch.",
     date: "2026-05-21",
     dateLabel: "May 21, 2026",
     title: "Take-Two reaffirms November 19 — no more delays",
@@ -301,6 +329,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "delay-to-november-2026",
+    seoDescription: "Take-Two moved the launch from May 26, 2026 to November 19, 2026, the second shift after the original Fall 2025 window. Rockstar cited polish.",
     date: "2025-11-06",
     dateLabel: "November 6, 2025",
     title: "GTA VI delayed to November 19, 2026",
@@ -319,6 +348,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "trailer-2-jason-lucia",
+    seoDescription: "Rockstar dropped Trailer 2 with new screenshots: Jason and Lucia caught in a criminal conspiracy across the state of Leonida. 475M+ views in 24 hours.",
     date: "2025-05-06",
     dateLabel: "May 6, 2025",
     title: "Trailer 2 introduces Jason & Lucia's story",
@@ -340,6 +370,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "trailer-1-vice-city-reveal",
+    seoDescription: "The first official look at GTA VI: modern-day Vice City, the state of Leonida, and Lucia, the series' first female protagonist since the 2D era.",
     date: "2023-12-04",
     dateLabel: "December 4, 2023",
     title: "Trailer 1 reveals Vice City and Lucia",

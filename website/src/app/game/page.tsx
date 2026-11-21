@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LaunchStatus from "@/components/LaunchStatus";
@@ -9,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Everything We Know About GTA 6 (November 2026)",
   description:
-    "GTA 6 facts only: out now on PS5 and Xbox, $79.99 price, no disc, 30fps, single-player, Jason & Lucia, Leonida and Vice City — and what's still unconfirmed.",
+    "GTA 6 facts only: out now on PS5 and Xbox, $79.99, no disc, 30fps, single-player, Jason & Lucia, Leonida and Vice City, and what's unconfirmed.",
   path: "/game",
 });
 
@@ -94,6 +95,7 @@ export default function GamePage() {
           <LaunchStatus compact />
         </div>
       </div>
+      <RelatedPages current="/game" />
     </div>
   );
 }

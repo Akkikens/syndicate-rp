@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
@@ -9,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const title = "GTA 6 on PS5: Price, 30fps, PS5 Pro, Storage & Online";
 const description =
-  "Everything PS5 players need for GTA 6: price and editions, the 30fps target, PS5 Pro features, the 212GB install, and what's (not) available for online and roleplay.";
+  "Everything PS5 players need for GTA 6: price and editions, the 30fps target, PS5 Pro features, the 212GB install, and online and roleplay status.";
 
 export const metadata = pageMetadata({ title, description, path: "/ps5" });
 
@@ -211,6 +212,7 @@ export default function Ps5Page() {
           Full FAQ →
         </Link>
       </div>
+      <RelatedPages current="/ps5" />
     </div>
   );
 }

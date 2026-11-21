@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LaunchStatus from "@/components/LaunchStatus";
@@ -109,6 +110,7 @@ export default function ReleaseDatePage() {
           Full FAQ →
         </Link>
       </div>
+      <RelatedPages current="/release-date" />
     </div>
   );
 }
