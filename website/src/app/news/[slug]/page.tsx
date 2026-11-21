@@ -3,9 +3,18 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import NewsCard from "@/components/NewsCard";
+import ShareLinks from "@/components/ShareLinks";
 import { news, getNewsItem } from "@/data/news";
+import {
+  formatIsoDate,
+  modifiedDate,
+  moreLikeThis,
+  neighbours,
+  readingMinutes,
+  tagPath,
+} from "@/lib/news";
 import { newsArticleSchema } from "@/lib/schema";
-import { pageMetadata } from "@/lib/seo";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -19,12 +28,12 @@ export async function generateMetadata({ params }: Props) {
   const item = getNewsItem((await params).slug);
   if (!item) return {};
   return pageMetadata({
-    title: item.title,
-    description: item.summary,
+    title: item.seoTitle ?? item.title,
+    description: item.seoDescription ?? item.summary,
     path: `/news/${item.slug}`,
     type: "article",
     publishedTime: item.date,
-    modifiedTime: item.date,
+    modifiedTime: modifiedDate(item),
   });
 }
 
@@ -32,7 +41,9 @@ export default async function NewsArticlePage({ params }: Props) {
   const item = getNewsItem((await params).slug);
   if (!item) notFound();
 
-  const more = news.filter((n) => n.slug !== item.slug).slice(0, 3);
+  const more = moreLikeThis(item);
+  const { newer, older } = neighbours(item.slug);
+  const url = absoluteUrl(`/news/${item.slug}`);
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -43,11 +54,22 @@ export default async function NewsArticlePage({ params }: Props) {
           { href: `/news/${item.slug}`, label: item.title },
         ]}
       />
-      <div className="flex items-center gap-4">
-        <span className="eyebrow">{item.tag}</span>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <Link href={tagPath(item.tag)} className="eyebrow hover:text-cream">
+          {item.tag}
+        </Link>
         <time dateTime={item.date} className="font-mono text-xs text-muted">
           {item.dateLabel}
         </time>
+        {item.updated && item.updated !== item.date && (
+          <span className="font-mono text-xs text-muted">
+            Updated{" "}
+            <time dateTime={item.updated}>{formatIsoDate(item.updated)}</time>
+          </span>
+        )}
+        <span className="font-mono text-xs text-muted">
+          {readingMinutes(item)} min read
+        </span>
       </div>
       <h1 className="display mt-4 text-3xl leading-tight sm:text-5xl">
         {item.title}
@@ -59,6 +81,8 @@ export default async function NewsArticlePage({ params }: Props) {
           <p key={para.slice(0, 40)}>{para}</p>
         ))}
       </div>
+
+      <ShareLinks url={url} title={item.title} />
 
       {item.source && (
         <p className="mt-8 font-mono text-xs uppercase tracking-[0.18em] text-muted">
@@ -92,8 +116,38 @@ export default async function NewsArticlePage({ params }: Props) {
         </nav>
       )}
 
+      {(newer || older) && (
+        <nav
+          aria-label="Previous and next story"
+          className="mt-12 grid gap-4 sm:grid-cols-2"
+        >
+          {older ? (
+            <Link
+              href={`/news/${older.slug}`}
+              rel="prev"
+              className="neon-card rounded-md p-5"
+            >
+              <span className="eyebrow">← Older story</span>
+              <span className="mt-2 block leading-snug">{older.title}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {newer && (
+            <Link
+              href={`/news/${newer.slug}`}
+              rel="next"
+              className="neon-card rounded-md p-5 sm:text-right"
+            >
+              <span className="eyebrow">Newer story →</span>
+              <span className="mt-2 block leading-snug">{newer.title}</span>
+            </Link>
+          )}
+        </nav>
+      )}
+
       <section className="mt-16 border-t border-line pt-12">
-        <h2 className="display text-2xl">More GTA VI news</h2>
+        <h2 className="display text-2xl">More like this</h2>
         <div className="mt-6 flex flex-col gap-6">
           {more.map((n) => (
             <NewsCard key={n.slug} item={n} />

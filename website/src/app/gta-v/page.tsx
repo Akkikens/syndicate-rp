@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import CopyConnect from "@/components/CopyConnect";
 import CarGarage from "@/components/CarGarage";
@@ -17,7 +18,7 @@ import {
 
 export const metadata = pageMetadata({
   title: `${site.server.name}: GTA V FiveM Car Culture RP Server`,
-  description: `${site.server.shortPitch} Drag racing with $50k pots, Saturday car meets with $25k Best in Show, car clubs, custom maps, and up to ${site.server.slots} players.`,
+  description: `${site.server.shortPitch} $50k drag racing pots, Saturday car meets, clubs, custom maps and up to ${site.server.slots} players.`,
   path: "/gta-v",
 });
 
@@ -350,6 +351,7 @@ export default function GtaVPage() {
           </a>
         </div>
       </section>
+      <RelatedPages current="/gta-v" />
     </div>
   );
 }
