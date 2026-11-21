@@ -3,6 +3,7 @@ import { Anton, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import AnalyticsScripts from "@/components/AnalyticsScripts";
 import { websiteSchema, organizationSchema } from "@/lib/schema";
 import { site } from "@/config/site";
 import "./globals.css";
@@ -82,11 +83,21 @@ export default function RootLayout({
       className={`${anton.variable} ${instrument.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="grain flex min-h-full flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-vice focus:px-4 focus:py-2 focus:text-night"
+        >
+          Skip to content
+        </a>
         <JsonLd data={websiteSchema} />
         <JsonLd data={organizationSchema} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <Footer />
+        {/* Vercel serves the scripts; elsewhere they would 404 */}
+        {process.env.VERCEL && <AnalyticsScripts />}
       </body>
     </html>
   );

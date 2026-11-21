@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { characters } from "@/data/characters";
 import { pageMetadata } from "@/lib/seo";
@@ -5,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Characters: Jason, Lucia & the Full Cast",
   description:
-    "Every officially confirmed GTA 6 character: Jason Duval and Lucia Caminos, plus Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista.",
+    "Every confirmed GTA 6 character: Jason Duval, Lucia Caminos, Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista and Brian Heder.",
   path: "/characters",
 });
 
@@ -57,6 +58,7 @@ export default function CharactersPage() {
           </article>
         ))}
       </div>
+      <RelatedPages current="/characters" />
     </div>
   );
 }

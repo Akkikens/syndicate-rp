@@ -3,6 +3,7 @@ import { faqs } from "@/data/faq";
 import { latestTrailer, type Trailer } from "@/data/trailers";
 import type { NewsItem } from "@/data/news";
 import { absoluteUrl } from "@/lib/seo";
+import { modifiedDate } from "@/lib/news";
 
 const organizationRef = { "@id": `${site.domain}/#organization` };
 
@@ -17,6 +18,15 @@ export const websiteSchema = {
   publisher: organizationRef,
   description:
     "GTA 6 news, PS5 guide, trailers, characters, map, and FAQ — everything Grand Theft Auto VI in one place.",
+  // Sitelinks search box; /search reads ?q= and filters in the browser.
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${site.domain}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export const organizationSchema = {
@@ -25,6 +35,7 @@ export const organizationSchema = {
   "@id": `${site.domain}/#organization`,
   name: site.name,
   url: site.domain,
+  publishingPrinciples: `${site.domain}/editorial-policy`,
   // Google wants a raster logo of at least 112px — served by app/apple-icon.tsx.
   logo: {
     "@type": "ImageObject",
@@ -129,7 +140,7 @@ export function newsArticleSchema(item: NewsItem) {
     mainEntityOfPage: url,
     image: [`${url}/opengraph-image`],
     datePublished: item.date,
-    dateModified: item.date,
+    dateModified: modifiedDate(item),
     author: { "@type": "Organization", name: site.name, url: site.domain },
     publisher: organizationRef,
     about: { "@type": "VideoGame", name: "Grand Theft Auto VI" },
@@ -138,15 +149,34 @@ export function newsArticleSchema(item: NewsItem) {
 }
 
 // For evergreen guide pages: tells crawlers when the facts were last checked.
-export function webPageSchema(path: string, name: string, description: string) {
+export function webPageSchema(
+  path: string,
+  name: string,
+  description: string,
+  type: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" = "WebPage",
+) {
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": type,
     name,
     description,
     url: absoluteUrl(path),
     isPartOf: { "@id": `${site.domain}/#website` },
     dateModified: site.lastUpdated,
     inLanguage: "en-US",
+  };
+}
+
+// Ordered list of stories, for the news index and tag pages.
+export function newsListSchema(items: NewsItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((n, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: absoluteUrl(`/news/${n.slug}`),
+      name: n.title,
+    })),
   };
 }

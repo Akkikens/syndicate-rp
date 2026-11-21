@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { site, isConfigured } from "@/config/site";
@@ -7,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Mods: Will GTA 6 Have Mods? Directory",
   description:
-    "Will GTA 6 have mods? It launched on consoles only, which have no PC-style mods. Our curated mod directory opens with PC once a PC version exists.",
+    "Will GTA 6 have mods? It launched on consoles only, which have no PC-style mods. Our vehicle, map and script directory opens once a PC version exists.",
   path: "/mods",
 });
 
@@ -125,6 +126,7 @@ export default function ModsPage() {
           </Link>
         </p>
       </section>
+      <RelatedPages current="/mods" />
     </div>
   );
 }

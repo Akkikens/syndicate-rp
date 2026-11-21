@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { regions, mapFacts } from "@/data/locations";
 import { pageMetadata } from "@/lib/seo";
@@ -5,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Map: Leonida, Vice City & Every Region",
   description:
-    "The GTA 6 map explained: all six confirmed regions of Leonida, from Vice City and the Leonida Keys to Mount Kalaga National Park, plus size estimates.",
+    "The GTA 6 map explained: all six confirmed regions of Leonida, from Vice City and the Keys to Mount Kalaga National Park, plus size estimates.",
   path: "/map",
 });
 
@@ -59,6 +60,7 @@ export default function MapPage() {
           footage, not Rockstar — treat them as informed speculation.
         </p>
       </section>
+      <RelatedPages current="/map" />
     </div>
   );
 }

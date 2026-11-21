@@ -11,6 +11,32 @@ const ogImage = {
   alt: "GTA 6 Network — Everything Grand Theft Auto VI",
 };
 
+// Pages with their own opengraph-image file. An explicit images entry would
+// override that file, so these omit it and let Next.js attach the file's card.
+const ownOgImage = new Set([
+  "/ps5",
+  "/release-date",
+  "/pre-order",
+  "/pc",
+  "/game",
+  "/faq",
+  "/trailers",
+  "/characters",
+  "/map",
+  "/mods",
+  "/news",
+  "/gta-v",
+  "/premium",
+  "/xbox",
+  "/online",
+  "/60fps",
+  "/system-requirements",
+  "/roleplay",
+  "/gta-plus",
+  "/guides",
+  "/crew",
+]);
+
 export function pageMetadata({
   title,
   description,
@@ -45,13 +71,13 @@ export function pageMetadata({
       // Overriding openGraph drops the inherited file-based image, so point
       // back at the site card. Routes with their own opengraph-image
       // (news articles) still take precedence.
-      ...(type === "website" && { images: [ogImage] }),
+      ...(type === "website" && !ownOgImage.has(path) && { images: [ogImage] }),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      ...(type === "website" && { images: [ogImage.url] }),
+      ...(type === "website" && !ownOgImage.has(path) && { images: [ogImage.url] }),
     },
   };
 }

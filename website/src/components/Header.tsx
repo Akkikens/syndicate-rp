@@ -11,6 +11,23 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function SearchIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -23,11 +40,12 @@ export default function Header() {
           <span className="text-teal">.org</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-4 xl:flex" aria-label="Main">
           {navRoutes.map((item) => (
             <Link
               key={item.href}
               href={item.href}
+              aria-current={isActive(pathname, item.href) ? "page" : undefined}
               className={`font-mono text-xs uppercase tracking-[0.18em] transition-colors ${
                 isActive(pathname, item.href)
                   ? "text-vice"
@@ -36,9 +54,17 @@ export default function Header() {
                     : "text-muted hover:text-cream"
               }`}
             >
-              {item.label}
+              {item.navLabel ?? item.label}
             </Link>
           ))}
+          <Link
+            href="/search"
+            aria-label="Search"
+            aria-current={pathname === "/search" ? "page" : undefined}
+            className="text-muted hover:text-cream"
+          >
+            <SearchIcon />
+          </Link>
           <a
             href={site.youtube}
             target="_blank"
@@ -51,8 +77,9 @@ export default function Header() {
 
         <button
           type="button"
-          className="lg:hidden"
+          className="xl:hidden"
           aria-expanded={open}
+          aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen(!open)}
         >
@@ -64,7 +91,8 @@ export default function Header() {
 
       {open && (
         <nav
-          className="border-t border-line bg-night px-4 py-4 lg:hidden"
+          id="mobile-nav"
+          className="border-t border-line bg-night px-4 py-4 xl:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-4">
@@ -73,14 +101,29 @@ export default function Header() {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
+                  aria-current={isActive(pathname, item.href) ? "page" : undefined}
                   className={`font-mono text-sm uppercase tracking-[0.18em] ${
-                    item.accent ? "text-teal" : "text-cream"
+                    isActive(pathname, item.href)
+                      ? "text-vice"
+                      : item.accent
+                        ? "text-teal"
+                        : "text-cream"
                   }`}
                 >
-                  {item.label}
+                  {item.navLabel ?? item.label}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/search"
+                onClick={() => setOpen(false)}
+                aria-current={pathname === "/search" ? "page" : undefined}
+                className="font-mono text-sm uppercase tracking-[0.18em] text-cream"
+              >
+                Search
+              </Link>
+            </li>
             <li>
               <a
                 href={site.youtube}

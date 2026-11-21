@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { faqSchema } from "@/lib/schema";
@@ -7,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 FAQ: Release Date, Price, Disc, 60fps & More",
   description:
-    "Quick answers to the biggest GTA 6 questions: release date, price ($79.99), disc vs digital, 30fps, PS5, PC version, GTA Online, map size and trailers.",
+    "Quick answers to the biggest GTA 6 questions: release date (November 19, 2026), price ($79.99), disc vs digital, 30fps, PC, GTA Online and map size.",
   path: "/faq",
 });
 
@@ -43,6 +44,7 @@ export default function FaqPage() {
           </details>
         ))}
       </div>
+      <RelatedPages current="/faq" />
     </div>
   );
 }

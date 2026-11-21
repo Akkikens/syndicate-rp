@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import TrailerEmbed from "@/components/TrailerEmbed";
@@ -9,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Trailers: Extended Look, Trailer 2 & Trailer 1",
   description:
-    "Watch every official GTA 6 video: the 27-minute Extended Look, Trailer 2 (Jason & Lucia) and Trailer 1 (Vice City reveal). Plus: is there a Trailer 3?",
+    "Watch every official GTA 6 video: the 27-minute Extended Look, Trailer 2 (Jason & Lucia) and Trailer 1 (Vice City reveal). Is there a Trailer 3?",
   path: "/trailers",
 });
 
@@ -64,6 +65,7 @@ export default function TrailersPage() {
           </a>
         </section>
       </div>
+      <RelatedPages current="/trailers" />
     </div>
   );
 }

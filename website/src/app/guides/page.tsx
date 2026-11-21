@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
+import RelatedPages from "@/components/RelatedPages";
 import { site } from "@/config/site";
 import { guides } from "@/data/guides";
 import { guidesListSchema } from "@/lib/schema-guides";
@@ -87,6 +88,7 @@ export default function GuidesPage() {
           Latest news →
         </Link>
       </div>
+      <RelatedPages current="/guides" />
     </div>
   );
 }

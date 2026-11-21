@@ -2,6 +2,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CommunityCta from "@/components/CommunityCta";
 import JsonLd from "@/components/JsonLd";
+import RelatedPages from "@/components/RelatedPages";
 import { site } from "@/config/site";
 import type { Badge, InfoPageData } from "@/data/page-types";
 import { faqSchema, webPageSchema } from "@/lib/schema";
@@ -199,6 +200,7 @@ export default function InfoPage({
           </Link>
         ))}
       </div>
+      <RelatedPages current={data.path} />
     </div>
   );
 }

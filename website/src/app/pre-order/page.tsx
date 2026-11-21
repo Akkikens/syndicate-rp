@@ -1,3 +1,4 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import EditionPicker from "@/components/EditionPicker";
@@ -9,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const title = "GTA 6 Price & Editions: $79.99 Standard, $99.99 Ultimate";
 const description =
-  "GTA 6 costs $79.99 (Standard) or $99.99 (Ultimate). What Ultimate adds, what happened to the Vintage Vice City Pack, why there's no disc, and where to buy.";
+  "GTA 6 costs $79.99 (Standard) or $99.99 (Ultimate). What Ultimate adds, the Vintage Vice City Pack, why there's no disc, and where to buy.";
 
 export const metadata = pageMetadata({ title, description, path: "/pre-order" });
 
@@ -163,6 +164,7 @@ export default function PreOrderPage() {
           The original pre-order announcement →
         </Link>
       </div>
+      <RelatedPages current="/pre-order" />
     </div>
   );
 }

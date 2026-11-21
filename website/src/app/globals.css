@@ -9,6 +9,7 @@
   --sunset: #ff8a3d;
   --grape: #8a4fff;
   --teal: #35e0db;
+  --grape-text: #b39bff; /* grape lightened to pass 4.5:1 for small text */
   --cream: #fff4ea;
   --muted: rgba(255, 244, 234, 0.62);
 }
@@ -22,6 +23,7 @@
   --color-sunset: var(--sunset);
   --color-grape: var(--grape);
   --color-teal: var(--teal);
+  --color-grape-text: var(--grape-text);
   --color-cream: var(--cream);
   --color-muted: var(--muted);
   --font-display: var(--font-anton);

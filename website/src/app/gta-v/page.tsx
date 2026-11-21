@@ -1,4 +1,8 @@
+import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 import CopyConnect from "@/components/CopyConnect";
 import CarGarage from "@/components/CarGarage";
 import { site } from "@/config/site";
@@ -15,11 +19,10 @@ import {
   economy,
 } from "@/data/server";
 
-export const metadata = pageMetadata({
-  title: `${site.server.name}: GTA V FiveM Car Culture RP Server`,
-  description: `${site.server.shortPitch} Drag racing, Saturday car meets, car clubs, custom maps, and up to ${site.server.slots} players.`,
-  path: "/gta-v",
-});
+const title = `${site.server.name}: GTA V FiveM Car Culture RP Server`;
+const description = `${site.server.shortPitch} $50k drag racing pots, Saturday car meets, clubs, custom maps and up to ${site.server.slots} players.`;
+
+export const metadata = pageMetadata({ title, description, path: "/gta-v" });
 
 const sections = [
   { id: "racing", label: "Racing" },
@@ -55,6 +58,8 @@ export default function GtaVPage() {
   const [lead, ...rest] = site.server.name.split(" ");
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <JsonLd data={webPageSchema("/gta-v", title, description)} />
+      <Breadcrumbs items={[{ href: "/gta-v", label: "GTA V" }]} />
       {/* ── Hero ── */}
       <p className="eyebrow">GTA V · FiveM</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
@@ -360,6 +365,7 @@ export default function GtaVPage() {
           Console crew →
         </Link>
       </p>
+      <RelatedPages current="/gta-v" />
     </div>
   );
 }
