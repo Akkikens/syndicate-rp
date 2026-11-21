@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { groupOf, routes } from "@/config/routes";
-import { relatedMap, summaryFor } from "@/data/pages";
+import { guideRelated, relatedMap, summaryFor } from "@/data/pages";
 
 // Foot-of-page links so no evergreen page is a dead end. Uses the curated
 // list when there is one, otherwise siblings in the same footer group, then
@@ -8,7 +8,10 @@ import { relatedMap, summaryFor } from "@/data/pages";
 export default function RelatedPages({ current }: { current: string }) {
   const known = new Set(routes.map((r) => r.href));
   const me = routes.find((r) => r.href === current);
-  const picks = (relatedMap[current] ?? []).filter((h) => known.has(h));
+  const picks = (
+    relatedMap[current] ??
+    (current.startsWith("/guides/") ? guideRelated : [])
+  ).filter((h) => known.has(h));
   const siblings = me
     ? routes
         .filter((r) => r.href !== current && groupOf(r) === groupOf(me))

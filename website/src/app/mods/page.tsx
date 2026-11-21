@@ -116,6 +116,15 @@ export default function ModsPage() {
             See the custom cars &amp; maps on our server →
           </Link>
         </p>
+        <p className="mt-3 text-muted">
+          Wondering where GTA 6 mods and RP stand?{" "}
+          <Link href="/roleplay" className="text-teal hover:text-cream">
+            GTA 6 roleplay and FiveM →
+          </Link>{" "}
+          <Link href="/system-requirements" className="text-teal hover:text-cream">
+            PC requirements →
+          </Link>
+        </p>
       </section>
       <RelatedPages current="/mods" />
     </div>

@@ -149,6 +149,26 @@ export default function Home() {
               title: "FAQ",
               blurb: "60fps, PC version, GTA Online, PS5 roleplay, map size. Answered.",
             },
+            {
+              href: "/guides",
+              title: "Guides",
+              blurb: "How to save, install size, which edition to buy, and the free GTA+ month.",
+            },
+            {
+              href: "/xbox",
+              title: "GTA 6 on Xbox",
+              blurb: "Series X|S, Game Pass, Xbox One cloud play, and what Microsoft's pages confirm.",
+            },
+            {
+              href: "/online",
+              title: "GTA 6 Online",
+              blurb: "No online mode at launch: what Take-Two has said, and what hasn't been announced.",
+            },
+            {
+              href: "/roleplay",
+              title: "GTA 6 Roleplay",
+              blurb: "Why there are no RP servers yet, FiveM's status, and where to play today.",
+            },
           ].map((card) => (
             <Link
               key={card.href}

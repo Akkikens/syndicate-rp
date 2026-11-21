@@ -28,7 +28,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Does GTA 6 run at 60fps?",
-    a: "No 60fps mode has been announced. Rockstar is targeting 30fps on current consoles. PS5 Pro adds PSSR and ray-traced shadows, per the PlayStation Store listing.",
+    a: "No. GTA VI targets 30fps on current consoles, and Rockstar told Kotaku there is no 60fps or 40fps mode on any launch console, including PS5 Pro, per Engadget (November 18). PS5 Pro adds PSSR and ray-traced shadows, per PlayStation's GTA VI page.",
   },
   {
     q: "Who are the GTA 6 protagonists?",

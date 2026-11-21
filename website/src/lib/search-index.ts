@@ -1,5 +1,6 @@
 import { routes } from "@/config/routes";
 import { summaryFor } from "@/data/pages";
+import { guides } from "@/data/guides";
 import { news } from "@/data/news";
 import type { SearchEntry } from "@/components/SearchBox";
 
@@ -17,5 +18,11 @@ export function buildSearchIndex(): SearchEntry[] {
     summary: n.summary,
     tag: n.tag,
   }));
-  return [...pages, ...stories];
+  const guidePages = guides.map((g) => ({
+    href: g.path,
+    title: g.title,
+    summary: g.description,
+    tag: "Guide",
+  }));
+  return [...pages, ...guidePages, ...stories];
 }

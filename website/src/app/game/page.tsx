@@ -37,7 +37,7 @@ const facts = [
   },
   {
     q: "How does it run?",
-    a: "Rockstar is targeting 30fps on current consoles. On PS5 Pro, the PlayStation Store lists PSSR and ray-traced shadows. We haven't found an announced 60fps mode.",
+    a: "Rockstar is targeting 30fps on current consoles. On PS5 Pro, the PlayStation Store lists PSSR and ray-traced shadows. Rockstar told Kotaku no 60fps or 40fps mode is coming to launch consoles, per Engadget.",
   },
   {
     q: "What about GTA Online?",

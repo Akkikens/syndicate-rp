@@ -205,6 +205,12 @@ export default function Ps5Page() {
         <Link href="/release-date" className={linkClass}>
           Release date →
         </Link>
+        <Link href="/xbox" className={linkClass}>
+          GTA 6 on Xbox →
+        </Link>
+        <Link href="/60fps" className={linkClass}>
+          GTA 6 60fps →
+        </Link>
         <Link href="/pc" className={linkClass}>
           GTA 6 on PC →
         </Link>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routes } from "@/config/routes";
 import { site } from "@/config/site";
+import { guides } from "@/data/guides";
 import { news } from "@/data/news";
 import { trailers } from "@/data/trailers";
 import { newsByTag, newsTags, modifiedDate, tagPath } from "@/lib/news";
@@ -18,13 +19,25 @@ const evergreen = new Set([
   "/privacy",
 ]);
 
+// New search-demand landing pages.
+const landing = new Set([
+  "/xbox",
+  "/online",
+  "/60fps",
+  "/system-requirements",
+  "/roleplay",
+  "/gta-plus",
+  "/guides",
+  "/crew",
+]);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = routes.map((r) => ({
     url: absoluteUrl(r.href),
     lastModified: evergreen.has(r.href) ? undefined : site.lastUpdated,
     changeFrequency: r.changeFrequency ?? "weekly",
     priority:
-      r.href === "/" ? 1 : r.href === "/release-date" || r.href === "/news" || r.href === "/ps5" ? 0.9 : 0.7,
+      r.href === "/" ? 1 : r.href === "/release-date" || r.href === "/news" || r.href === "/ps5" ? 0.9 : landing.has(r.href) ? 0.8 : 0.7,
     ...(r.href === "/trailers" && {
       videos: trailers.map((t) => ({
         title: `Grand Theft Auto VI — ${t.name}`,
@@ -53,5 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }));
 
-  return [...pages, ...tagPages, ...articles];
+  const guidePages: MetadataRoute.Sitemap = guides.map((g) => ({
+    url: absoluteUrl(g.path),
+    lastModified: site.lastUpdated,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  return [...pages, ...guidePages, ...tagPages, ...articles];
 }

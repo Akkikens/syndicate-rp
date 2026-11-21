@@ -30,7 +30,7 @@ export const ps5Facts = {
     {
       title: "Not confirmed",
       items: [
-        "A 60fps or other performance mode: none has been announced.",
+        "A 60fps or other performance mode: Rockstar told Kotaku none is coming to any launch console, PS5 Pro included (per Engadget, November 18).",
         "PS5 Pro resolution and other PS5 vs PS5 Pro differences beyond the two features above.",
       ],
     },
@@ -47,7 +47,7 @@ export const ps5Facts = {
 export const ps5Faq: Faq[] = [
   {
     q: "Does GTA 6 run at 60fps on PS5?",
-    a: "No 60fps mode has been announced. Rockstar is targeting 30fps on current consoles.",
+    a: "No. Rockstar is targeting 30fps on current consoles and told Kotaku no 60fps or 40fps mode is coming to any launch console, per Engadget (November 18).",
   },
   {
     q: "Is there a PS5 Pro version of GTA 6?",

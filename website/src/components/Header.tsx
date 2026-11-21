@@ -40,7 +40,7 @@ export default function Header() {
           <span className="text-teal">.org</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-4 xl:flex" aria-label="Main">
           {navRoutes.map((item) => (
             <Link
               key={item.href}
@@ -54,7 +54,7 @@ export default function Header() {
                     : "text-muted hover:text-cream"
               }`}
             >
-              {item.label}
+              {item.navLabel ?? item.label}
             </Link>
           ))}
           <Link
@@ -77,8 +77,9 @@ export default function Header() {
 
         <button
           type="button"
-          className="lg:hidden"
+          className="xl:hidden"
           aria-expanded={open}
+          aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen(!open)}
         >
@@ -90,7 +91,8 @@ export default function Header() {
 
       {open && (
         <nav
-          className="border-t border-line bg-night px-4 py-4 lg:hidden"
+          id="mobile-nav"
+          className="border-t border-line bg-night px-4 py-4 xl:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-4">
@@ -108,7 +110,7 @@ export default function Header() {
                         : "text-cream"
                   }`}
                 >
-                  {item.label}
+                  {item.navLabel ?? item.label}
                 </Link>
               </li>
             ))}
@@ -116,6 +118,7 @@ export default function Header() {
               <Link
                 href="/search"
                 onClick={() => setOpen(false)}
+                aria-current={pathname === "/search" ? "page" : undefined}
                 className="font-mono text-sm uppercase tracking-[0.18em] text-cream"
               >
                 Search

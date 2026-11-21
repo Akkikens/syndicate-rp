@@ -157,6 +157,12 @@ export default function PcPage() {
         <Link href="/mods" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
           GTA 6 mods →
         </Link>
+        <Link href="/system-requirements" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          PC requirements →
+        </Link>
+        <Link href="/roleplay" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          GTA 6 roleplay →
+        </Link>
       </div>
       <RelatedPages current="/pc" />
     </div>

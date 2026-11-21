@@ -1,6 +1,7 @@
 import RelatedPages from "@/components/RelatedPages";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import EditionPicker from "@/components/EditionPicker";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/config/site";
 import { editions, vintagePack } from "@/data/editions";
@@ -33,6 +34,10 @@ const qa = [
   {
     q: "Is the Ultimate Edition worth it?",
     a: "It costs $20 more. Per the PlayStation Store, it adds extra vehicles, weapons, outfits, hairstyles, tattoos, special commissions, and some Ultimate-only services. If you only want the story, Standard is the full game.",
+  },
+  {
+    q: "Can I upgrade from Standard to Ultimate later?",
+    a: "On the US Microsoft Store, an Ultimate Edition Upgrade add-on is listed separately at $20.00. We haven't confirmed a separate upgrade on the PlayStation Store. PlayStation's GTA+ offer terms say an Ultimate upgrade doesn't qualify for the free GTA+ month.",
   },
 ];
 
@@ -86,6 +91,53 @@ export default function PreOrderPage() {
         Buy at Rockstar ↗
       </a>
 
+      <section className="mt-12">
+        <h2 className="display text-2xl">Standard vs Ultimate at a glance</h2>
+        <div className="neon-card mt-6 overflow-x-auto rounded-md">
+          <table className="w-full text-left text-sm">
+            <caption className="sr-only">
+              Comparison of the Standard and Ultimate Editions
+            </caption>
+            <thead className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-teal">
+              <tr>
+                <th scope="col" className="p-4">What you get</th>
+                <th scope="col" className="p-4">Standard</th>
+                <th scope="col" className="p-4">Ultimate</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted">
+              <tr className="border-t border-line">
+                <th scope="row" className="p-4 text-left font-normal text-cream">US price</th>
+                <td className="p-4">{editions[0].usd}</td>
+                <td className="p-4">{editions[1].usd}</td>
+              </tr>
+              <tr className="border-t border-line">
+                <th scope="row" className="p-4 text-left font-normal text-cream">The full game</th>
+                <td className="p-4">Yes</td>
+                <td className="p-4">Yes</td>
+              </tr>
+              <tr className="border-t border-line">
+                <th scope="row" className="p-4 text-left font-normal text-cream">Extra vehicles and weapons</th>
+                <td className="p-4">No</td>
+                <td className="p-4">Yes</td>
+              </tr>
+              <tr className="border-t border-line">
+                <th scope="row" className="p-4 text-left font-normal text-cream">Vice City Style outfits, hairstyles, tattoos</th>
+                <td className="p-4">No</td>
+                <td className="p-4">Yes</td>
+              </tr>
+              <tr className="border-t border-line">
+                <th scope="row" className="p-4 text-left font-normal text-cream">Classic car collection, Ultimate-only services</th>
+                <td className="p-4">No</td>
+                <td className="p-4">Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <EditionPicker />
+
       <section className="mt-16 flex flex-col gap-6">
         {qa.map((f) => (
           <div key={f.q} className="neon-card rounded-md p-6 sm:p-8">
@@ -98,6 +150,12 @@ export default function PreOrderPage() {
       <div className="mt-12 flex flex-wrap gap-6">
         <Link href="/ps5" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
           GTA 6 on PS5 →
+        </Link>
+        <Link href="/guides/which-gta-6-edition-to-buy" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          Which edition to buy →
+        </Link>
+        <Link href="/gta-plus" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          GTA+ in GTA 6 →
         </Link>
         <Link href="/release-date" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
           Release date →

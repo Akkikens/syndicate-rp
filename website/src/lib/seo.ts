@@ -27,6 +27,14 @@ const ownOgImage = new Set([
   "/news",
   "/gta-v",
   "/premium",
+  "/xbox",
+  "/online",
+  "/60fps",
+  "/system-requirements",
+  "/roleplay",
+  "/gta-plus",
+  "/guides",
+  "/crew",
 ]);
 
 export function pageMetadata({

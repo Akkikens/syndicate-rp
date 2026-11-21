@@ -17,6 +17,14 @@ export const pageSummaries: Record<string, string> = {
   "/faq": "Quick answers to the questions players ask most.",
   "/premium": "The membership waitlist: early videos and a private Discord wing.",
   "/gta-v": "Syndicate RP, a car culture roleplay server for GTA V on PC.",
+  "/xbox": "Price, Series X|S, storage, Game Pass status and online for Xbox players.",
+  "/online": "What has been said about GTA Online for GTA 6, and what is not dated.",
+  "/60fps": "The 30fps target, what PS5 Pro adds, and what Rockstar has not confirmed.",
+  "/system-requirements": "No official PC requirements exist; what is known and what is not.",
+  "/roleplay": "Why there are no GTA 6 RP servers yet, and what has to happen first.",
+  "/gta-plus": "What GTA+ includes for GTA 6 and how the free month works.",
+  "/guides": "Sourced how-tos: saving, storage, editions, GTA+ and Xbox One cloud.",
+  "/crew": "The forming PS5 and Xbox crew for GTA Online today and GTA VI later.",
   "/about": "What this site is, who it is not affiliated with, and Syndicate RP.",
   "/editorial-policy": "How stories are sourced, how rumors and corrections are handled.",
   "/contact": "How to reach the site through its official channels.",
@@ -26,23 +34,34 @@ export const pageSummaries: Record<string, string> = {
 // Hand-picked neighbours per page. Pages not listed (or listed hrefs that no
 // longer exist) fall back to other routes in the same footer group.
 export const relatedMap: Record<string, string[]> = {
-  "/ps5": ["/pre-order", "/pc", "/faq", "/news"],
-  "/release-date": ["/news", "/game", "/pre-order", "/faq"],
-  "/pre-order": ["/ps5", "/release-date", "/game", "/faq"],
-  "/pc": ["/mods", "/ps5", "/news", "/faq"],
-  "/game": ["/characters", "/map", "/trailers", "/faq"],
-  "/faq": ["/ps5", "/pre-order", "/release-date", "/news"],
+  "/ps5": ["/xbox", "/60fps", "/pre-order", "/guides"],
+  "/release-date": ["/online", "/news", "/pre-order", "/guides"],
+  "/pre-order": ["/guides", "/ps5", "/xbox", "/release-date"],
+  "/pc": ["/system-requirements", "/roleplay", "/mods", "/ps5"],
+  "/game": ["/characters", "/map", "/online", "/guides"],
+  "/faq": ["/guides", "/xbox", "/60fps", "/online"],
   "/trailers": ["/game", "/characters", "/map", "/news"],
   "/characters": ["/game", "/trailers", "/map", "/faq"],
   "/map": ["/game", "/characters", "/trailers", "/faq"],
-  "/mods": ["/pc", "/gta-v", "/news", "/faq"],
+  "/mods": ["/pc", "/system-requirements", "/roleplay", "/gta-v"],
   "/premium": ["/gta-v", "/news", "/about", "/faq"],
-  "/gta-v": ["/premium", "/mods", "/ps5", "/about"],
+  "/gta-v": ["/roleplay", "/crew", "/premium", "/mods"],
+  "/xbox": ["/ps5", "/60fps", "/online", "/guides"],
+  "/online": ["/ps5", "/xbox", "/roleplay", "/gta-plus"],
+  "/60fps": ["/ps5", "/xbox", "/faq", "/game"],
+  "/system-requirements": ["/pc", "/mods", "/roleplay", "/faq"],
+  "/roleplay": ["/gta-v", "/crew", "/pc", "/mods"],
+  "/gta-plus": ["/guides", "/pre-order", "/online", "/ps5"],
+  "/guides": ["/ps5", "/xbox", "/pre-order", "/gta-plus"],
+  "/crew": ["/roleplay", "/online", "/gta-v", "/ps5"],
   "/about": ["/editorial-policy", "/contact", "/privacy", "/news"],
   "/editorial-policy": ["/about", "/contact", "/news", "/privacy"],
   "/contact": ["/about", "/editorial-policy", "/privacy", "/news"],
   "/privacy": ["/about", "/editorial-policy", "/contact", "/news"],
 };
+
+// Guide pages (/guides/<slug>) are not routes; they share one neighbour list.
+export const guideRelated = ["/guides", "/pre-order", "/ps5", "/xbox"];
 
 export const summaryFor = (href: string) =>
   pageSummaries[href] ?? routes.find((r) => r.href === href)?.label ?? "";
