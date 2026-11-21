@@ -23,6 +23,9 @@ ${faqs
 ## Pages
 ${routes.map((r) => `- [${r.label}](${absoluteUrl(r.href)})`).join("\n")}
 
+## Newsletter
+- [GTA 6 newsletter](${absoluteUrl("/newsletter")}): optional email signup for occasional GTA VI news. Only the email address is collected, stored with Resend, and every email carries an unsubscribe link.
+
 ## Guides
 ${guides.map((g) => `- [${g.title}](${absoluteUrl(g.path)}): ${g.tagline}`).join("\n")}
 

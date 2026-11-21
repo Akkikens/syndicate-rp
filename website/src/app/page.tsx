@@ -3,6 +3,7 @@ import LaunchStatus from "@/components/LaunchStatus";
 import PalmHorizon from "@/components/PalmHorizon";
 import TrailerEmbed from "@/components/TrailerEmbed";
 import NewsCard from "@/components/NewsCard";
+import NewsletterBlock from "@/components/NewsletterBlock";
 import { site } from "@/config/site";
 import { news } from "@/data/news";
 import { latestTrailer } from "@/data/trailers";
@@ -255,6 +256,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ── Newsletter ── */}
+      <NewsletterBlock variant="section" />
     </>
   );
 }

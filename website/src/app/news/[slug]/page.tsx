@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import NewsCard from "@/components/NewsCard";
+import NewsletterBlock from "@/components/NewsletterBlock";
 import ShareLinks from "@/components/ShareLinks";
 import { news, getNewsItem } from "@/data/news";
 import {
@@ -154,6 +155,8 @@ export default async function NewsArticlePage({ params }: Props) {
           ))}
         </div>
       </section>
+
+      <NewsletterBlock variant="article" />
     </article>
   );
 }
