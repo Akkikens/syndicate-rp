@@ -1,0 +1,101 @@
+name: Server build test
+
+# Builds the FiveM image, runs the installer and imports the database schema on
+# a real x86-64 Linux runner. It does NOT prove the server is joinable: that
+# needs a Cfx.re license key, which CI does not have.
+
+on:
+  pull_request:
+    paths:
+      - "server-data/**"
+      - "scripts/**"
+      - "Dockerfile"
+      - "docker-compose.yml"
+      - ".dockerignore"
+      - ".github/workflows/server-build-test.yml"
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: Install, build, import schema
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create throwaway secrets
+        run: |
+          cp server-data/server.cfg.local.example server-data/server.cfg.local
+          {
+            echo "MARIADB_ROOT_PASSWORD=$(openssl rand -hex 24)"
+            echo "MARIADB_PASSWORD=$(openssl rand -hex 24)"
+          } > .env
+
+      - name: Run installer
+        run: bash scripts/install.sh
+
+      - name: Schema files were produced
+        run: |
+          ls -l server-data/sql/
+          test -s server-data/sql/01-qbx_core.sql
+          test -s server-data/sql/02-qbx_vehicles.sql
+
+      - name: Every ensured resource exists
+        run: |
+          # `chat` ships inside the FiveM server artifact, not in resources/.
+          builtin="chat"
+          missing=0
+          for res in $(grep -E '^ensure ' server-data/server.cfg | awk '{print $2}'); do
+            case " $builtin " in *" $res "*) continue ;; esac
+            if [ -z "$(find server-data/resources -maxdepth 2 -type d -name "$res" -print -quit)" ]; then
+              echo "MISSING resource for: ensure $res"
+              missing=1
+            fi
+          done
+          exit $missing
+
+      - name: Build server image
+        run: docker compose build fivem
+
+      - name: Artifact is present in the image
+        run: docker compose run --rm --no-deps --entrypoint sh fivem -c 'test -x /opt/fivem/run.sh && ls /opt/fivem | head'
+
+      - name: Start MariaDB and import schema
+        run: |
+          docker compose up -d mariadb
+          for i in $(seq 1 40); do
+            status=$(docker inspect -f '{{.State.Health.Status}}' syndicate-db)
+            [ "$status" = "healthy" ] && break
+            sleep 3
+          done
+          docker inspect -f '{{.State.Health.Status}}' syndicate-db | grep -qx healthy
+
+      - name: Qbox tables exist
+        run: |
+          . ./.env
+          tables=$(docker exec syndicate-db mariadb -usyndicaterp -p"$MARIADB_PASSWORD" syndicaterp -N -e 'SHOW TABLES')
+          echo "$tables"
+          for t in players bans player_groups player_vehicles; do
+            echo "$tables" | grep -qx "$t" || { echo "MISSING table: $t"; exit 1; }
+          done
+
+      - name: Custom resource SQL is valid on MariaDB
+        run: |
+          . ./.env
+          # The clubs and meets resources read character names with this
+          # expression. Check MariaDB accepts it against the real players table.
+          docker exec syndicate-db mariadb -usyndicaterp -p"$MARIADB_PASSWORD" syndicaterp -e \
+            "SELECT JSON_UNQUOTE(JSON_EXTRACT(p.charinfo, '\$.firstname')) AS firstname FROM players p LIMIT 1"
+
+      - name: Boot smoke test (informational, no license key)
+        if: always()
+        continue-on-error: true
+        run: |
+          docker compose up -d fivem
+          sleep 75
+          docker compose logs --no-color fivem | tail -n 300
+
+      - name: Database logs on failure
+        if: failure()
+        run: docker compose logs --no-color mariadb | tail -n 100
