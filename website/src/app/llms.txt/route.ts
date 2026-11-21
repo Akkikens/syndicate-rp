@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 export function GET() {
   const body = `# ${site.name}
 
-> ${site.tagline}. Sourced Grand Theft Auto VI news and facts. GTA VI releases ${site.releaseDateLabel} on PS5 and Xbox Series X|S. Facts last checked ${site.lastUpdatedLabel}.
+> ${site.tagline}. Sourced Grand Theft Auto VI news and facts. GTA VI launched ${site.releaseDateLabel} on PS5 and Xbox Series X|S; see /ps5 for the console player guide. Facts last checked ${site.lastUpdatedLabel}.
 
 ## Key facts
 ${faqs

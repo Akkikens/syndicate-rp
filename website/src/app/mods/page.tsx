@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "GTA 6 Mods: Will GTA 6 Have Mods? Directory",
   description:
-    "Will GTA 6 support mods? It launches on consoles only, so PC mods wait for a PC release. Our curated directory of vehicles, maps, scripts, and graphics opens when they arrive.",
+    "Will GTA 6 have mods? It launched on consoles only, and console versions have no PC-style mods. Our curated directory of vehicles, maps, scripts, and graphics opens with PC once a PC version exists.",
   path: "/mods",
 });
 
@@ -20,11 +20,12 @@ export default function ModsPage() {
       <Breadcrumbs items={[{ href: "/mods", label: "Mods" }]} />
       <p className="eyebrow">GTA 6 Mods</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
-        Every GTA VI mod, <span className="sunset-text">day one</span>
+        GTA VI mods start <span className="sunset-text">on PC</span>
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
-        GTA VI launches November 19 on PS5 and Xbox only, so traditional PC
-        mods arrive once a PC version does. When they land, we curate the best
+        GTA VI launched November 19 on PS5 and Xbox only. Console versions
+        have no PC-style mods, so the directory opens with PC once a PC
+        version exists. When mods land, we curate the best
         vehicles, maps, scripts, and graphics packs and send you straight to
         the creators — no clutter, no fake mirrors, just the good stuff,
         ranked.

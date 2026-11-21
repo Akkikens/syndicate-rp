@@ -1,65 +1,92 @@
 # Syndicate RP — Car Pack Setup
 
+`syndicate-cars` ships **empty but valid**: `data/vehicles.meta` has no cars in it, and
+the resource is **not ensured** in `server.cfg` until you add your first car (step 5).
+The old placeholder car list in `syndicate-config` was removed because it named models
+that are not installed.
+
 ## Step 1 — Download the packs
 
-### IVPack (recommended first — all fictional, zero DMCA risk)
+### IVPack (all fictional names)
 - **URL:** https://www.gta5-mods.com/vehicles/ivpack-gtaiv-vehicles-in-gtav
-- **Rating:** 4.53/5 stars, 227k+ downloads
-- **What it is:** GTA IV iconic cars ported to GTA V as add-ons
-- Extract into: `server-data/resources/syndicate-cars/stream/ivpack/`
+- GTA IV cars ported to GTA V as add-ons.
 
 ### chappmdq FiveM-Optimized-CarPack (189 cars, handling pre-tuned)
 - **URL:** https://github.com/chappmdq/FiveM-Optimized-CarPack
-- **What it is:** 189 cars/bikes with FiveM handling files already set
-- Extract into: `server-data/resources/syndicate-cars/stream/optimized/`
 
 ### CFX Luxury Pack (4 premium hero cars)
 - **URL:** https://forum.cfx.re/t/release-add-on-high-quality-luxury-car-pack/235479
-- **What it is:** 4 high-quality luxury cars (Nissan GTR, BMW M5, Porsche Cayenne, Audi A4)
-- Extract into: `server-data/resources/syndicate-cars/stream/premium/`
+- Real-world brands: see the DMCA table below.
+
+Check each pack's own README for its license and for which files it ships.
 
 ---
 
-## Step 2 — Register each car
+## Step 2 — Put the model files in `stream/`
 
-For every `.yft` file you add to `stream/`, you need to:
+FiveM streams everything inside a folder named `stream/` automatically. There is **no**
+`stream { }` block in the manifest. Create the folder and drop the files in:
 
-### 1. Add to `fxmanifest.lua` stream block
-```lua
-stream {
-    ['sultan2.yft']    = 'stream/ivpack/sultan2.yft',
-    ['sultan2.ytd']    = 'stream/ivpack/sultan2.ytd',
-    ['sultan2_hi.yft'] = 'stream/ivpack/sultan2_hi.yft',
-}
+```
+server-data/resources/syndicate-cars/stream/sultan2.yft
+server-data/resources/syndicate-cars/stream/sultan2.ytd
+server-data/resources/syndicate-cars/stream/sultan2_hi.yft
 ```
 
-### 2. Add to `data/vehicles.meta`
-Copy the template from the file and fill in `modelName`, `vehicleClass`, etc.
+(Sub-folders inside `stream/` are fine, e.g. `stream/ivpack/`.)
 
-### 3. Add to `syndicate-config/config/cars.lua`
-```lua
-Config.Cars['sultan2'] = {
-    label    = 'Sultan Classic',
-    category = 'sports',
-    price    = 45000,
-    vipTier  = nil,  -- nil = everyone, 'vip' = VIP+ only
-}
+## Step 3 — Register each car
+
+1. **`data/vehicles.meta`** — copy the `<Item>` template from the comment at the top of
+   the file into `<InitDatas>`, and set `modelName`, `txdName`, `handlingId`, `gameName`,
+   `vehicleClass`. `modelName` must match the `.yft` file name.
+2. **Handling / variations** — if the pack ships `handling.meta`, `carvariations.meta`
+   or `carcols.meta`, copy them into `data/` and uncomment the matching lines in
+   `fxmanifest.lua` (`files { }` and `data_file ...`). Each file you reference must exist,
+   or the resource fails to load.
+3. **`syndicate-config/config/cars.lua`**, for VIP gating and pricing:
+   ```lua
+   Config.Cars['sultan2'] = {
+       label    = 'Sultan Classic',
+       category = 'sports',
+       price    = 45000,
+       vipTier  = nil,  -- nil = everyone, or 'crew' / 'vip' / 'elite' / 'founder'
+   }
+   ```
+
+## Step 4 — Enable the resource
+
+Add this line to `server-data/server.cfg` (anywhere in the "Gameplay Core" area, after `qbx_core`):
+
+```cfg
+ensure syndicate-cars
 ```
 
+## Step 5 — Restart and test
+
+```bash
+docker compose restart fivem
+```
+
+Spawn the car in-game with the admin vehicle command and drive it. Test **one** car before
+adding the rest. The same advice applies to `syndicate-handling`, which is disabled in
+`server.cfg` until a single car has been tested with it.
+
 ---
 
-## VIP-Exclusive Cars
+## VIP-exclusive cars
 
-Set `vipTier = 'vip'` (or `'elite'`, `'founder'`) to lock a car behind a subscription tier.
-These cars won't appear in the regular dealership — only in the VIP garage menu.
+Set `vipTier = 'vip'` (or `'elite'`, `'founder'`) in `config/cars.lua` to mark a car as
+tier-gated. Note that nothing in this repo yet *enforces* the gate; `Config.GetAccessibleCars(tier)`
+is a helper for a future dealership resource.
 
 ---
 
-## DMCA Safety
+## DMCA safety
 
 | Pack | Risk level | Notes |
 |---|---|---|
-| IVPack | ✅ Safe | All GTA fictional names |
-| chappmdq pack | ⚠️ Mixed | Some real-world models — use with caution |
-| CFX Luxury | ⚠️ Real-world | BMW, Porsche, Audi, Nissan — monitor for DMCA |
-| Your original cars | ✅ Safe | Commission originals for long-term safety |
+| IVPack | Low | GTA fictional names |
+| chappmdq pack | Mixed | Some real-world models — use with caution |
+| CFX Luxury | Real-world brands | BMW, Porsche, Audi, Nissan — monitor for DMCA |
+| Your original cars | Safe | Commission originals for long-term safety |

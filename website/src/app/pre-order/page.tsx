@@ -2,57 +2,36 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/config/site";
+import { editions, vintagePack } from "@/data/editions";
 import { faqSchema, webPageSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
-const title = "GTA 6 Price & Editions: $79.99 / $99.99 Explained";
+const title = "GTA 6 Price & Editions: $79.99 Standard, $99.99 Ultimate";
 const description =
-  "GTA 6 costs $79.99 (Standard) or $99.99 (Ultimate). What the Ultimate Edition adds, the Vintage Vice City Pack pre-order bonus, why there's no disc, and where to pre-order.";
+  "GTA 6 costs $79.99 (Standard) or $99.99 (Ultimate). What the Ultimate Edition adds, what happened to the Vintage Vice City Pack pre-order bonus, why there's no disc, and where to buy.";
 
 export const metadata = pageMetadata({ title, description, path: "/pre-order" });
-
-const editions = [
-  {
-    name: "Standard Edition",
-    usd: "$79.99",
-    intl: "£69.99 · €79.99",
-    perks: ["Grand Theft Auto VI", "Pre-order bonus: Vintage Vice City Pack", "1 month of GTA+"],
-  },
-  {
-    name: "Ultimate Edition",
-    usd: "$99.99",
-    intl: "£89.99 · €99.99",
-    perks: [
-      "Grand Theft Auto VI",
-      "Extra clothing, hairstyles, and tattoos",
-      "Extra vehicles and weapons",
-      "Additional locations and side missions",
-      "Pre-order bonus: Vintage Vice City Pack",
-      "1 month of GTA+",
-    ],
-  },
-];
 
 const qa = [
   {
     q: "How much does GTA 6 cost?",
-    a: "$79.99 for the Standard Edition and $99.99 for the Ultimate Edition in the US (£69.99 / £89.99 in the UK, €79.99 / €99.99 in Europe).",
+    a: "$79.99 for the Standard Edition and $99.99 for the Ultimate Edition on the US PlayStation Store; £69.99 and £89.99 on the UK PlayStation Store (listings checked November 20, 2026). Prices in other regions vary.",
   },
   {
-    q: "What's the GTA 6 pre-order bonus?",
-    a: "The Vintage Vice City Pack — items inspired by 2002's GTA: Vice City — plus one month of GTA+. It's included with either edition if you pre-order or buy before November 20, 2026.",
+    q: "What was the GTA 6 pre-order bonus?",
+    a: "The Vintage Vice City Pack, a digital add-on. The PlayStation Store now lists it as a separate purchase at $4.99 (US) and £4.49 (UK). Whether the pre-order bonuses, including the GTA+ offer on the store listing, can still be claimed is unconfirmed — check the store listing before you buy.",
   },
   {
     q: "Does GTA 6 come on a disc?",
-    a: "No. Rockstar confirmed that physical copies contain a download code, not a disc. Boxed copies go on sale November 12, 2026, the same day preloading opens.",
+    a: "No. Rockstar confirmed in June 2026 that boxed copies contain a download code, not a disc. Any disc release later is unconfirmed.",
   },
   {
-    q: "Where can I pre-order GTA 6?",
-    a: "On the PlayStation Store, Microsoft Store (Xbox), Rockstar's official site, and major retailers. Pre-ordering digitally lets you preload from November 12.",
+    q: "Where can I buy GTA 6?",
+    a: "Rockstar's launch announcement lists the PlayStation Store, Microsoft Store, Rockstar Games Store, and retailers worldwide, digital and boxed.",
   },
   {
     q: "Is the Ultimate Edition worth it?",
-    a: "If you'll play for months, the $20 gets you extra vehicles, weapons, clothing, locations, and side missions on day one. If you only want the story, Standard has the full game and the same pre-order bonus.",
+    a: "It costs $20 more. Per the PlayStation Store, it adds extra vehicles, weapons, outfits, hairstyles, tattoos, special commissions, and some Ultimate-only services. If you only want the story, Standard is the full game.",
   },
 ];
 
@@ -61,14 +40,15 @@ export default function PreOrderPage() {
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
       <JsonLd data={webPageSchema("/pre-order", title, description)} />
       <JsonLd data={faqSchema(qa)} />
-      <Breadcrumbs items={[{ href: "/pre-order", label: "Price & Pre-Order" }]} />
+      <Breadcrumbs items={[{ href: "/pre-order", label: "Price & Editions" }]} />
       <p className="eyebrow">Updated {site.lastUpdatedLabel}</p>
       <h1 className="display mt-3 text-4xl sm:text-6xl">
         GTA 6 price & <span className="sunset-text">editions</span>
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-        Pre-orders opened June 25, 2026. Two editions, one pre-order bonus,
-        and no disc. Here&apos;s exactly what you get.
+        GTA VI is out now. Two editions, a download code in the box instead of
+        a disc, and the Vintage Vice City Pack as a separate add-on. Here&apos;s
+        exactly what you get.
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -77,7 +57,7 @@ export default function PreOrderPage() {
             <h2 className="display text-2xl">{e.name}</h2>
             <p className="mt-2">
               <span className="display sunset-text text-4xl">{e.usd}</span>
-              <span className="ml-3 font-mono text-xs text-muted">{e.intl}</span>
+              <span className="ml-3 font-mono text-xs text-muted">{e.gbp} UK</span>
             </p>
             <ul className="mt-6 flex flex-col gap-2.5">
               {e.perks.map((p) => (
@@ -91,8 +71,10 @@ export default function PreOrderPage() {
         ))}
       </div>
       <p className="mt-4 font-mono text-xs text-muted">
-        Prices per Rockstar&apos;s June 2026 pre-order announcement. We don&apos;t
-        sell the game and earn nothing from these links.
+        Prices and contents per the US and UK PlayStation Store listings,
+        checked {site.lastUpdatedLabel}. Vintage Vice City Pack:{" "}
+        {vintagePack.usd} / {vintagePack.gbp} as an add-on. We don&apos;t sell
+        the game and earn nothing from these links.
       </p>
       <a
         href="https://www.rockstargames.com/VI"
@@ -100,7 +82,7 @@ export default function PreOrderPage() {
         rel="noopener noreferrer"
         className="btn btn-vice mt-6 inline-block"
       >
-        Pre-order at Rockstar ↗
+        Buy at Rockstar ↗
       </a>
 
       <section className="mt-16 flex flex-col gap-6">
@@ -113,11 +95,14 @@ export default function PreOrderPage() {
       </section>
 
       <div className="mt-12 flex flex-wrap gap-6">
+        <Link href="/ps5" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
+          GTA 6 on PS5 →
+        </Link>
         <Link href="/release-date" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
-          Release date & preload →
+          Release date →
         </Link>
         <Link href="/news/preorders-open-price-editions" className="font-mono text-xs uppercase tracking-[0.18em] text-teal hover:text-cream">
-          The pre-order announcement →
+          The original pre-order announcement →
         </Link>
       </div>
     </div>

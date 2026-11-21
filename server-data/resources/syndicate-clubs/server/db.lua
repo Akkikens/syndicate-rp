@@ -1,6 +1,11 @@
--- Create tables on resource start
+-- Database layer. All functions are synchronous (oxmysql .await) and must be called
+-- from a thread or event handler. Loaded BEFORE server/main.lua (see fxmanifest).
+
+DB = {}
+
+-- Create tables in order so foreign keys never race (club table before member table).
 CreateThread(function()
-    exports.oxmysql:query([[
+    MySQL.query.await([[
         CREATE TABLE IF NOT EXISTS `syndicate_clubs` (
             `id`           INT AUTO_INCREMENT PRIMARY KEY,
             `name`         VARCHAR(50) NOT NULL UNIQUE,
@@ -16,7 +21,7 @@ CreateThread(function()
         )
     ]])
 
-    exports.oxmysql:query([[
+    MySQL.query.await([[
         CREATE TABLE IF NOT EXISTS `syndicate_club_members` (
             `id`         INT AUTO_INCREMENT PRIMARY KEY,
             `club_id`    INT NOT NULL,
@@ -29,108 +34,124 @@ CreateThread(function()
         )
     ]])
 
-    exports.oxmysql:query([[
-        CREATE TABLE IF NOT EXISTS `syndicate_club_invites` (
-            `id`          INT AUTO_INCREMENT PRIMARY KEY,
-            `club_id`     INT NOT NULL,
-            `inviter_id`  VARCHAR(50) NOT NULL,
-            `invitee_id`  VARCHAR(50) NOT NULL,
-            `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            INDEX idx_invitee (`invitee_id`)
-        )
-    ]])
+    -- A citizen can belong to at most one club. Also applied to databases created
+    -- by older versions of this resource (fails harmlessly if duplicate rows exist).
+    MySQL.query.await(
+        'ALTER TABLE `syndicate_club_members` ADD UNIQUE INDEX IF NOT EXISTS `uq_citizen` (`citizen_id`)')
+
+    DB.ready = true
 end)
 
--- ── Query helpers ─────────────────────────────────────────
-
-function DB.GetClubByName(name, cb)
-    exports.oxmysql:fetchSingle(
-        'SELECT * FROM syndicate_clubs WHERE name = ?',
-        { name }, cb
-    )
+function DB.WaitReady()
+    while not DB.ready do Wait(100) end
 end
 
-function DB.GetClubById(id, cb)
-    exports.oxmysql:fetchSingle(
-        'SELECT * FROM syndicate_clubs WHERE id = ?',
-        { id }, cb
-    )
+function DB.GetClubByName(name)
+    return MySQL.single.await('SELECT * FROM syndicate_clubs WHERE name = ?', { name })
 end
 
-function DB.GetPlayerClub(citizenId, cb)
-    exports.oxmysql:fetchSingle([[
+function DB.ClubExists(name, tag)
+    return MySQL.scalar.await(
+        'SELECT COUNT(*) FROM syndicate_clubs WHERE name = ? OR tag = ?', { name, tag }) > 0
+end
+
+function DB.GetClubById(id)
+    return MySQL.single.await('SELECT * FROM syndicate_clubs WHERE id = ?', { id })
+end
+
+function DB.GetPlayerClub(citizenId)
+    return MySQL.single.await([[
         SELECT c.*, m.role
         FROM syndicate_clubs c
         JOIN syndicate_club_members m ON m.club_id = c.id
         WHERE m.citizen_id = ?
-    ]], { citizenId }, cb)
+    ]], { citizenId })
 end
 
-function DB.GetClubMembers(clubId, cb)
-    exports.oxmysql:fetch([[
+function DB.GetMemberRole(clubId, citizenId)
+    return MySQL.scalar.await(
+        'SELECT role FROM syndicate_club_members WHERE club_id = ? AND citizen_id = ?',
+        { clubId, citizenId })
+end
+
+function DB.CountMembers(clubId)
+    return MySQL.scalar.await('SELECT COUNT(*) FROM syndicate_club_members WHERE club_id = ?', { clubId }) or 0
+end
+
+function DB.CountOfficers(clubId)
+    return MySQL.scalar.await(
+        "SELECT COUNT(*) FROM syndicate_club_members WHERE club_id = ? AND role = 'officer'", { clubId }) or 0
+end
+
+function DB.CountClubs()
+    return MySQL.scalar.await('SELECT COUNT(*) FROM syndicate_clubs') or 0
+end
+
+function DB.GetClubMembers(clubId)
+    -- charinfo is a TEXT column holding JSON; MariaDB has no ->> operator.
+    return MySQL.query.await([[
         SELECT m.citizen_id, m.role, m.joined_at,
-               CONCAT(p.charinfo->>'$.firstname', ' ', p.charinfo->>'$.lastname') as name
+               CONCAT(
+                   JSON_UNQUOTE(JSON_EXTRACT(p.charinfo, '$.firstname')), ' ',
+                   JSON_UNQUOTE(JSON_EXTRACT(p.charinfo, '$.lastname'))) AS name
         FROM syndicate_club_members m
         LEFT JOIN players p ON p.citizenid = m.citizen_id
         WHERE m.club_id = ?
         ORDER BY FIELD(m.role, 'owner','officer','member'), m.joined_at ASC
-    ]], { clubId }, cb)
+    ]], { clubId }) or {}
 end
 
-function DB.CreateClub(name, tag, ownerId, cb)
-    exports.oxmysql:insert(
+-- Returns the new club id, or nil if the name/tag is taken or an insert failed.
+function DB.CreateClub(name, tag, ownerId)
+    local ok, clubId = pcall(MySQL.insert.await,
         'INSERT INTO syndicate_clubs (name, tag, owner_id) VALUES (?, ?, ?)',
-        { name, tag:upper(), ownerId },
-        function(id)
-            if id then
-                exports.oxmysql:insert(
-                    'INSERT INTO syndicate_club_members (club_id, citizen_id, role) VALUES (?, ?, ?)',
-                    { id, ownerId, 'owner' },
-                    function() cb(id) end
-                )
-            else
-                cb(nil)
-            end
-        end
-    )
+        { name, tag, ownerId })
+    if not ok or not clubId or clubId == 0 then return nil end
+
+    local ok2, memberId = pcall(MySQL.insert.await,
+        'INSERT INTO syndicate_club_members (club_id, citizen_id, role) VALUES (?, ?, ?)',
+        { clubId, ownerId, 'owner' })
+    if not ok2 or not memberId or memberId == 0 then
+        MySQL.update.await('DELETE FROM syndicate_clubs WHERE id = ?', { clubId })
+        return nil
+    end
+    return clubId
 end
 
-function DB.AddMember(clubId, citizenId, role, cb)
-    exports.oxmysql:insert(
+-- Returns true if a row was inserted (false if already in a club: UNIQUE(citizen_id)).
+function DB.AddMember(clubId, citizenId, role)
+    local ok, id = pcall(MySQL.insert.await,
         'INSERT IGNORE INTO syndicate_club_members (club_id, citizen_id, role) VALUES (?, ?, ?)',
-        { clubId, citizenId, role or 'member' }, cb
-    )
+        { clubId, citizenId, role or 'member' })
+    return ok and id ~= nil and id ~= 0
 end
 
-function DB.RemoveMember(clubId, citizenId, cb)
-    exports.oxmysql:query(
+function DB.RemoveMember(clubId, citizenId)
+    return (MySQL.update.await(
         'DELETE FROM syndicate_club_members WHERE club_id = ? AND citizen_id = ?',
-        { clubId, citizenId }, cb
-    )
+        { clubId, citizenId }) or 0) > 0
 end
 
-function DB.UpdateMemberRole(clubId, citizenId, role, cb)
-    exports.oxmysql:query(
+function DB.UpdateMemberRole(clubId, citizenId, role)
+    return (MySQL.update.await(
         'UPDATE syndicate_club_members SET role = ? WHERE club_id = ? AND citizen_id = ?',
-        { role, clubId, citizenId }, cb
-    )
+        { role, clubId, citizenId }) or 0) > 0
 end
 
-function DB.DisbandClub(clubId, cb)
-    exports.oxmysql:query(
-        'DELETE FROM syndicate_clubs WHERE id = ?',
-        { clubId }, cb
-    )
+function DB.SetOwner(clubId, citizenId)
+    MySQL.update.await('UPDATE syndicate_clubs SET owner_id = ? WHERE id = ?', { citizenId, clubId })
 end
 
-function DB.GetAllClubs(cb)
-    exports.oxmysql:fetch([[
-        SELECT c.*, COUNT(m.id) as member_count
+function DB.DisbandClub(clubId)
+    MySQL.update.await('DELETE FROM syndicate_clubs WHERE id = ?', { clubId })
+end
+
+function DB.GetAllClubs()
+    return MySQL.query.await([[
+        SELECT c.id, c.name, c.tag, c.wins, COUNT(m.id) AS member_count
         FROM syndicate_clubs c
         LEFT JOIN syndicate_club_members m ON m.club_id = c.id
         GROUP BY c.id
-        ORDER BY c.wins DESC
-    ]], {}, cb)
+        ORDER BY c.wins DESC, c.name ASC
+    ]]) or {}
 end
-
-DB = DB or {}

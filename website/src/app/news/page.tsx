@@ -7,7 +7,7 @@ export const metadata = {
   ...pageMetadata({
     title: "GTA 6 News: Latest Grand Theft Auto VI Updates",
     description:
-      "Every confirmed GTA 6 update in one place: pre-orders, price, the Extended Look, release date news, and what's next before November 19. Sourced, no clickbait.",
+      "Every confirmed GTA 6 update in one place: the launch, first-day sales, PC status, price, the Extended Look, and release date news. Sourced, no clickbait.",
     path: "/news",
   }),
   alternates: {

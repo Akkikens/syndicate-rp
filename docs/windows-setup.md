@@ -1,4 +1,6 @@
-# Running Syndicate RP on Windows (AMD/Intel x86_64)
+# Running Syndicate RP on Windows (AMD/Intel x86_64) — Docker flow
+
+This is the **Docker** flow: the database host in your connection string is `mariadb`.
 
 Windows with WSL2 is the best local dev setup — native x86_64 Linux kernel, no emulation, no crashes.
 
@@ -38,27 +40,30 @@ You should see `Hello from Docker!`.
 
 ---
 
-## Step 3 — Clone the repo
+## Step 3 — Install tools and clone the repo
 
 ```bash
+sudo apt update && sudo apt install -y git curl jq unzip
 git clone https://github.com/Akkikens/syndicate-rp ~/syndicate-rp
 cd ~/syndicate-rp
 ```
 
 ---
 
-## Step 4 — Create your secrets file
+## Step 4 — Create your secrets files
 
-> **Never commit this file.** It's already in `.gitignore`.
+> **Never commit these files.** Both are in `.gitignore`.
 
 ```bash
-cat > server-data/server.cfg.local << 'EOF'
-set mysql_connection_string "mysql://syndicaterp:Syndicate@2026!@mariadb/syndicaterp?charset=utf8mb4"
-sv_licenseKey "YOUR_LICENSE_KEY_HERE"
-EOF
+# Database passwords for Docker Compose. Generate each with: openssl rand -hex 24
+cp .env.example .env && nano .env
+
+# License key + connection string (same DB password as MARIADB_PASSWORD, host `mariadb`)
+cp server-data/server.cfg.local.example server-data/server.cfg.local && nano server-data/server.cfg.local
 ```
 
-Replace `YOUR_LICENSE_KEY_HERE` with your key from [keymaster.fivem.net](https://keymaster.fivem.net).
+Get your license key at [portal.cfx.re](https://portal.cfx.re/servers/registration-keys).
+Use hex/alphanumeric passwords only (the connection-string parser breaks on `; = @ : / ? #`).
 
 ---
 
@@ -68,7 +73,9 @@ Replace `YOUR_LICENSE_KEY_HERE` with your key from [keymaster.fivem.net](https:/
 bash scripts/install.sh
 ```
 
-This downloads ox stack, Qbox framework, cfx-server-data, and handling packs into `server-data/resources/`. Takes ~2 minutes.
+This downloads the ox stack, Qbox, pma-voice, cfx-server-data pieces and DriveV into `server-data/resources/`, and copies the database schema into `server-data/sql/`. Takes ~2 minutes. It refuses to run until `server-data/server.cfg.local` exists.
+
+> Run it **before** the first `docker compose up`: MariaDB imports `server-data/sql/` only when its data volume is empty.
 
 ---
 
@@ -121,7 +128,7 @@ docker compose restart fivem
 # View live logs
 docker compose logs -f fivem
 
-# Update dependencies
+# Install anything missing (existing resources are kept); --force reinstalls them
 bash scripts/install.sh
 
 # Rebuild the Docker image (after Dockerfile changes)
@@ -147,11 +154,14 @@ Or open Explorer and look for **Linux** in the left sidebar.
 **`docker: permission denied`**
 Run `newgrp docker` or log out and back into WSL2.
 
-**`port 3306 already in use`**
-MariaDB is mapped to `3307` on the host to avoid conflicts. This is intentional.
+**Database port**
+MariaDB is intentionally not published to the host; only the game container can reach it.
 
 **`Could not authenticate server license key`**
-Your license key in `server.cfg.local` is wrong or expired. Get a new one at [keymaster.fivem.net](https://keymaster.fivem.net).
+Your license key in `server.cfg.local` is wrong or expired. Get a new one at [portal.cfx.re](https://portal.cfx.re/servers/registration-keys).
+
+**Players cannot create a character / `Table 'players' doesn't exist`**
+The schema was not imported (the database volume already existed when `install.sh` ran). See [setup.md](setup.md#docker-flow) for the manual import, or `docker compose down -v` to start the database fresh.
 
 **Resources fail to start (ox_lib, oxmysql)**
-Run `bash scripts/install.sh` again — the release zips may not have extracted correctly.
+Run `bash scripts/install.sh` again. It exits non-zero and names the resource if a download failed.

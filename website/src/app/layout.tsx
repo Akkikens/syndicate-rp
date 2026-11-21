@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s — GTA 6 Network",
   },
   description:
-    "GTA 6 countdown to November 19, 2026, plus sourced news, every trailer, price and editions, the map, and characters. Everything Grand Theft Auto VI in one place.",
+    "GTA 6 is out now (November 19, 2026) on PS5 and Xbox Series X|S. Sourced news, a PS5 guide, every trailer, price and editions, the map, and characters.",
   applicationName: site.name,
   alternates: {
     canonical: "/",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GTA 6 Network — Everything Grand Theft Auto VI",
     description:
-      "GTA 6 countdown, news, trailers, price, and everything we know. Launching November 19, 2026.",
+      "GTA 6 is out now on PS5 and Xbox Series X|S. News, trailers, price, and everything we know.",
     url: "/",
     siteName: site.name,
     locale: "en_US",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GTA 6 Network — Everything Grand Theft Auto VI",
     description:
-      "GTA 6 countdown, news, trailers, price, and everything we know.",
+      "GTA 6 is out now. News, trailers, price, and everything we know.",
   },
 };
 

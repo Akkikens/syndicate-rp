@@ -26,6 +26,15 @@ ClubConfig.RecruiterNPC = {
 ClubConfig.TagMaxLength   = 4   -- e.g. "[SYND]"
 ClubConfig.TagAllowedChars = '^[A-Z0-9]+$'
 
+-- ── Club Name (validated server-side) ─────────────────────
+ClubConfig.NameMinLength   = 3
+ClubConfig.NameMaxLength   = 24
+-- letters, digits, spaces, dash, underscore, dot; must start with a letter or digit
+ClubConfig.NameAllowedChars = '^[%w][%w _%-%.]*$'
+
+-- ── Invites ───────────────────────────────────────────────
+ClubConfig.InviteTimeoutSecs = 60
+
 -- ── Club Garage ───────────────────────────────────────────
 ClubConfig.SharedGarageSlots = 5   -- shared cars all members can pull
 

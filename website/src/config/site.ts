@@ -7,15 +7,15 @@ export const site = {
   domain: "https://gta6network.org",
   tagline: "Your home for everything Grand Theft Auto VI",
 
-  // GTA VI release date (Rockstar-confirmed: November 19, 2026, ET)
+  // GTA VI released November 19, 2026 (ET) — used for the days-since-launch counter.
   releaseDateISO: "2026-11-19T00:00:00-05:00",
   releaseDateLabel: "November 19, 2026",
-  preloadDateLabel: "November 12, 2026",
+  platforms: "PS5 · Xbox Series X|S",
 
   // Bump whenever the facts pages are re-checked — shown on-page and used as
   // dateModified / sitemap lastModified so search engines see fresh content.
-  lastUpdated: "2026-10-03",
-  lastUpdatedLabel: "October 3, 2026",
+  lastUpdated: "2026-11-20",
+  lastUpdatedLabel: "November 20, 2026",
 
   // Your channels — replace with your real URLs
   youtube: "https://www.youtube.com/@Mindwiredd",
