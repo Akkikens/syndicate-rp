@@ -33,7 +33,7 @@ const qa = [
   },
   {
     q: "How did the GTA 6 launch go?",
-    a: "Take-Two said GTA VI made about $3.79 billion in day-one retail sales, a company estimate of what shoppers spent through the end of November 19 — retail spend, not Take-Two's revenue. It did not say whether that figure includes pre-orders. It also said 32.5 million units sold before release.",
+    a: "Take-Two said GTA VI made about $3.79 billion in day-one retail sales, a company estimate of what shoppers spent through the end of November 19 — retail spend, not Take-Two's revenue. It did not say whether that figure includes pre-orders. It also said 32.5 million units sold before release. Separately, Sensor Tower, a third-party tracker, estimated about 24.58 million copies and roughly $2.36 billion through launch day (per TweakTown); Take-Two hasn't confirmed that estimate, and it is a different measure from Take-Two's retail figure.",
   },
   {
     q: "When does GTA 6 come out on PC?",

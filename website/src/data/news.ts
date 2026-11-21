@@ -15,6 +15,54 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-day-3-confirmed-vs-unconfirmed",
+    date: "2026-11-21",
+    dateLabel: "November 21, 2026",
+    title: "GTA 6 day 3: what's confirmed and what isn't (save bug, Nov 25 update, sales)",
+    summary:
+      "Players report lost progress, but as of Saturday morning Rockstar hasn't confirmed a save-wipe bug or issued a fix. A viral claim of a big November 25 update has no Rockstar statement behind it.",
+    body: [
+      "Three days after launch, here is where things stand as of Saturday, November 21, 2026.",
+      "Save problems: Some players report losing progress. Video Games Chronicle (November 19) says some players lost the early part of their progress and that autosave doesn't always fire as expected, and recommends saving manually: open the menu, go to Game, and choose save. It lists 15 save slots by default, one reserved for autosave. HappyGamer's day-3 live blog (updated November 21) says some PS5 and Xbox players report losing hours of progress after crashes, and that Rockstar has not confirmed a save-wipe bug or issued a fix as of Saturday morning.",
+      "Rumor watch: a viral post claims Rockstar apologized for lag and promised a big update on November 25. HappyGamer found no Rockstar statement, and a community note on the post says the same. Treat it as unconfirmed. HappyGamer also says no patch notes have been published.",
+      "Sales, two different numbers: Take-Two says GTA VI made about $3.79 billion in day-one retail sales (a company estimate; see our launch story). Separately, Sensor Tower, a third-party tracker, estimated about 24.58 million copies and roughly $2.36 billion through launch day, split 75% PlayStation and 25% Xbox, per TweakTown. TweakTown notes Take-Two hasn't confirmed Sensor Tower's figures and that they exclude refunds. They are different measures from different sources.",
+      "Still not announced: a PC version (HappyGamer says none has been announced) and a GTA VI online mode. Our earlier PC story covers the unconfirmed Q1 2027 report.",
+    ],
+    tag: "Rumor Watch",
+    source: {
+      label: "HappyGamer day 3 live updates",
+      url: "https://happygamer.com/gta-6-day-3-live-updates-177471/",
+    },
+    related: [
+      { href: "/faq", label: "GTA 6 FAQ" },
+      { href: "/release-date", label: "GTA 6 release date & launch" },
+      { href: "/pc", label: "GTA 6 on PC" },
+    ],
+  },
+  {
+    slug: "gta-plus-single-player-benefits-gta-6",
+    date: "2026-11-21",
+    dateLabel: "November 21, 2026",
+    title: "GTA+ now has GTA VI single-player perks, ComputerBase reports",
+    summary:
+      "Per ComputerBase, GTA+ adds a car, a garage and discounts in GTA VI's story mode for EUR 7.99 a month. Digital buyers before November 20 can redeem one free month.",
+    body: [
+      "ComputerBase reports (November 21) that GTA+ benefits now apply to GTA VI's single-player campaign, on PS5 and Xbox Series X|S. The article doesn't mention PC.",
+      "The price it gives is EUR 7.99 per month. Benefits it lists: a '90 Annis Venturas BLVD Elegy sports car and a one-vehicle garage in Crosstown (available from Chapter 3), 10% more money when selling your own vehicles, 10% discounts at selected weapon and clothing stores, barbers, tattoo artists and vehicle workshops, RydeMe and Scooter Bros services, and free rental bikes and scooters plus metro discounts.",
+      "Free month: ComputerBase says buyers of the digital Standard or Ultimate Edition who purchased before November 20, 2026, including pre-orders, can redeem one free month. On PS5 it must be redeemed by March 31, 2027 in the PlayStation Store; on Xbox, within 180 days of purchase. After that it renews at EUR 7.99 a month unless cancelled.",
+      "Cancelling: claimed items, the car and garage, are kept; ongoing discounts and services end with the membership. Benefits can be toggled under Settings, Account, GTA+ Boosts. We have not independently confirmed these terms on a Rockstar page; check the in-game and store terms before subscribing. We haven't seen a US price.",
+    ],
+    tag: "Business",
+    source: {
+      label: "ComputerBase (German)",
+      url: "https://www.computerbase.de/news/gaming/gta-6-rockstar-verkauft-vorteile-im-singleplayer-per-abo.100440/",
+    },
+    related: [
+      { href: "/pre-order", label: "Price & editions" },
+      { href: "/ps5", label: "GTA 6 on PS5" },
+    ],
+  },
+  {
     slug: "gta-6-launches-first-day-sales",
     date: "2026-11-20",
     dateLabel: "November 20, 2026",
