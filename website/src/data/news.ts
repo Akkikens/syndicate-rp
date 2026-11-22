@@ -22,6 +22,32 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-new-zealand-trick-ampere-estimate",
+    seoTitle: "GTA 6 'New Zealand trick': 2.6M early players? Unconfirmed",
+    seoDescription: "Ampere Analysis reportedly estimates 2.6 million players used the New Zealand region trick to start GTA VI early. Secondhand and unconfirmed by Rockstar.",
+    date: "2026-11-22",
+    dateLabel: "November 22, 2026",
+    title: "How many people used the 'New Zealand trick' to start GTA 6 early? One analyst estimate, unconfirmed",
+    summary:
+      "BroBible, citing Eurogamer, says Ampere Analysis estimates more than 2.6 million players switched their console region to New Zealand to start GTA VI early, mostly on Xbox. We could not open the original, and no platform holder has confirmed a figure.",
+    body: [
+      "Rumor watch: this is a secondhand analyst estimate, not a confirmed number. Rockstar and the platform holders have not published any figure for early access through region changes.",
+      "BroBible reports, citing Eurogamer, that Ampere Analysis estimates more than 2.6 million people used the so-called New Zealand trick, which relies on New Zealand's midnight launch arriving before other regions. BroBible's breakdown is roughly 1.5 million in the US and 600,000 in the UK, plus about 100,000 US PlayStation users; the remainder isn't broken down. We tried to open the Eurogamer original and could not, so we are relying on BroBible's account, whose page shows a last-updated time of November 19.",
+      "The reported platform split matters: on Xbox, players could change the console region in settings, while PS5 players were largely blocked because a PSN account's country can't be changed, according to the same article. The comparison to a 48% jump in New Zealand's population is a hypothetical the outlet itself frames as only true if everyone who claimed to be there was.",
+      "What this does not tell you: it says nothing about sales (see our launch story for Take-Two's own figures) and nothing about any penalty or policy from Sony or Microsoft. Treat the number as an outside estimate until Ampere's data or the platform holders say more.",
+    ],
+    tag: "Rumor Watch",
+    source: {
+      label: "BroBible (citing Eurogamer and Ampere Analysis)",
+      url: "https://brobible.com/culture/article/how-many-gta-vi-players-used-new-zealand-trick-xbox/",
+    },
+    related: [
+      { href: "/release-date", label: "GTA 6 release date & launch" },
+      { href: "/ps5", label: "GTA 6 on PS5" },
+      { href: "/xbox", label: "GTA 6 on Xbox" },
+    ],
+  },
+  {
     slug: "gta-6-day-3-confirmed-vs-unconfirmed",
     seoTitle: "GTA 6 day 3: what's confirmed and what isn't",
     seoDescription: "Players report lost progress, but Rockstar hasn't confirmed a save-wipe bug or fix as of Saturday. A viral Nov 25 update claim has no Rockstar statement.",
