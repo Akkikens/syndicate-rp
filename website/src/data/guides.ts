@@ -112,7 +112,7 @@ export const guides: Guide[] = [
           {
             title: "Autosave is unreliable",
             badge: "Reported",
-            body: "Video Games Chronicle (November 19) says autosave triggers infrequently, after major missions and some side missions, and that some players report it is not working as intended. It does not trigger mid-mission, per the same guide, which says Rockstar gave a reason: it stops players saving at an in-game choice and then checking the other options.",
+            body: "Video Games Chronicle (November 19) says autosave triggers infrequently, after major missions and some side missions, and that some players report it is not working as intended. It does not trigger mid-mission, per the same guide, which says Rockstar gave a reason: it stops players saving at an in-game choice and then checking the other options. On November 23 Rockstar's first patch (01.002.002) listed an autosave fix, per Push Square; we have not tested whether it resolved the problem, so keep saving by hand.",
           },
           {
             title: "No manual saves during missions",
@@ -140,7 +140,7 @@ export const guides: Guide[] = [
     faq: [
       {
         q: "Does GTA 6 have autosave?",
-        a: "Yes, but Video Games Chronicle reports it triggers infrequently and inconsistently, and some players say it is not working as intended. Save manually as well.",
+        a: "Yes, but Video Games Chronicle reports it triggers infrequently and inconsistently, and some players say it is not working as intended. Rockstar's first patch on November 23 lists an autosave fix, per Push Square. Save manually as well.",
       },
       {
         q: "How do you save in GTA 6?",

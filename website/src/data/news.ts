@@ -22,6 +22,33 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-first-patch-01-002-002",
+    seoTitle: "GTA 6 first patch 01.002.002: autosave, crash fixes",
+    seoDescription: "Rockstar's first GTA VI patch, 01.002.002, fixes crashes and autosave on PS5 and Xbox Series X|S. Roughly 604 MB on PS5, per a dataminer.",
+    date: "2026-11-23",
+    dateLabel: "November 23, 2026",
+    title: "GTA 6 first patch 01.002.002 fixes autosave, crashes and phone calls",
+    summary:
+      "Rockstar has published notes for GTA VI's first post-launch update on PS5 and Xbox Series X|S. It targets crashes, autosave, stuck weather and a few mission blockers. It does not mention a save-wipe bug.",
+    body: [
+      "Rockstar's first post-launch update for GTA VI began rolling out on Monday, November 23, 2026. It is version 01.002.002 on PS5 (1.0.2.2 on Xbox), according to Push Square, Vice and PlayStation LifeStyle. Push Square says Rockstar has now published the full notes.",
+      "What it fixes, per the notes as reported: several crashes; weather that stopped changing for long stretches; autosave not working correctly; phone calls that failed to trigger, including story calls and calls that unlock missions; players unable to lose their Wanted Level; the Gym deadlift bar being unusable; and partners not handing over bags, which blocked selling them to fences.",
+      "Size and rollout: dataminer Tex2 puts the download at about 603.8 MB on PS5 and 1.6 GB on Xbox. Push Square and Vice relay Tex2's account of a phased PS5 rollout, roughly a third of players first, then more after about three hours and everyone after about six. Rockstar hasn't confirmed that schedule, so if you don't see the update yet, check again later.",
+      "What it doesn't say: the only save-related item is the autosave fix. Our day-3 story covered player reports of lost progress; the patch notes as reported don't mention a save-wipe bug or recovery of lost saves. PlayStation LifeStyle adds that the money glitch still works for some players, a player observation rather than a Rockstar statement.",
+      "Still not announced: a PC version and a GTA VI online mode.",
+    ],
+    tag: "Official",
+    source: {
+      label: "Push Square",
+      url: "https://www.pushsquare.com/news/2026/11/first-gta-6-ps5-patch-live-now-get-all-the-details-here",
+    },
+    related: [
+      { href: "/guides", label: "GTA 6 guides" },
+      { href: "/ps5", label: "GTA 6 on PS5" },
+      { href: "/faq", label: "GTA 6 FAQ" },
+    ],
+  },
+  {
     slug: "gta-6-day-3-confirmed-vs-unconfirmed",
     seoTitle: "GTA 6 day 3: what's confirmed and what isn't",
     seoDescription: "Players report lost progress, but Rockstar hasn't confirmed a save-wipe bug or fix as of Saturday. A viral Nov 25 update claim has no Rockstar statement.",
