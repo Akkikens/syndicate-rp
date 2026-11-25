@@ -22,6 +22,58 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-pc-march-2027-gamegpu-claim-unconfirmed",
+    seoTitle: "GTA 6 PC March 2027 claim: one source, unconfirmed",
+    seoDescription: "A GameGPU post claims GTA VI hits PC with an online mode in March 2027. It cites no named source, and Rockstar and Take-Two haven't confirmed it.",
+    date: "2026-11-25",
+    dateLabel: "November 25, 2026",
+    title: "Rumor Watch: a March 2027 PC and online claim for GTA 6 has one source and no confirmation",
+    summary:
+      "A GameGPU post dated November 25 claims GTA VI reaches PC, with an online mode, in March 2027. It cites no named source. Rockstar and Take-Two have announced neither.",
+    body: [
+      "Rumor watch: hardware outlet GameGPU published a post on November 25, 2026 claiming GTA VI will come to PC in March 2027, with a GTA 6 online mode launching alongside it.",
+      "Shattered, which reviewed the claim, says the post names no Rockstar employee, retailer listing or platform database entry, and that it attributes the information to an AI-assisted reading of Take-Two's fiscal 2027 financial reports. Shattered counts it as a single leak.",
+      "That is separate from the earlier GamesBeat report of a first-quarter 2027 PC target, which cites four anonymous sources and is also unconfirmed. It says nothing about a March date or an online mode.",
+      "What is confirmed: GTA VI is on PS5 and Xbox Series X|S, and Take-Two's November 9 earnings release listed only those two platforms. No PC version, PC date or GTA VI online mode has been announced. Treat the March 2027 date as unconfirmed.",
+    ],
+    tag: "Rumor Watch",
+    source: {
+      label: "Shattered",
+      url: "https://shattered.io/gta-6-pc-march-2027-gamegpu-leak-zero-rockstar-confirmations-nov-25",
+    },
+    related: [
+      { href: "/pc", label: "GTA 6 on PC" },
+      { href: "/online", label: "GTA 6 online" },
+      { href: "/faq", label: "GTA 6 FAQ" },
+    ],
+  },
+  {
+    slug: "gta-6-sales-estimates-take-two-guidance-investors",
+    seoTitle: "GTA 6 sales: estimates, guidance and investor focus",
+    seoDescription: "Alinea estimates 44.9M GTA VI copies by launch weekend's end; Take-Two guides $3.35-3.5B for the quarter. Fortune on what investors watch next.",
+    date: "2026-11-25",
+    dateLabel: "November 25, 2026",
+    title: "GTA 6 sales: a third-party estimate of 44.9 million copies, and what Take-Two guided",
+    summary:
+      "Alinea Analytics estimates about 44.9 million copies by the end of launch weekend. Take-Two hasn't confirmed that and has kept its guidance unchanged. Investors are watching GTA Online timing.",
+    body: [
+      "Fortune's November 25, 2026 report restates Take-Two's own numbers: about $3.79 billion in worldwide day-one retail sales (a company estimate) and 32.5 million units sold before release. It notes retail sales measure what players spent, not what Take-Two keeps after platform and retailer cuts.",
+      "Third-party estimate, not a company figure: Alinea Analytics puts sales at about 44.9 million copies by the end of the opening weekend, grossing over $4 billion. Take-Two hasn't confirmed it. This sits alongside the Sensor Tower estimates we covered earlier, which use a different method.",
+      "Guidance is unchanged. Take-Two reiterated fiscal 2027 net bookings of $8 billion to $8.2 billion, and guided $3.35 billion to $3.5 billion for the October to December quarter, the first period that will show how much of the launch reaches its books.",
+      "Shares fell almost 4% on launch day despite the game's Metacritic score of 99. Fortune quotes TD Cowen analyst Doug Creutz saying the timing and size of the next GTA Online update matter more to the stock than GTA VI unit sales. That is an analyst's view, and Rockstar has announced no online mode.",
+    ],
+    tag: "Business",
+    source: {
+      label: "Fortune",
+      url: "https://fortune.com/2026/11/25/gta6-gtavi-video-games-take-two-interactive-investors-mark-zuckerberg-elon-musk-meta-priscilla-chan/",
+    },
+    related: [
+      { href: "/release-date", label: "GTA 6 release date & launch" },
+      { href: "/online", label: "GTA 6 online" },
+      { href: "/faq", label: "GTA 6 FAQ" },
+    ],
+  },
+  {
     slug: "gta-6-first-patch-01-002-002",
     seoTitle: "GTA 6 first patch 01.002.002: autosave, crash fixes",
     seoDescription: "Rockstar's first GTA VI patch, 01.002.002, fixes crashes and autosave on PS5 and Xbox Series X|S. Roughly 604 MB on PS5, per a dataminer.",
