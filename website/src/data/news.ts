@@ -22,6 +22,30 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "gta-6-criminal-profile-system-explained",
+    date: "2026-11-26",
+    dateLabel: "November 26, 2026",
+    title: "Rockstar's Rob Nelson explains GTA 6's Criminal Profile system",
+    summary:
+      "Rockstar's head of development says the Criminal Profile is meant to make open-world behavior fit how Jason and Lucia are written. Your style of crime shifts the rating, which affects police response and Focus refill.",
+    body: [
+      "Dexerto reported on November 26, 2026 that Rob Nelson, Rockstar's head of development, has explained why GTA VI has a Criminal Profile system. Dexerto attributes the comments to an interview with Eurogamer; we read Dexerto's write-up, not the original interview.",
+      "How it works, per that report: each protagonist has a rating that moves with how you play. Nonviolent robberies can push a character toward Professional, while attacking civilians or long rampages can push toward Irredeemable. The rating affects how police respond and how quickly the character refills their Focus meter.",
+      "Why Rockstar built it: Nelson said the aim was to bring open-world play closer to how Jason and Lucia are portrayed in the story, and to add more NPC sophistication and player choice. Dexerto also says he described it as building on Red Dead Redemption 2's Honor system.",
+      "This is a developer explanation of a feature already in the shipped game, not a patch or a new feature. Still not announced: a PC version and a GTA VI online mode.",
+    ],
+    tag: "Official",
+    source: {
+      label: "Dexerto",
+      url: "https://dexerto.com/gta/rockstar-explains-why-gta-6-added-its-criminal-profile-system-3431455",
+    },
+    related: [
+      { href: "/game", label: "About GTA 6" },
+      { href: "/guides", label: "GTA 6 guides" },
+      { href: "/faq", label: "GTA 6 FAQ" },
+    ],
+  },
+  {
     slug: "gta-6-first-patch-01-002-002",
     seoTitle: "GTA 6 first patch 01.002.002: autosave, crash fixes",
     seoDescription: "Rockstar's first GTA VI patch, 01.002.002, fixes crashes and autosave on PS5 and Xbox Series X|S. Roughly 604 MB on PS5, per a dataminer.",
