@@ -22,6 +22,32 @@ export type NewsItem = {
 // Newest first. Add new items to the top as the story develops.
 export const news: NewsItem[] = [
   {
+    slug: "sony-gta-6-biggest-playstation-launch",
+    seoTitle: "GTA 6: Sony says 39M+ PS5 players in first 4 days",
+    seoDescription: "Sony says GTA VI passed 39 million unique PS5 players from Nov 19-22 and set a PlayStation concurrent-player record. No sales figure was given.",
+    date: "2026-11-28",
+    dateLabel: "November 28, 2026",
+    title: "Sony: GTA 6 passed 39 million PS5 players in its first four days",
+    summary:
+      "In a PlayStation Blog post, Sony says more than 39 million unique players have played GTA VI on PS5 and that it set a PlayStation record for concurrent players. Sony gave no sales figure and no concurrent number.",
+    body: [
+      "Sony Interactive Entertainment published a post on the PlayStation Blog on November 23, 2026 calling GTA VI the biggest launch in PlayStation history. The figures come from Sony's internal data for November 19 to 22.",
+      "The headline numbers: more than 39 million unique players on PS5, about 683 million hours played in total, and an average of 17.4 hours per player over the opening days. Sony also says GTA VI set a new record for the most concurrent players of any PlayStation game, but it did not say what the peak was.",
+      "Sony adds that launch day saw the largest number of newly connected PS5 consoles on a single day outside the end-of-year holiday period, and that GTA VI was the first game played on 70% of newly activated consoles. No console count was given.",
+      "How to read it: this counts players, not copies sold, so it is not comparable to Take-Two's first-day sales figure we covered earlier. It covers PS5 only, with no equivalent Xbox numbers in this post. Outside estimates of peak concurrent players are not Sony data.",
+      "Still not announced: a PC version and a GTA VI online mode.",
+    ],
+    tag: "Business",
+    source: {
+      label: "PlayStation Blog",
+      url: "https://blog.playstation.com/2026/11/23/thank-you-for-making-grand-theft-auto-vi-the-biggest-launch-in-playstation-history/",
+    },
+    related: [
+      { href: "/ps5", label: "GTA 6 on PS5" },
+      { href: "/faq", label: "GTA 6 FAQ" },
+    ],
+  },
+  {
     slug: "gta-6-first-patch-01-002-002",
     seoTitle: "GTA 6 first patch 01.002.002: autosave, crash fixes",
     seoDescription: "Rockstar's first GTA VI patch, 01.002.002, fixes crashes and autosave on PS5 and Xbox Series X|S. Roughly 604 MB on PS5, per a dataminer.",
