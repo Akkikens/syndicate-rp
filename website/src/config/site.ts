@@ -14,8 +14,8 @@ export const site = {
 
   // Bump whenever the facts pages are re-checked — shown on-page and used as
   // dateModified / sitemap lastModified so search engines see fresh content.
-  lastUpdated: "2026-11-23",
-  lastUpdatedLabel: "November 23, 2026",
+  lastUpdated: "2026-11-28",
+  lastUpdatedLabel: "November 28, 2026",
 
   // Your channels — replace with your real URLs
   youtube: "https://www.youtube.com/@Mindwiredd",
